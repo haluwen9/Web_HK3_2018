@@ -10,7 +10,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Ustora Demo</title>
+    <title>Bông Xù Store</title>
 
     <!-- Google Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet' type='text/css'>
@@ -28,6 +28,10 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/responsive.css">
 
+    <!-- Bông Xù Custom Stylesheets -->
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/header.css">
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -41,7 +45,7 @@
     <div class="header-area">
         <div class="container">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-7">
                     <div class="user-menu">
                         <ul>
                             <li><a href="#"><i class="fa fa-user"></i> My Account</a></li>
@@ -53,25 +57,30 @@
                     </div>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-5">
                     <div class="header-right">
                         <ul class="list-unstyled list-inline">
-                            <li class="dropdown dropdown-small">
+                            <li class="dropdown  list-inline-item">
                                 <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span
-                                        class="key">currency :</span><span class="value">USD </span><b class="caret"></b></a>
+                                        class="key">Tiền tệ : </span><span class="value">VNĐ <span class="flag-icon flag-icon-vn"></span></span><b
+                                        class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">USD</a></li>
-                                    <li><a href="#">EUR</a></li>
-                                    <li><a href="#">VNĐ</a></li>
+                                    <li class="dropdown-item"><a href="#"><span class="flag-icon flag-icon-us"></span>
+                                            USD</a></li>
+                                    <li class="dropdown-item"><a href="#"><span class="flag-icon flag-icon-vn"></span>
+                                            VNĐ</a></li>
                                 </ul>
                             </li>
 
-                            <li class="dropdown dropdown-small">
+                            <li class="dropdown list-inline-item">
                                 <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span
-                                        class="key">language :</span><span class="value">English </span><b class="caret"></b></a>
+                                        class="key">Ngôn ngữ : </span><span class="value">Vietnamese </span><span class="flag-icon flag-icon-vn"></span><b
+                                        class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">English</a></li>
-                                    <li><a href="#">Vietnamese</a></li>
+                                    <li class="dropdown-item"><a href="#"><span class="flag-icon flag-icon-us"></span>
+                                            English</a></li>
+                                    <li class="dropdown-item"><a href="#"><span class="flag-icon flag-icon-vn"></span>
+                                            Vietnamese</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -102,26 +111,64 @@
 
     <div class="mainmenu-area">
         <div class="container">
-            <div class="row">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="index.html">Home</a></li>
-                        <li><a href="shop.html">Shop page</a></li>
-                        <li><a href="single-product.html">Single product</a></li>
-                        <li><a href="cart.html">Cart</a></li>
-                        <li><a href="checkout.html">Checkout</a></li>
-                        <li><a href="#">Category</a></li>
-                        <li><a href="#">Others</a></li>
-                        <li><a href="#">Contact</a></li>
+            <div class="navbar navbar-expand-lg navbar-light bg-light" role="navigation">
+                <!-- <div class="navbar-header"> -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#main-navbar-collapse">
+                    <!-- <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span> -->
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <span class="navbar-brand">Bông Xù Store</span>
+                <!-- </div> -->
+                <div class="navbar-collapse collapse" id="main-navbar-collapse">
+                    <ul class="nav navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="index.html">
+                                <span class="nav-hidden"><span class="fa fa-2x fa-home"></span><br></span>
+                                Trang chủ
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="shop.html">
+                                <span class="nav-hidden"><span class="fa fa-2x fa-shopping-cart"></span><br></span>
+                                Cửa hàng
+                            </a>
+                        </li>
+                        <!-- <li class="nav-item"><a class="nav-link" href="single-product.html">Single product</a></li> -->
+                        <!-- <li class="nav-item"><a class="nav-link" href="cart.html">Cart</a></li> -->
+                        <!-- <li class="nav-item"><a class="nav-link" href="checkout.html">Checkout</a></li> -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="category-dropdown" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false" href="#">
+                                <span class="nav-hidden"><span class="fa fa-2x fa-list-ul"></span><br></span>
+                                Danh mục
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-left" aria-labelledby="category-dropdown">
+                                <a href="#" class="dropdown-item">Gấu bông</a>
+                                <a href="#" class="dropdown-item">Thỏ bông</a>
+                                <a href="#" class="dropdown-item">Mèo bông</a>
+                                <a href="#" class="dropdown-item">Chó bông</a>
+                                <a href="#" class="dropdown-item">Huấn bóng</a>
+                            </div>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="#">
+                                <span class="nav-hidden"><span class="fa fa-2x fa-gift"></span><br></span>
+                                Khuyến mãi
+                            </a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="#">
+                                <span class="nav-hidden"><span class="fa fa-2x fa-phone"></span><br></span>
+                                Liên hệ
+                            </a>
+                        </li>
                     </ul>
+                    <form action="#" class="form-inline">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm..." aria-label="Search">
+                        <button type="submit" class="btn-success"><span class=" fa fa-search"></span></button>
+                    </form>
+
                 </div>
             </div>
         </div>
@@ -580,10 +627,11 @@
     </div> <!-- End footer bottom area -->
 
     <!-- Latest jQuery form server -->
-    <script src="https://code.jquery.com/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
 
     <!-- Bootstrap JS form CDN -->
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <!-- <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
+    <script src="js/bootstrap.bundle.min.js"></script>
 
     <!-- jQuery sticky menu -->
     <script src="js/owl.carousel.min.js"></script>
