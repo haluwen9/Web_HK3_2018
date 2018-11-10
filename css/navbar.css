@@ -1,0 +1,76 @@
+/* [NAVIGATION BAR BEGIN] */
+
+/*  ---------------------- From style.css -----------------------  */
+.mainmenu-area {
+  background: none repeat scroll 0 0 #fbfbfbbe;
+  font-family: "Roboto Condensed", sans-serif;
+  text-transform: uppercase;
+  width: 100%;
+  z-index: 999;
+  overflow: hidden;
+}
+
+
+.mainmenu-area ul.navbar-nav li.nav-item a.nav-link {
+  color: #6e6a6a;
+  font-size: 14px;
+  padding: 10px;
+  text-align: center;
+}
+
+
+.mainmenu-area ul.navbar-nav li.nav-item:hover>a.nav-link,
+.mainmenu-area ul.navbar-nav li.active>a.nav-link {
+  background: #5a88ca;
+  color: #FFF;
+}
+
+.mainmenu-area ul.navbar-nav li.nav-item a.nav-link:focus {
+  color: #FFF;
+}
+
+/*  -------------------------------------------------------------  */
+
+.navbar .navbar-toggler {
+  border: none;
+}
+
+.navbar form.form-inline {
+  position: relative;
+  border: 1pt #e0e0e0 solid;
+  background: #fff;
+  padding: 0;
+  overflow: hidden;
+  height: 35px;
+  width: 40%;
+}
+
+.navbar form.form-inline input[type=search] {
+  position: absolute;
+  width: 100%;
+  border: none;
+  border-radius: 0;
+  background: inherit;
+  margin: 0;
+}
+
+.navbar form.form-inline button[type=submit] {
+  position: absolute;
+  right: 0;
+}
+
+@media only screen and (max-width: 975px) {
+  .navbar .show form.form-inline {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 975px) {
+  .is-sticky .nav-hidden {
+    display: none;
+  }
+}
+
+.sticky-wrapper {
+  height: auto !important;
+}
