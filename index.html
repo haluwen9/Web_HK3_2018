@@ -44,6 +44,7 @@
     <link rel="stylesheet" href="css/header.css" />
     <link rel="stylesheet" href="css/dialog.css" />
 
+
     <!--
       HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
     -->
@@ -61,18 +62,18 @@
           <div class="col-md-7">
             <div class="user-menu">
               <ul>
-                <li>
+                <li style="display: none;">
                   <a href="#"><i class="fa fa-user"></i> My Account</a>
                 </li>
-                <li>
+                <li style="display: none;">
                   <a href="#"><i class="fa fa-heart"></i> Wishlist</a>
                 </li>
                 <li>
-                  <a href="cart.html"><i class="fa fa-user"></i> My Cart</a>
+                  <a href="cart.html"><i class="fa fa-user"></i> Giỏ hàng của tôi</a>
                 </li>
                 <li>
                   <a href="checkout.html"
-                    ><i class="fa fa-user"></i> Checkout</a
+                    ><i class="fa fa-user"></i> Phản hồi</a
                   >
                 </li>
                 <li>
@@ -82,7 +83,7 @@
                     data-target="#login-dialog"
                     onclick="switchForm('login')"
                   >
-                    <i class="fa fa-user"></i> Login</a
+                    <i class="fa fa-user"></i> Đăng nhập</a
                   >
                 </li>
               </ul>
@@ -103,7 +104,7 @@
                       >VNĐ <span class="flag-icon flag-icon-vn"></span></span
                     ><b class="caret"></b
                   ></a>
-                  <ul class="dropdown-menu">
+                  <ul class="dropdown-menu" style="display: none;">
                     <li class="dropdown-item">
                       <a href="#"
                         ><span class="flag-icon flag-icon-us"></span> USD</a
@@ -124,11 +125,11 @@
                     class="dropdown-toggle"
                     href="#"
                     ><span class="key">Ngôn ngữ : </span
-                    ><span class="value">Vietnamese </span
+                    ><span class="value">Tiếng Việt </span
                     ><span class="flag-icon flag-icon-vn"></span
                     ><b class="caret"></b
                   ></a>
-                  <ul class="dropdown-menu">
+                  <ul class="dropdown-menu" style="display: none;">
                     <li class="dropdown-item">
                       <a href="#"
                         ><span class="flag-icon flag-icon-us"></span> English</a
@@ -137,7 +138,7 @@
                     <li class="dropdown-item">
                       <a href="#"
                         ><span class="flag-icon flag-icon-vn"></span>
-                        Vietnamese</a
+                        Tiếng Việt</a
                       >
                     </li>
                   </ul>
@@ -156,7 +157,7 @@
           <div class="col-sm-6">
             <div class="logo">
               <h1>
-                <a href="./"><img src="img/logo.png"/></a>
+                <a href="index.html"><img src="img/logo.png"/></a>
               </h1>
             </div>
           </div>
@@ -164,9 +165,9 @@
           <div class="col-sm-6">
             <div class="shopping-item">
               <a href="cart.html"
-                >Cart - <span class="cart-amunt">$100</span>
+                >Giỏ Hàng - <span class="cart-amunt">$100</span>
                 <i class="fa fa-shopping-cart"></i>
-                <span class="product-count">5</span></a
+                <span class="product-count">99</span></a
               >
             </div>
           </div>
@@ -196,7 +197,7 @@
             -->
             <span class="navbar-toggler-icon"></span>
           </button>
-          <span class="navbar-brand">Bông Xù Store</span>
+          <span class="navbar-brand"><a href="index.html">Bông Xù Store</a></span>
           <!-- </div> -->
           <div class="navbar-collapse collapse" id="main-navbar-collapse">
             <ul class="nav navbar-nav mr-auto">
@@ -222,9 +223,7 @@
               <!--
                 <li class="nav-item"><a class="nav-link" href="cart.html">Cart</a></li>
               -->
-              <!--
-                <li class="nav-item"><a class="nav-link" href="checkout.html">Checkout</a></li>
-              -->
+  
               <li class="nav-item dropdown">
                 <a
                   class="nav-link dropdown-toggle"
@@ -243,23 +242,29 @@
                   class="dropdown-menu dropdown-menu-left"
                   aria-labelledby="category-dropdown"
                 >
-                  <a href="#" class="dropdown-item">Gấu bông</a>
-                  <a href="#" class="dropdown-item">Thỏ bông</a>
-                  <a href="#" class="dropdown-item">Mèo bông</a>
-                  <a href="#" class="dropdown-item">Chó bông</a>
-                  <a href="#" class="dropdown-item">Huấn bóng</a>
+                  <a href="shop.html" class="dropdown-item">Thú bông nhỏ</a>
+                  <a href="shop.html" class="dropdown-item">Thú bông lớn</a>
+                  <a href="shop.html" class="dropdown-item">Thú bông pokemon</a>
                 </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="cart.html">
                   <span class="nav-hidden"
                     ><span class="fa fa-2x fa-gift"></span><br
                   /></span>
-                  Khuyến mãi
+                  Giỏ hàng
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="checkout.html">
+                  <span class="nav-hidden">
+                    <span class="fa fa-2x far fa-credit-card"></span><br>
+                  </span>
+                  Thanh toán
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">
                   <span class="nav-hidden"
                     ><span class="fa fa-2x fa-phone"></span><br
                   /></span>
@@ -289,51 +294,51 @@
       <div class="block-slider block-slider4">
         <ul class="" id="bxslider-home4">
           <li>
-            <img src="img/h4-slide.png" alt="Slide" />
+            <img src="images/small/img10.jpg" alt="Slide" style="width: 400px; height: 400px; margin-left: 50px" />
             <div class="caption-group">
               <h2 class="caption title">
-                iPhone <span class="primary">6 <strong>Plus</strong></span>
+                Gấu bông cặp <span class="primary">GIẢM GIÁ <strong> 50%</strong></span>
               </h2>
-              <h4 class="caption subtitle">Dual SIM</h4>
-              <a class="caption button-radius" href="#"
-                ><span class="icon"></span>Shop now</a
+              <h4 class="caption subtitle">Siêu đẹp, siêu mềm.</h4>
+              <a class="caption button-radius" href="single-product.html"
+                ><span class="icon"></span>Mua ngay</a
               >
             </div>
           </li>
           <li>
-            <img src="img/h4-slide2.png" alt="Slide" />
+            <img src="images/large/img17.jpg" alt="Slide" style="width: 400px; height: 400px; margin-left: 50px"/>
             <div class="caption-group">
               <h2 class="caption title">
-                by one, get one
-                <span class="primary">50% <strong>off</strong></span>
+                Gấu bông lớn
+                <span class="primary">GIẢM GIÁ <strong> 30%</strong></span>
               </h2>
-              <h4 class="caption subtitle">school supplies & backpacks.*</h4>
-              <a class="caption button-radius" href="#"
-                ><span class="icon"></span>Shop now</a
+              <h4 class="caption subtitle">Mua gấu tặng kèm người.</h4>
+              <a class="caption button-radius" href="<single-product class="html"></single-product>
+                <span class="icon"></span>Mua ngay</a
               >
             </div>
           </li>
           <li>
-            <img src="img/h4-slide3.png" alt="Slide" />
-            <div class="caption-group">
+            <img src="images/large/img22.jpg" alt="Slide" style="width: 700px; height: 400px; margin-left: 50px"/>
+            <div class="caption-group" style="right: 0; position: absolute;">
               <h2 class="caption title">
-                Apple <span class="primary">Store <strong>Ipod</strong></span>
+                Bộ chó Husky <span class="primary">GIẢM GIÁ <strong> 25%</strong></span>
               </h2>
-              <h4 class="caption subtitle">Select Item</h4>
-              <a class="caption button-radius" href="#"
-                ><span class="icon"></span>Shop now</a
+              <h4 class="caption subtitle">Đa kích cỡ, tha hồ lựa chọn.</h4>
+              <a class="caption button-radius" href="single-product.html"
+                ><span class="icon"></span>Mua ngay</a
               >
             </div>
           </li>
           <li>
-            <img src="img/h4-slide4.png" alt="Slide" />
-            <div class="caption-group">
+            <img src="images/pokemon/img62.jpg" alt="Slide" style="width: 500px; height: 400px; margin-left: 50px"/>
+            <div class="caption-group" style="right: 0; position: absolute;">
               <h2 class="caption title">
-                Apple <span class="primary">Store <strong>Ipod</strong></span>
+                Thú bông POKEMON <span class="primary">Thế hệ <strong>MỚI</strong></span>
               </h2>
-              <h4 class="caption subtitle">& Phone</h4>
-              <a class="caption button-radius" href="#"
-                ><span class="icon"></span>Shop now</a
+              <h4 class="caption subtitle">Bộ Eevee tiến hóa.</h4>
+              <a class="caption button-radius" href="single-product.html"
+                ><span class="icon"></span>Mua ngay</a
               >
             </div>
           </li>
@@ -350,25 +355,25 @@
           <div class="col-md-3 col-sm-6">
             <div class="single-promo promo1">
               <i class="fa fa-refresh"></i>
-              <p>30 Days return</p>
+              <p>Đổi trả trong 30 ngày</p>
             </div>
           </div>
           <div class="col-md-3 col-sm-6">
             <div class="single-promo promo2">
               <i class="fa fa-truck"></i>
-              <p>Free shipping</p>
+              <p>Miễn phí giao hàng</p>
             </div>
           </div>
           <div class="col-md-3 col-sm-6">
             <div class="single-promo promo3">
               <i class="fa fa-lock"></i>
-              <p>Secure payments</p>
+              <p>Thanh toán an toàn</p>
             </div>
           </div>
           <div class="col-md-3 col-sm-6">
             <div class="single-promo promo4">
               <i class="fa fa-gift"></i>
-              <p>New products</p>
+              <p>Hàng mới nhất</p>
             </div>
           </div>
         </div>
@@ -382,123 +387,238 @@
         <div class="row">
           <div class="col-md-12">
             <div class="latest-product">
-              <h2 class="section-title">Latest Products</h2>
+              <h2 class="section-title">Hàng mới nhất</h2>
               <div class="product-carousel">
+
                 <div class="single-product">
                   <div class="product-f-image">
-                    <img src="img/product-1.jpg" alt="" />
+                    <img src="images/small/img2.jpg" alt="" style="width: 205px; height: 257px;" />
                     <div class="product-hover">
-                      <a href="#" class="add-to-cart-link"
-                        ><i class="fa fa-shopping-cart"></i> Add to cart</a
+                      <a href="cart.html" class="add-to-cart-link"
+                        ><i class="fa fa-shopping-cart"></i> Mua hàng</a
                       >
                       <a href="single-product.html" class="view-details-link"
-                        ><i class="fa fa-link"></i> See details</a
+                        ><i class="fa fa-link"></i> Xem chi tiết</a
                       >
                     </div>
                   </div>
 
                   <h2>
-                    <a href="single-product.html">Samsung Galaxy s5- 2015</a>
+                    Khỉ nhỏ
                   </h2>
 
                   <div class="product-carousel-price">
-                    <ins>$700.00</ins> <del>$100.00</del>
+                    <ins>$100</ins> <del>$120</del>
                   </div>
                 </div>
+
+
                 <div class="single-product">
                   <div class="product-f-image">
-                    <img src="img/product-2.jpg" alt="" />
+                    <img src="images/small/img6.jpg" alt="" style="width: 205px; height: 257px;" />
                     <div class="product-hover">
-                      <a href="#" class="add-to-cart-link"
-                        ><i class="fa fa-shopping-cart"></i> Add to cart</a
+                      <a href="cart.html" class="add-to-cart-link"
+                        ><i class="fa fa-shopping-cart"></i> Mua hàng</a
                       >
                       <a href="single-product.html" class="view-details-link"
-                        ><i class="fa fa-link"></i> See details</a
-                      >
-                    </div>
-                  </div>
-
-                  <h2>Nokia Lumia 1320</h2>
-                  <div class="product-carousel-price">
-                    <ins>$899.00</ins> <del>$999.00</del>
-                  </div>
-                </div>
-                <div class="single-product">
-                  <div class="product-f-image">
-                    <img src="img/product-3.jpg" alt="" />
-                    <div class="product-hover">
-                      <a href="#" class="add-to-cart-link"
-                        ><i class="fa fa-shopping-cart"></i> Add to cart</a
-                      >
-                      <a href="single-product.html" class="view-details-link"
-                        ><i class="fa fa-link"></i> See details</a
-                      >
-                    </div>
-                  </div>
-
-                  <h2>LG Leon 2015</h2>
-
-                  <div class="product-carousel-price">
-                    <ins>$400.00</ins> <del>$425.00</del>
-                  </div>
-                </div>
-                <div class="single-product">
-                  <div class="product-f-image">
-                    <img src="img/product-4.jpg" alt="" />
-                    <div class="product-hover">
-                      <a href="#" class="add-to-cart-link"
-                        ><i class="fa fa-shopping-cart"></i> Add to cart</a
-                      >
-                      <a href="single-product.html" class="view-details-link"
-                        ><i class="fa fa-link"></i> See details</a
-                      >
-                    </div>
-                  </div>
-
-                  <h2><a href="single-product.html">Sony microsoft</a></h2>
-
-                  <div class="product-carousel-price">
-                    <ins>$200.00</ins> <del>$225.00</del>
-                  </div>
-                </div>
-                <div class="single-product">
-                  <div class="product-f-image">
-                    <img src="img/product-5.jpg" alt="" />
-                    <div class="product-hover">
-                      <a href="#" class="add-to-cart-link"
-                        ><i class="fa fa-shopping-cart"></i> Add to cart</a
-                      >
-                      <a href="single-product.html" class="view-details-link"
-                        ><i class="fa fa-link"></i> See details</a
-                      >
-                    </div>
-                  </div>
-
-                  <h2>iPhone 6</h2>
-
-                  <div class="product-carousel-price">
-                    <ins>$1200.00</ins> <del>$1355.00</del>
-                  </div>
-                </div>
-                <div class="single-product">
-                  <div class="product-f-image">
-                    <img src="img/product-6.jpg" alt="" />
-                    <div class="product-hover">
-                      <a href="#" class="add-to-cart-link"
-                        ><i class="fa fa-shopping-cart"></i> Add to cart</a
-                      >
-                      <a href="single-product.html" class="view-details-link"
-                        ><i class="fa fa-link"></i> See details</a
+                        ><i class="fa fa-link"></i> Xem chi tiết</a
                       >
                     </div>
                   </div>
 
                   <h2>
-                    <a href="single-product.html">Samsung gallaxy note 4</a>
+                    Gấu bông nhỏ loại 1
                   </h2>
 
-                  <div class="product-carousel-price"><ins>$400.00</ins></div>
+                  <div class="product-carousel-price">
+                    <ins>$200</ins> <del>$230</del>
+                  </div>
                 </div>
+
+
+                <div class="single-product">
+                  <div class="product-f-image">
+                    <img src="images/small/img10.jpg" alt="" style="width: 205px; height: 257px;" />
+                    <div class="product-hover">
+                      <a href="cart.html" class="add-to-cart-link"
+                        ><i class="fa fa-shopping-cart"></i> Mua hàng</a
+                      >
+                      <a href="single-product.html" class="view-details-link"
+                        ><i class="fa fa-link"></i> Xem chi tiết</a
+                      >
+                    </div>
+                  </div>
+
+                  <h2>
+                    Gấu bông cặp VIOLET-PINK (ĐANG GIẢM GIÁ)
+                  </h2>
+
+                  <div class="product-carousel-price">
+                    <ins>$300</ins> <del>$600</del>
+                  </div>
+                </div>
+
+  
+                <div class="single-product">
+                  <div class="product-f-image">
+                    <img src="images/small/img9.jpg" alt="" style="width: 205px; height: 257px;" />
+                    <div class="product-hover">
+                      <a href="cart.html" class="add-to-cart-link"
+                        ><i class="fa fa-shopping-cart"></i> Mua hàng</a
+                      >
+                      <a href="single-product.html" class="view-details-link"
+                        ><i class="fa fa-link"></i> Xem chi tiết</a
+                      >
+                    </div>
+                  </div>
+
+                  <h2>
+                    Gấu bông cặp TRẮNG-NÂU
+                  </h2>
+
+                  <div class="product-carousel-price">
+                    <ins>$270</ins> <del>$300</del>
+                  </div>
+                </div>
+
+
+                <div class="single-product">
+                  <div class="product-f-image">
+                    <img src="images/large/img15.jpg" alt="" style="width: 205px; height: 257px;" />
+                    <div class="product-hover">
+                      <a href="cart.html" class="add-to-cart-link"
+                        ><i class="fa fa-shopping-cart"></i> Mua hàng</a
+                      >
+                      <a href="single-product.html" class="view-details-link"
+                        ><i class="fa fa-link"></i> Xem chi tiết</a
+                      >
+                    </div>
+                  </div>
+
+                  <h2>
+                    Bộ Totoro
+                  </h2>
+
+                  <div class="product-carousel-price">
+                    <ins>$650</ins> <del>$700</del>
+                  </div>
+                </div>
+
+
+                <div class="single-product">
+                  <div class="product-f-image">
+                    <img src="images/large/img22.jpg" alt="" style="width: 205px; height: 257px;" />
+                    <div class="product-hover">
+                      <a href="cart.html" class="add-to-cart-link"
+                        ><i class="fa fa-shopping-cart"></i> Mua hàng</a
+                      >
+                      <a href="single-product.html" class="view-details-link"
+                        ><i class="fa fa-link"></i> Xem chi tiết</a
+                      >
+                    </div>
+                  </div>
+
+                  <h2>
+                    Bộ Husky Nga (ĐANG GIẢM GIÁ)
+                  </h2>
+
+                  <div class="product-carousel-price">
+                    <ins>$600</ins> <del>$800</del>
+                  </div>
+                </div>
+
+
+                <div class="single-product">
+                  <div class="product-f-image">
+                    <img src="images/large/img17.jpg" alt="" style="width: 205px; height: 257px;" />
+                    <div class="product-hover">
+                      <a href="cart.html" class="add-to-cart-link"
+                        ><i class="fa fa-shopping-cart"></i> Mua hàng</a
+                      >
+                      <a href="single-product.html" class="view-details-link"
+                        ><i class="fa fa-link"></i> Xem chi tiết</a
+                      >
+                    </div>
+                  </div>
+
+                  <h2>
+                    Gấu bông to loại 1 (ĐANG GIẢM GIÁ)
+                  </h2>
+
+                  <div class="product-carousel-price">
+                    <ins>$280</ins> <del>$400</del>
+                  </div>
+                </div>
+
+
+                <div class="single-product">
+                  <div class="product-f-image">
+                    <img src="images/pokemon/img31.jpg" alt="" style="width: 205px; height: 257px;" />
+                    <div class="product-hover">
+                      <a href="cart.html" class="add-to-cart-link"
+                        ><i class="fa fa-shopping-cart"></i> Mua hàng</a
+                      >
+                      <a href="single-product.html" class="view-details-link"
+                        ><i class="fa fa-link"></i> Xem chi tiết</a
+                      >
+                    </div>
+                  </div>
+
+                  <h2>
+                    Pikachu (HOT)
+                  </h2>
+
+                  <div class="product-carousel-price">
+                    <ins>$69</ins> <del>$79</del>
+                  </div>
+                </div>
+
+
+                <div class="single-product">
+                  <div class="product-f-image">
+                    <img src="images/pokemon/img61.jpg" alt="" style="width: 205px; height: 257px;" />
+                    <div class="product-hover">
+                      <a href="cart.html" class="add-to-cart-link"
+                        ><i class="fa fa-shopping-cart"></i> Mua hàng</a
+                      >
+                      <a href="single-product.html" class="view-details-link"
+                        ><i class="fa fa-link"></i> Xem chi tiết</a
+                      >
+                    </div>
+                  </div>
+
+                  <h2>
+                    Bộ POKEMON tân binh
+                  </h2>
+
+                  <div class="product-carousel-price">
+                    <ins>$1000</ins> <del>$1100</del>
+                  </div>
+                </div>
+
+
+                <div class="single-product">
+                  <div class="product-f-image">
+                    <img src="images/pokemon/img62.jpg" alt="" style="width: 205px; height: 257px;" />
+                    <div class="product-hover">
+                      <a href="cart.html" class="add-to-cart-link"
+                        ><i class="fa fa-shopping-cart"></i> Mua hàng</a
+                      >
+                      <a href="single-product.html" class="view-details-link"
+                        ><i class="fa fa-link"></i> Xem chi tiết</a
+                      >
+                    </div>
+                  </div>
+
+                  <h2>
+                    Bộ Eevee tiến hóa (HÀNG MỚI)
+                  </h2>
+
+                  <div class="product-carousel-price">
+                    <ins>$5000</ins> <del>$5200</del>
+                  </div>
+                </div>
+  
               </div>
             </div>
           </div>
@@ -514,14 +634,14 @@
           <div class="col-md-12">
             <div class="brand-wrapper">
               <div class="brand-list">
-                <img src="img/brand1.png" alt="" />
-                <img src="img/brand2.png" alt="" />
-                <img src="img/brand3.png" alt="" />
-                <img src="img/brand4.png" alt="" />
-                <img src="img/brand5.png" alt="" />
-                <img src="img/brand6.png" alt="" />
-                <img src="img/brand1.png" alt="" />
-                <img src="img/brand2.png" alt="" />
+                <img src="img/logo1.png" alt="" style="width: 270px; height: 170px;" />
+                <img src="img/logo2.png" alt="" style="width: 270px; height: 170px;"/>
+                <img src="img/logo3.jpg" alt="" style="width: 270px; height: 170px;"/>
+                <img src="img/logo4.jpg" alt="" style="width: 270px; height: 170px;"/>
+                <img src="img/logo5.png" alt="" style="width: 270px; height: 170px;"/>
+                <img src="img/logo6.png" alt="" style="width: 270px; height: 170px;"/>
+                <img src="img/logo7.png" alt="" style="width: 270px; height: 170px;"/>
+                <img src="img/logo8.png" alt="" style="width: 270px; height: 170px;"/>
               </div>
             </div>
           </div>
@@ -534,187 +654,199 @@
       <div class="zigzag-bottom"></div>
       <div class="container">
         <div class="row">
+
           <div class="col-md-4">
             <div class="single-product-widget">
-              <h2 class="product-wid-title">Top Sellers</h2>
-              <a href="" class="wid-view-more">View All</a>
+              <h2 class="product-wid-title">Đang Giảm Giá</h2>
+              <a href="shop.html" class="wid-view-more">Xem tất cả</a>
+
               <div class="single-wid-product">
                 <a href="single-product.html"
                   ><img
-                    src="img/product-thumb-1.jpg"
+                    src="images/small/img10.jpg"
                     alt=""
                     class="product-thumb"
                 /></a>
-                <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
+                <h2><a href="single-product.html">Gấu bông cặp VIOLET-PINK</a></h2>
                 <div class="product-wid-rating">
                   <i class="fa fa-star"></i> <i class="fa fa-star"></i>
                   <i class="fa fa-star"></i> <i class="fa fa-star"></i>
                   <i class="fa fa-star"></i>
                 </div>
                 <div class="product-wid-price">
-                  <ins>$400.00</ins> <del>$425.00</del>
+                  <ins>$300</ins> <del>$600</del>
                 </div>
               </div>
+
+
               <div class="single-wid-product">
                 <a href="single-product.html"
                   ><img
-                    src="img/product-thumb-2.jpg"
+                    src="images/large/img17.jpg"
                     alt=""
                     class="product-thumb"
                 /></a>
-                <h2>
-                  <a href="single-product.html">Apple new mac book 2015</a>
-                </h2>
+                <h2><a href="single-product.html">Gấu bông to loại 1</a></h2>
                 <div class="product-wid-rating">
                   <i class="fa fa-star"></i> <i class="fa fa-star"></i>
                   <i class="fa fa-star"></i> <i class="fa fa-star"></i>
                   <i class="fa fa-star"></i>
                 </div>
                 <div class="product-wid-price">
-                  <ins>$400.00</ins> <del>$425.00</del>
+                  <ins>$280</ins> <del>$400</del>
                 </div>
               </div>
+
+
               <div class="single-wid-product">
                 <a href="single-product.html"
                   ><img
-                    src="img/product-thumb-3.jpg"
+                    src="images/large/img22.jpg"
                     alt=""
                     class="product-thumb"
                 /></a>
-                <h2><a href="single-product.html">Apple new i phone 6</a></h2>
+                <h2><a href="single-product.html">Bộ Husky Nga</a></h2>
                 <div class="product-wid-rating">
                   <i class="fa fa-star"></i> <i class="fa fa-star"></i>
                   <i class="fa fa-star"></i> <i class="fa fa-star"></i>
                   <i class="fa fa-star"></i>
                 </div>
                 <div class="product-wid-price">
-                  <ins>$400.00</ins> <del>$425.00</del>
+                  <ins>$600</ins> <del>$800</del>
                 </div>
               </div>
+
+              
             </div>
           </div>
+
           <div class="col-md-4">
             <div class="single-product-widget">
-              <h2 class="product-wid-title">Recently Viewed</h2>
-              <a href="#" class="wid-view-more">View All</a>
-              <div class="single-wid-product">
+              <h2 class="product-wid-title">Được xem nhiều</h2>
+              <a href="shop.html" class="wid-view-more">Xem tất cả</a>
+                
+                <div class="single-wid-product">
                 <a href="single-product.html"
                   ><img
-                    src="img/product-thumb-4.jpg"
+                    src="images/small/img6.jpg"
                     alt=""
                     class="product-thumb"
                 /></a>
-                <h2>
-                  <a href="single-product.html">Sony playstation microsoft</a>
-                </h2>
+                <h2><a href="single-product.html">Gấu bông nhỏ loại 1</a></h2>
                 <div class="product-wid-rating">
                   <i class="fa fa-star"></i> <i class="fa fa-star"></i>
                   <i class="fa fa-star"></i> <i class="fa fa-star"></i>
                   <i class="fa fa-star"></i>
                 </div>
                 <div class="product-wid-price">
-                  <ins>$400.00</ins> <del>$425.00</del>
+                  <ins>$200</ins> <del>$230</del>
                 </div>
               </div>
+
+
               <div class="single-wid-product">
                 <a href="single-product.html"
                   ><img
-                    src="img/product-thumb-1.jpg"
+                    src="images/large/img20.jpg"
                     alt=""
                     class="product-thumb"
                 /></a>
-                <h2>
-                  <a href="single-product.html">Sony Smart Air Condtion</a>
-                </h2>
+                <h2><a href="single-product.html">Gấu bông to VIOLET</a></h2>
                 <div class="product-wid-rating">
                   <i class="fa fa-star"></i> <i class="fa fa-star"></i>
                   <i class="fa fa-star"></i> <i class="fa fa-star"></i>
                   <i class="fa fa-star"></i>
                 </div>
                 <div class="product-wid-price">
-                  <ins>$400.00</ins> <del>$425.00</del>
+                  <ins>$400</ins> <del>$450</del>
                 </div>
               </div>
+
+
               <div class="single-wid-product">
                 <a href="single-product.html"
                   ><img
-                    src="img/product-thumb-2.jpg"
+                    src="images/large/img15.jpg"
                     alt=""
                     class="product-thumb"
                 /></a>
-                <h2>
-                  <a href="single-product.html">Samsung gallaxy note 4</a>
-                </h2>
+                <h2><a href="single-product.html">Bộ Totoro</a></h2>
                 <div class="product-wid-rating">
                   <i class="fa fa-star"></i> <i class="fa fa-star"></i>
                   <i class="fa fa-star"></i> <i class="fa fa-star"></i>
                   <i class="fa fa-star"></i>
                 </div>
                 <div class="product-wid-price">
-                  <ins>$400.00</ins> <del>$425.00</del>
+                  <ins>$650</ins> <del>$700</del>
                 </div>
               </div>
+
+              
             </div>
           </div>
+
           <div class="col-md-4">
             <div class="single-product-widget">
-              <h2 class="product-wid-title">Top New</h2>
-              <a href="#" class="wid-view-more">View All</a>
-              <div class="single-wid-product">
+              <h2 class="product-wid-title">Mới nhất</h2>
+              <a href="shop.html" class="wid-view-more">Xem tất cả</a>
+                              
+                <div class="single-wid-product">
                 <a href="single-product.html"
                   ><img
-                    src="img/product-thumb-3.jpg"
+                    src="images/pokemon/img62.jpg"
                     alt=""
                     class="product-thumb"
                 /></a>
-                <h2><a href="single-product.html">Apple new i phone 6</a></h2>
+                <h2><a href="single-product.html">Bộ Eevee tiến hóa</a></h2>
                 <div class="product-wid-rating">
                   <i class="fa fa-star"></i> <i class="fa fa-star"></i>
                   <i class="fa fa-star"></i> <i class="fa fa-star"></i>
                   <i class="fa fa-star"></i>
                 </div>
                 <div class="product-wid-price">
-                  <ins>$400.00</ins> <del>$425.00</del>
+                  <ins>$5000</ins> <del>$5200</del>
                 </div>
               </div>
+
+
               <div class="single-wid-product">
                 <a href="single-product.html"
                   ><img
-                    src="img/product-thumb-4.jpg"
+                    src="images/pokemon/img61.jpg"
                     alt=""
                     class="product-thumb"
                 /></a>
-                <h2>
-                  <a href="single-product.html">Samsung gallaxy note 4</a>
-                </h2>
+                <h2><a href="single-product.html">Bộ POKEMON tân binh</a></h2>
                 <div class="product-wid-rating">
                   <i class="fa fa-star"></i> <i class="fa fa-star"></i>
                   <i class="fa fa-star"></i> <i class="fa fa-star"></i>
                   <i class="fa fa-star"></i>
                 </div>
                 <div class="product-wid-price">
-                  <ins>$400.00</ins> <del>$425.00</del>
+                  <ins>$1000</ins> <del>$1100</del>
                 </div>
               </div>
+
+
               <div class="single-wid-product">
                 <a href="single-product.html"
                   ><img
-                    src="img/product-thumb-1.jpg"
+                    src="images/pokemon/img31.jpg"
                     alt=""
                     class="product-thumb"
                 /></a>
-                <h2>
-                  <a href="single-product.html">Sony playstation microsoft</a>
-                </h2>
+                <h2><a href="single-product.html">Pikachu</a></h2>
                 <div class="product-wid-rating">
                   <i class="fa fa-star"></i> <i class="fa fa-star"></i>
                   <i class="fa fa-star"></i> <i class="fa fa-star"></i>
                   <i class="fa fa-star"></i>
                 </div>
                 <div class="product-wid-price">
-                  <ins>$400.00</ins> <del>$425.00</del>
+                  <ins>$69</ins> <del>$79</del>
                 </div>
               </div>
+
+              
             </div>
           </div>
         </div>
@@ -728,60 +860,53 @@
         <div class="row">
           <div class="col-md-3 col-sm-6">
             <div class="footer-about-us">
-              <h2>u<span>Stora</span></h2>
+              <h2><span>Bông Xù Store</span></h2>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Perferendis sunt id doloribus vero quam laborum quas alias
-                dolores blanditiis iusto consequatur, modi aliquid eveniet
-                eligendi iure eaque ipsam iste, pariatur omnis sint! Suscipit,
-                debitis, quisquam. Laborum commodi veritatis magni at?
+                Cửa hàng chúng tôi bán tất cả các loại thú bông có trên Thế Giới. Chúng tôi liên kết với tất cả các công ty và doanh nghiệp nổi tiếng trên toàn Thế Giới, vì vậy chất lượng thú bông của chúng tôi rất tuyệt vời và đáng giá mà các bạn bỏ ra. Các bạn có thể đặt làm thú nhồi bông riêng theo mẫu hình, khuôn mà các bạn có, giá cả rất hợp lý, nhận, làm và giao hàng rất nhanh.
               </p>
               <div class="footer-social">
-                <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
-                <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
-                <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
-                <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
+                <a href="https://facebook.com" target="_blank"><i class="fa fa-facebook"></i></a>
+                <a href="https://twitter.com" target="_blank"><i class="fa fa-twitter"></i></a>
+                <a href="https://youtube.com" target="_blank"><i class="fa fa-youtube"></i></a>
+                <a href="https://linkedin.com" target="_blank"><i class="fa fa-linkedin"></i></a>
               </div>
             </div>
           </div>
 
           <div class="col-md-3 col-sm-6">
             <div class="footer-menu">
-              <h2 class="footer-wid-title">User Navigation</h2>
+              <h2 class="footer-wid-title">Điều Hướng</h2>
               <ul>
-                <li><a href="#">My account</a></li>
-                <li><a href="#">Order history</a></li>
-                <li><a href="#">Wishlist</a></li>
-                <li><a href="#">Vendor contact</a></li>
-                <li><a href="#">Front page</a></li>
+                <li><a href="index.html">Trang chủ</a></li>
+                <li><a href="shop.html">Cửa hàng</a></li>
+                <li><a href="cart.html">Giỏ hàng</a></li>
+                <li><a href="checkout.html">Thanh toán</a></li>
+                <li><a href="contact.html">Liên hệ</a></li>
               </ul>
             </div>
           </div>
 
           <div class="col-md-3 col-sm-6">
             <div class="footer-menu">
-              <h2 class="footer-wid-title">Categories</h2>
+              <h2 class="footer-wid-title">Danh Mục</h2>
               <ul>
-                <li><a href="#">Mobile Phone</a></li>
-                <li><a href="#">Home accesseries</a></li>
-                <li><a href="#">LED TV</a></li>
-                <li><a href="#">Computer</a></li>
-                <li><a href="#">Gadets</a></li>
+                <li><a href="shop.html">Thú bông nhỏ</a></li>
+                <li><a href="shop.html">Thú bông lớn</a></li>
+                <li><a href="shop.html">Thú bông POKEMON</a></li>
               </ul>
             </div>
           </div>
 
           <div class="col-md-3 col-sm-6">
             <div class="footer-newsletter">
-              <h2 class="footer-wid-title">Newsletter</h2>
+              <h2 class="footer-wid-title">Nhận thông báo</h2>
               <p>
-                Sign up to our newsletter and get exclusive deals you wont find
-                anywhere else straight to your inbox!
+                Nếu bạn muốn nhận thông tin mới nhất của chúng tôi thường xuyên, hãy đăng ký Email ở đây nhé!
               </p>
               <div class="newsletter-form">
                 <form action="#">
-                  <input type="email" placeholder="Type your email" />
-                  <input type="submit" value="Subscribe" />
+                  <input type="email" placeholder="Nhập Email" />
+                  <input type="submit" value="Nhận thông báo" />
                 </form>
               </div>
             </div>
