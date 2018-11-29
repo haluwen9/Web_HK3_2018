@@ -13,10 +13,10 @@
 - [x] Thay đổi Navigation Bar [Ân]
 - [x] Header, Footer [Ân]
 - [x] Thay đổi trang HOMEPAGE [Ân]
-- [ ] Thay đổi trang Mua sắm (SHOP) [Ân]
-- [ ] Thay đổi trang Chi tiết sản phẩm (SINGLEPRODUCT) [Nguyên]
-- [ ] Thay đổi trang Giỏ hàng/Thanh toán (CART) [Ân-Huấn]
-- [ ] Thay đổi trang Checkout (CHECKOUT) [Tâm]
+- [x] Thay đổi trang Mua sắm (SHOP) [Ân]
+- [x] Thay đổi trang Chi tiết sản phẩm (SINGLEPRODUCT) [Huấn]
+- [x] Thay đổi trang Giỏ hàng (CART) [Huấn]
+- [ ] Thay đổi trang Thanh toán (CHECKOUT) [Tâm-Nguyên]
 - [x] Thêm trang Liên hệ (CONTACT) [Huấn]
 - [ ] Xây dựng chức năng Shopping Cart, Drag-Drop hàng hoá vào giỏ hàng để thêm vào giỏ. Sử dụng HTML Local Storage
 
