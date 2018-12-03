@@ -282,7 +282,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="product-bit-title text-center">
-                        <h2>Shopping Cart</h2>
+                        <h2>Giỏ hàng</h2>
                     </div>
                 </div>
             </div>
@@ -296,53 +296,24 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="single-sidebar">
-                        <h2 class="sidebar-title">Search Products</h2>
-                        <form action="#">
-                            <input type="text" placeholder="Search products...">
-                            <input type="submit" value="Search">
+                        <h2 class="sidebar-title">Tìm kiếm sản phẩm</h2>
+                        <form action="">
+                            <input type="text" placeholder="Tìm kiếm...">
+                            <input type="submit" value="Tìm">
                         </form>
                     </div>
 
                     <div class="single-sidebar">
-                        <h2 class="sidebar-title">Products</h2>
-                        <div class="thubmnail-recent">
-                            <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                            <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
-                            <div class="product-sidebar-price">
-                                <ins>$700.00</ins> <del>$800.00</del>
-                            </div>
-                        </div>
-                        <div class="thubmnail-recent">
-                            <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                            <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
-                            <div class="product-sidebar-price">
-                                <ins>$700.00</ins> <del>$800.00</del>
-                            </div>
-                        </div>
-                        <div class="thubmnail-recent">
-                            <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                            <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
-                            <div class="product-sidebar-price">
-                                <ins>$700.00</ins> <del>$800.00</del>
-                            </div>
-                        </div>
-                        <div class="thubmnail-recent">
-                            <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                            <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
-                            <div class="product-sidebar-price">
-                                <ins>$700.00</ins> <del>$800.00</del>
-                            </div>
+                        <h2 class="sidebar-title">Các sản phẩm mới</h2>
+                        <div id="SPNew">
+                          
                         </div>
                     </div>
 
                     <div class="single-sidebar">
-                        <h2 class="sidebar-title">Recent Posts</h2>
-                        <ul>
-                            <li><a href="#">Sony Smart TV - 2015</a></li>
-                            <li><a href="#">Sony Smart TV - 2015</a></li>
-                            <li><a href="#">Sony Smart TV - 2015</a></li>
-                            <li><a href="#">Sony Smart TV - 2015</a></li>
-                            <li><a href="#">Sony Smart TV - 2015</a></li>
+                        <h2 class="sidebar-title">Sản phẩm bán chạy</h2>
+                        <ul id="SPBanChay">
+                            <!--<li><a href="">Sony Smart TV - 2015</a></li>-->
                         </ul>
                     </div>
                 </div>
@@ -902,6 +873,41 @@
         </div>
       </div>
     </div>
+
+    <!--data-->
+    <script src="var.js"></script>
+    <script type="">
+        // San pham moi 
+        var txt = "";
+        var n = data.length - 1;
+        for (var i=n; i >= n-3 && i>=0; i--)
+
+            txt += '<div class="thubmnail-recent"><img src="'
+                    +data[i].LinkImageSP+
+                    '" class="recent-thumb" alt=""><h2><a href="">'
+                    +data[i].NameSP+
+                    '</a></h2><div class="product-sidebar-price"><ins>'
+                    +data[i].SaleSP+
+                    '</ins> <del>'
+                    +data[i].money+
+                    '</del></div></div>';
+
+        document.getElementById("SPNew").innerHTML = txt;
+
+        // San pham ban chay
+        txt = "";
+        var n = data.length - 1;
+        for (var i=n; i >= n-4 && i>=0; i--)
+
+            txt += '<li><a href="'
+                    +''+
+                    '">'
+                    +data[i].NameSP+
+                    '</a></li>';
+
+        document.getElementById("SPBanChay").innerHTML = txt;
+    </script>
+
 
     <!-- Latest jQuery form server -->
     <script src="js/jquery.min.js"></script>
