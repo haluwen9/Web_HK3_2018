@@ -1255,20 +1255,21 @@ div.cart-collaterals ul.products li.product .price ins {
 }
 
 .col2-set {
-  margin-left: -30px;
+  /* margin-left: -30px; */
   overflow: hidden;
 }
 
 .col-1,
 .col-2 {
   float: left;
-  margin-left: 30px;
-  width: 360px;
+  width: fit-content;
+  max-width: 50%;
 }
 
 #customer_details label {
   display: block;
-  margin: 0 0 5px;
+  margin: 5px;
+  padding: 5px;
 }
 
 #customer_details input[type='text'],
@@ -1284,11 +1285,30 @@ div.cart-collaterals ul.products li.product .price ins {
   text-transform: uppercase;
 }
 
+
 .create-account {
   background: none repeat scroll 0 0 #f4f4f4;
   margin-bottom: 50px;
   padding: 15px;
 }
+
+/* Bông Xù Store - begin */
+
+.woocommerce-billing-fields {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  display: inline-block;
+}
+
+.woocommerce-shipping-fields {
+  width: fit-content;
+  overflow: hidden;
+  position: relative;
+  display: inline-block;
+}
+
+/* Bông Xù Store - end */
 
 #order_review_heading {
   color: #5a88ca;
@@ -1314,9 +1334,9 @@ a.about_paypal {
 #customer_details select,
 .shipping_calculator select {
   border: 1px solid #ddd;
-  margin-bottom: 15px;
   padding: 10px;
   width: 100%;
+  margin: 5px;
 }
 
 table.shop_table td.product-remove a {
