@@ -1263,7 +1263,7 @@ div.cart-collaterals ul.products li.product .price ins {
 .col-2 {
   float: left;
   width: fit-content;
-  max-width: 47%;
+  max-width: 50%;
 }
 
 #customer_details label {
@@ -1334,9 +1334,9 @@ a.about_paypal {
 #customer_details select,
 .shipping_calculator select {
   border: 1px solid #ddd;
-  margin-bottom: 15px;
   padding: 10px;
   width: 100%;
+  margin: 5px;
 }
 
 table.shop_table td.product-remove a {
