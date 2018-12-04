@@ -16,7 +16,7 @@
 - [x] Thay đổi trang Mua sắm (SHOP) [Ân]
 - [x] Thay đổi trang Chi tiết sản phẩm (SINGLEPRODUCT) [Huấn]
 - [x] Thay đổi trang Giỏ hàng (CART) [Huấn]
-- [ ] Thay đổi trang Thanh toán (CHECKOUT) [Tâm-Nguyên]
+- [x] Thay đổi trang Thanh toán (CHECKOUT) [Nguyên]
 - [x] Thêm trang Liên hệ (CONTACT) [Huấn]
 - [ ] Xây dựng chức năng Shopping Cart, Drag-Drop hàng hoá vào giỏ hàng để thêm vào giỏ. Sử dụng HTML Local Storage
 
