@@ -688,8 +688,7 @@ var data =
         Category: "Thú bông POKEMON", 
         LuotMua: 0, 
         Tag: ["gấu bông", "gấu POKEMON"]
-    }
-];
+    },
 
 
 // Chi so SP trong mang data duoc load o trang single-product.html
