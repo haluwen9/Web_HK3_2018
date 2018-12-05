@@ -1,5 +1,5 @@
 var txt = "";
-
+var MaxSPShow = 12;
 function getListItem() {
   return data;
 }
@@ -1341,7 +1341,7 @@ var data =
 ]
 
 // Chi so SP trong mang data duoc load o trang single-product.html
-var LoadSP = 1;
+var LoadSP;
 var tensp = "";
 function khongBietDatTenGi(value) {
   return value.LinkImageSP == tensp;
@@ -1356,11 +1356,11 @@ function setLoadSP(tsp) {
     }
 }
 
-function load(page) {
+function load(page, array) {
   var container = $('.single-product-area .container .row');
   var content = "";
   for (var i = (page-1)*12; i < page*12; i++) {
-    var it = data[i];
+    var it = array[i];
     content += `
       <div id="${it.Id}" class="col-lg-3 col-md-4 col-sm-6">
         <div class="single-shop-product" ondragstart="itemDrag(event)" draggable="true" data-itemid="${it.Id}">
@@ -1380,4 +1380,12 @@ function load(page) {
   }
   // console.log(content);
   container.html(content);
+}
+
+function myFunction(value) {
+  return value.Category == "Thú bông POKEMON";
+}
+function testfilter()
+{
+    return data.filter(myFunction);
 }
