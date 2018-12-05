@@ -899,7 +899,7 @@ button[type='submit']:hover,
   content: '/';
   position: absolute;
   right: -20px;
-  top: 2px;
+  
 }
 
 .product-breadcroumb > a:last-child::before {
