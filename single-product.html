@@ -40,13 +40,7 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script type="">
-//    function showsp()
-
-//    window.onload = showsp;
-
-
-    </script>
+    <script src="var.js"></script>
 </head>
 
 <body>
@@ -313,14 +307,42 @@
                     <div class="single-sidebar">
                         <h2 class="sidebar-title">Các sản phẩm mới</h2>
                         <div id="SPNew">
-                          
+                            <script>
+                                // San pham moi 
+                                var n = data.length - 1;
+                                for (var i=n; i >= n-3 && i>=0; i--)
+
+                                    txt += '<div class="thubmnail-recent"><img src="'
+                                            +data[i].LinkImageSP+
+                                            '" class="recent-thumb" alt=""><h2><a href="single-product.html">'
+                                            +data[i].NameSP+
+                                            '</a></h2><div class="product-sidebar-price"><ins>'
+                                            +data[i].SaleSP+
+                                            '</ins> <del>'
+                                            +data[i].money+
+                                            '</del></div></div>';
+                                            
+                                document.getElementById("SPNew").innerHTML = txt;
+                            </script>
                         </div>
                     </div>
 
                     <div class="single-sidebar">
                         <h2 class="sidebar-title">Sản phẩm bán chạy</h2>
                         <ul id="SPBanChay">
-                            <!--<li><a href="">Sony Smart TV - 2015</a></li>-->
+                            <script>
+                                // San pham ban chay
+                                txt = "";
+                                var n = data.length - 1;
+                                for (var i=n; i >= n-4 && i>=0; i--)
+                                {
+                                    var t = "'" + data[i].LinkImageSP + "'";
+                                    txt += '<li><a href="single-product.html" onmouseenter="setLoadSP('
+                                            + t + ')">' + data[i].NameSP + '</a></li>';
+                                }
+
+                                document.getElementById("SPBanChay").innerHTML = txt;
+                            </script>
                         </ul>
                     </div>
                 </div>
@@ -328,30 +350,47 @@
                     <div class="product-content-right">
                         <div class="product-breadcroumb">
                             <a href="index.html">Trang chủ</a>
-                            <a href="">Category Name</a>
-                            <a href="">Sony Smart TV - 2015</a>
+                            <a href="">
+                                <script>document.write(data[LoadSP].Category);</script>
+                            </a>
+                            <a href="">
+                                <script>document.write(data[LoadSP].NameSP);</script>
+                            </a>
                         </div>
 
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="product-images">
                                     <div class="product-main-img">
-                                        <img src="img/product-2.jpg" alt="">
-                                    </div>
 
+                                    </div>
+                                    
+                                    <script>
+                                        document.getElementsByClassName("product-main-img")[0].innerHTML = "<img src='" + data[LoadSP].LinkImageSP + "'>";
+                                    </script>
+                                    
                                     <div class="product-gallery">
+<!--                                     
                                         <img src="img/product-thumb-1.jpg" alt="">
                                         <img src="img/product-thumb-2.jpg" alt="">
                                         <img src="img/product-thumb-3.jpg" alt="">
+-->
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-sm-6">
                                 <div class="product-inner">
-                                    <h2 class="product-name">Sony Smart TV - 2015</h2>
+                                    <h2 class="product-name">
+                                        <script>document.write(data[LoadSP].NameSP);</script>
+                                    </h2>
                                     <div class="product-inner-price">
-                                        <ins>$700.00</ins> <del>$100.00</del>
+                                        <ins>
+                                            <script>document.write(data[LoadSP].SaleSP);</script>
+                                        </ins>
+                                        <del>
+                                            <script>document.write(data[LoadSP].money);</script>
+                                        </del>
                                     </div>
 
                                     <form action="" class="cart">
@@ -363,8 +402,7 @@
                                     </form>
 
                                     <div class="product-inner-category">
-                                        <p>Category: <a href="">Summer</a>. Tags: <a href="">awesome</a>, <a href="">best</a>,
-                                            <a href="">sale</a>, <a href="">shoes</a>. </p>
+                                        <p>Category: <a href=""><script>document.write(data[LoadSP].Category);</script></a> Tags: <a href=""></a>.</p>
                                     </div>
 
                                     <div role="tabpanel">
@@ -429,7 +467,24 @@
                     <div class="related-products-wrapper">
                         <h2 class="related-products-title" >Sản phẩm liên quan</h2>
                         <div class="related-products-carousel" id="mathang">
+                            <script>
+                                // San pham lien quan
+                                txt = "";
+                                var n = data.length - 1;
+                                for (var i=n; i >= n-9 && i>=0; i--)
+                                    txt += '<div class="single-product" style="width: 300px; margin: 1px;" ><div class="product-f-image"><img style=" height: 297px;" src="'
+                                    +data[i].LinkImageSP+
+                                    '"alt=""><div class="product-hover"><a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a><a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i>Thông tin</a></div></div><h2><a href="">'
+                                    +data[i].NameSP+
+                                    '</a></h2><div class="product-carousel-price"><ins>'
+                                    +data[i].SaleSP+
+                                    '</ins><del>'
+                                    +data[i].money+
+                                    '</del></div></div>';
 
+                                document.getElementById("mathang").innerHTML = txt;
+                                
+                            </script>
                         </div>
                         
                     </div>
@@ -438,6 +493,7 @@
 
         </div>
     </div>
+
     <div class="footer-top-area">
       <div class="container">
         <div class="row">
@@ -587,57 +643,6 @@
         </div>
       </div>
     </div>
-
-    <!--data-->
-    <script src="var.js"></script>
-    <script type="">
-        // San pham lien quan
-        var txt = "";
-        var n = data.length - 1;
-        for (var i=n; i >= n-9 && i>=0; i--)
-            txt += '<div class="single-product" style="width: 300px; margin: 1px;" ><div class="product-f-image"><img style=" height: 297px;" src="'
-            +data[i].LinkImageSP+
-            '"alt=""><div class="product-hover"><a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a><a href="" class="view-details-link"><i class="fa fa-link"></i>Thông tin</a></div></div><h2><a href="">'
-            +data[i].NameSP+
-            '</a></h2><div class="product-carousel-price"><ins>'
-            +data[i].SaleSP+
-            '</ins><del>'
-            +data[i].money+
-            '</del></div></div>';
-
-        document.getElementById("mathang").innerHTML = txt;
-
-        // San pham moi 
-        txt = "";
-        var n = data.length - 1;
-        for (var i=n; i >= n-3 && i>=0; i--)
-
-            txt += '<div class="thubmnail-recent"><img src="'
-                    +data[i].LinkImageSP+
-                    '" class="recent-thumb" alt=""><h2><a href="">'
-                    +data[i].NameSP+
-                    '</a></h2><div class="product-sidebar-price"><ins>'
-                    +data[i].SaleSP+
-                    '</ins> <del>'
-                    +data[i].money+
-                    '</del></div></div>';
-
-        document.getElementById("SPNew").innerHTML = txt;
-
-        // San pham ban chay
-        txt = "";
-        var n = data.length - 1;
-        for (var i=n; i >= n-4 && i>=0; i--)
-
-            txt += '<li><a href="'
-                    +''+
-                    '">'
-                    +data[i].NameSP+
-                    '</a></li>';
-
-        document.getElementById("SPBanChay").innerHTML = txt;
-    </script>
-
 
 
     <!-- Latest jQuery form server -->
