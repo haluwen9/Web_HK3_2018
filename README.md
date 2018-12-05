@@ -21,7 +21,7 @@
 - [ ] Xây dựng chức năng Shopping Cart, Drag-Drop hàng hoá vào giỏ hàng để thêm vào giỏ. Sử dụng HTML Local Storage
 
 ### Dự định
-- [ ] Thêm Dropdown menu cho Category
+- [x] Thêm Dropdown menu cho Category
 - [ ] Thêm chức năng Preview giỏ hàng khi rê hoặc nhấn chuột vào nút Giỏ Hàng - Khác với trang Thanh toán
 - [x] Thêm khung Đăng nhập, khi người dùng nhấn nút đăng nhập - **Tâm**
 - [ ] Thêm trang Wishlist

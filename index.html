@@ -40,6 +40,7 @@
     <link rel="stylesheet" href="css/navbar.css" />
     <link rel="stylesheet" href="css/header.css" />
     <link rel="stylesheet" href="css/dialog.css" />
+    <link rel="stylesheet" href="css/shoppingcart.css">
 
 
     <!--
@@ -69,19 +70,13 @@
                   <a href="cart.html"><i class="fa fa-user"></i> Giỏ hàng của tôi</a>
                 </li>
                 <li>
-                  <a href="checkout.html"
-                    ><i class="fa fa-user"></i> Phản hồi</a
-                  >
-                </li>
-                <li>
                   <a
                     href="#"
                     data-toggle="modal"
                     data-target="#login-dialog"
                     onclick="switchForm('login')"
                   >
-                    <i class="fa fa-user"></i> Đăng nhập</a
-                  >
+                    <i class="fa fa-user"></i> Đăng nhập</a>
                 </li>
               </ul>
             </div>
@@ -161,11 +156,10 @@
 
           <div class="col-sm-6">
             <div class="shopping-item">
-              <a href="cart.html"
-                >Giỏ Hàng - <span class="cart-amunt">$100</span>
+              <a href="cart.html">
                 <i class="fa fa-shopping-cart"></i>
-                <span class="product-count">99</span></a
-              >
+                <span class="hidden">Giỏ Hàng - </span><span class="cart-amunt">$100</span>
+                <span class="product-count">99</span></a>
             </div>
           </div>
         </div>
@@ -200,18 +194,12 @@
             <ul class="nav navbar-nav mr-auto">
               <li class="nav-item active">
                 <a class="nav-link" href="index.html">
-                  <span class="nav-hidden"
-                    ><span class="fa fa-2x fa-home"></span><br
-                  /></span>
-                  Trang chủ
+                  <span class="nav-hidden"><span class="fa fa-2x fa-home"></span><br/></span>Trang chủ
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="shop.html">
-                  <span class="nav-hidden"
-                    ><span class="fa fa-2x fa-shopping-cart"></span><br
-                  /></span>
-                  Cửa hàng
+                  <span class="nav-hidden"><span class="fa fa-2x fa-shopping-cart"></span><br/></span>Cửa hàng
                 </a>
               </li>
               <!--
@@ -285,6 +273,14 @@
       </div>
     </div>
     <!-- End mainmenu area -->
+
+    <!-- <div id="shopping-cart">
+      <a href="javascript:void(0)">
+        <span class="product-count">99</span>
+        <i class="fa fa-shopping-cart fa-2x"></i>
+        <span class="cart-price">$1000</span>
+      </a>
+    </div> -->
 
     <div class="slider-area">
       <!-- Slider -->
@@ -1020,6 +1016,7 @@
 
     <!-- Main Script -->
     <script src="js/main.js"></script>
+    <script src="js/shoppingcart.js"></script>
 
     <!-- Slider -->
     <script type="text/javascript" src="js/bxslider.min.js"></script>

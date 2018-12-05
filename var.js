@@ -64,7 +64,7 @@ var data =
     {LinkImageSP: "images/pokemon/img67.jpg", NameSP: "Aceu", SaleSP: "$99", money: "$100", Category: "Thú bông POKEMON", LuotMua: 0, tag: ["gấu bông", "gấu POKEMON"]}
 ]
 // Chi so SP trong mang data duoc load o trang single-product.html
-var LoadSP;
+var LoadSP = 1;
 var tensp = "";
 function khongBietDatTenGi(value)
 {

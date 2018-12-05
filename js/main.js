@@ -4,6 +4,7 @@ jQuery(document).ready(function($) {
         topSpacing: 0
     });
 
+
     $('.product-carousel').owlCarousel({
         loop: true,
         nav: true,
@@ -122,5 +123,6 @@ function switchForm(frm) {
         regfrm.css('display','');
     }
 }
+
 
 // END
