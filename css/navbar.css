@@ -62,18 +62,18 @@
   right: 0;
 }
 
-@media only screen and (max-width: 975px) {
+@media only screen and (min-width: 995px) {
+  .is-sticky .nav-hidden {
+    display: none;
+  }
+}
+@media only screen and (max-width: 995px) {
   .navbar .show form.form-inline {
     width: 100%;
     margin-top: 8px;
   }
 }
 
-@media only screen and (min-width: 975px) {
-  .is-sticky .nav-hidden {
-    display: none;
-  }
-}
 
 .sticky-wrapper {
   height: auto !important;
