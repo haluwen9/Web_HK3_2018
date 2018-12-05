@@ -5,6 +5,10 @@
   src: url(fonts/Raleway-Light-vi.ttf);
 }
 
+*, *::before, *::after {
+  border-radius: 0 !important;
+}
+
 .floatleft {
   float: left;
 }
@@ -1340,9 +1344,4 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button {
 
 .single-shop-product {
   margin-bottom: 50px;
-}
-
-.pagination > li > a,
-.pagination > li > span {
-  color: #5a88ca;
 }

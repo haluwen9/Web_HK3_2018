@@ -26,7 +26,7 @@ function fillCart() {
 function calcPrice() {
     var totalPrice = 0;
     if (listCart.length > 0) {
-        listCart.forEach(item => totalPrice += item.SaleSP);
+        listCart.forEach(item => totalPrice += item.SaleSP*item.amount);
     }
     return totalPrice;
 }
@@ -36,16 +36,27 @@ function allowDrop(ev) {
 }
 
 function itemDrag(ev) {
-    console.log(ev.target.dataset.itemid);
+    // console.log(ev.target.dataset.itemid);
     ev.dataTransfer.setData("item", ev.target.dataset.itemid);
     // console.log(ev.target);
 }
 
 function addToCart(id) {
-    var item = getItemById(id);
-    item.id = id;
-    item.amount = 1;
-    listCart.push(item);
+    var item;
+    var has = false;
+    for (var i = 0;i < listCart.length; i++) {
+        if (listCart[i].Id === id) {
+            console.log(`ID: ${id} -- listCart ${listCart[i].Id}`)
+            item = listCart[i];
+            item.amount++;
+            has = true;
+            break;
+        }
+    }
+    console.log(item);
+    item = item || getItemById(id);
+    item.amount = item.amount || 1;
+    if (!has) listCart.push(item);
     if (typeof(Storage) !== 'undefined') {
         localStorage.setItem('cart', JSON.stringify(listCart));
     }
