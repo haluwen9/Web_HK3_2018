@@ -74,3 +74,93 @@ function setLoadSP(tsp)
     tensp = tsp;
     LoadSP = data.findIndex(khongBietDatTenGi);
 }
+
+function load1()
+      {
+        var s;
+        for (i=1; i<=60; i++)
+        {
+          if (i <= 12)
+          {
+            s = document.getElementById(String(i));
+            s.setAttribute('display','block');  
+          }
+          else 
+          {
+            s = document.getElementById(String(i));
+            s.setAttribute('display','none'); 
+          }
+        }
+      }
+
+      function load2()
+      {
+        var s;
+        for (i=1; i<=60; i++)
+        {
+          if (i <= 24 && i >= 13)
+          {
+            s = document.getElementById(String(i));
+            s.setAttribute('display','block');  
+          }
+          else 
+          {
+            s = document.getElementById(String(i));
+            s.setAttribute('display','none'); 
+          }
+        }
+      }
+
+      function load3()
+      {
+        var s;
+        for (i=1; i<=60; i++)
+        {
+          if (i <= 36 && i >= 25)
+          {
+            s = document.getElementById(String(i));
+            s.setAttribute('display','block');  
+          }
+          else 
+          {
+            s = document.getElementById(String(i));
+            s.setAttribute('display','none'); 
+          }
+        }
+      }
+
+      function load4()
+      {
+        var s;
+        for (i=1; i<=60; i++)
+        {
+          if (i <= 48 && i >= 37)
+          {
+            s = document.getElementById(String(i));
+            s.setAttribute('display','block');  
+          }
+          else 
+          {
+            s = document.getElementById(String(i));
+            s.setAttribute('display','none'); 
+          }
+        }
+      }
+
+      function load5()
+      {
+        var s;
+        for (i=1; i<=60; i++)
+        {
+          if (i >= 49)
+          {
+            s = document.getElementById(String(i));
+            s.setAttribute('display','block');  
+          }
+          else 
+          {
+            s = document.getElementById(String(i));
+            s.setAttribute('display','none'); 
+          }
+        }
+      }
