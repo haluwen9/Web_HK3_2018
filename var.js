@@ -1373,7 +1373,7 @@ function load(page) {
           </div>
 
           <div class="product-option-shop">
-            <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="" onclick="" draggable="false">Thêm vào giỏ hàng</a>
+            <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" onclick="addToCart('${it.Id}');" draggable="false">Thêm vào giỏ hàng</a>
           </div>
         </div>
       </div>`
