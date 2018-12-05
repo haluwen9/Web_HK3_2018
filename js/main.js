@@ -6,9 +6,13 @@ jQuery(document).ready(function($) {
 
 
     $('.product-carousel').owlCarousel({
+        autoplay: true,
+        autoplayHoverPause: true,
         loop: true,
         nav: true,
         margin: 20,
+        mouseDrag: false,
+        touchDrag: false,
         responsiveClass: true,
         responsive: {
             0: {
@@ -24,6 +28,8 @@ jQuery(document).ready(function($) {
     });
 
     $('.related-products-carousel').owlCarousel({
+        autoplay: true,
+        autoplayHoverPause: true,
         loop: true,
         nav: true,
         margin: 20,
@@ -36,15 +42,17 @@ jQuery(document).ready(function($) {
                 items: 2
             },
             1000: {
-                items: 2
+                items: 3
             },
             1200: {
-                items: 3
+                items: 5
             }
         }
     });
 
     $('.brand-list').owlCarousel({
+        autoplay: true,
+        autoplayHoverPause: true,
         loop: true,
         nav: true,
         margin: 20,
@@ -84,28 +92,6 @@ jQuery(document).ready(function($) {
     // })
 });
 
-(function(i, s, o, g, r, a, m) {
-    i['GoogleAnalyticsObject'] = r;
-    (i[r] =
-    i[r] ||
-    function() {
-        (i[r].q = i[r].q || []).push(arguments);
-    }),
-    (i[r].l = 1 * new Date());
-    (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
-    a.async = 1;
-    a.src = g;
-    m.parentNode.insertBefore(a, m);
-})(
-    window,
-    document,
-    'script',
-    'https://www.google-analytics.com/analytics.js',
-    'ga'
-);
-
-ga('create', 'UA-10146041-21', 'auto');
-ga('send', 'pageview');
 
 
 // Bông Xù Store
