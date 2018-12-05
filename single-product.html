@@ -40,7 +40,13 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
     <script src="var.js"></script>
+    <script>
+        if (typeof(Storage) !== "undefined")
+          LoadSP = localStorage.getItem("LoadSP");
+    </script>
+    
 </head>
 
 <body>
@@ -310,16 +316,19 @@
                                 // San pham moi 
                                 var n = data.length - 1;
                                 for (var i=n; i >= n-3 && i>=0; i--)
-
+                                {
+                                    var t = "'" + data[i].LinkImageSP + "'";
                                     txt += '<div class="thubmnail-recent"><img src="'
                                             +data[i].LinkImageSP+
-                                            '" class="recent-thumb" alt=""><h2><a href="single-product.html">'
+                                            '" class="recent-thumb" alt=""><h2><a href="single-product.html" onclick="setLoadSP('
+                                            + t + ')">'
                                             +data[i].NameSP+
-                                            '</a></h2><div class="product-sidebar-price"><ins>'
+                                            '</a></h2><div class="product-sidebar-price"><ins>$'
                                             +data[i].SaleSP+
-                                            '</ins> <del>'
+                                            '</ins> <del>$'
                                             +data[i].money+
                                             '</del></div></div>';
+                                }
                                             
                                 document.getElementById("SPNew").innerHTML = txt;
                             </script>
@@ -336,7 +345,7 @@
                                 for (var i=n; i >= n-4 && i>=0; i--)
                                 {
                                     var t = "'" + data[i].LinkImageSP + "'";
-                                    txt += '<li><a href="single-product.html" onmouseenter="setLoadSP('
+                                    txt += '<li><a href="single-product.html" onclick="setLoadSP('
                                             + t + ')">' + data[i].NameSP + '</a></li>';
                                 }
 
@@ -369,11 +378,6 @@
                                     </script>
                                     
                                     <div class="product-gallery">
-<!--                                     
-                                        <img src="img/product-thumb-1.jpg" alt="">
-                                        <img src="img/product-thumb-2.jpg" alt="">
-                                        <img src="img/product-thumb-3.jpg" alt="">
--->
                                     </div>
                                 </div>
                             </div>
@@ -471,15 +475,22 @@
                                 txt = "";
                                 var n = data.length - 1;
                                 for (var i=n; i >= n-9 && i>=0; i--)
-                                    txt += '<div class="single-product" style="width: 300px; margin: 1px;" ><div class="product-f-image"><img style=" height: 297px;" src="'
+                                {
+                                    var t = "'" + data[i].LinkImageSP + "'";
+                                    txt += '<div class="single-product"><div class="product-f-image"><img style=" height: 297px;" src="'
                                     +data[i].LinkImageSP+
-                                    '"alt=""><div class="product-hover"><a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a><a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i>Thông tin</a></div></div><h2><a href="">'
+                                    '"alt=""><div class="product-hover"><a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a><a href="single-product.html" class="view-details-link"href="single-product.html" onclick="setLoadSP('
+                                    + t + 
+                                    ')"><i class="fa fa-link"></i>Thông tin</a></div></div><h2><a href="single-product.html" onclick="setLoadSP('
+                                    + t + 
+                                    ')">'
                                     +data[i].NameSP+
-                                    '</a></h2><div class="product-carousel-price"><ins>'
+                                    '</a></h2><div class="product-carousel-price"><ins>$'
                                     +data[i].SaleSP+
-                                    '</ins><del>'
+                                    '</ins><del>$'
                                     +data[i].money+
                                     '</del></div></div>';
+                                }
 
                                 document.getElementById("mathang").innerHTML = txt;
                                 
@@ -642,7 +653,6 @@
         </div>
       </div>
     </div>
-
 
     <!-- Latest jQuery form server -->
     <script src="js/jquery.min.js"></script>
