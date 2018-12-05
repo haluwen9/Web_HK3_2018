@@ -688,8 +688,7 @@ var data =
         Category: "Thú bông POKEMON", 
         LuotMua: 0, 
         Tag: ["gấu bông", "gấu POKEMON"]
-    }
-];
+    },
 
     {
         Id: "2", 
