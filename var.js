@@ -83,12 +83,12 @@ function load1()
           if (i <= 12)
           {
             s = document.getElementById(String(i));
-            s.setAttribute('display','block');  
+            s.setAttribute('style','dispaly:block;');  
           }
           else 
           {
             s = document.getElementById(String(i));
-            s.setAttribute('display','none'); 
+            s.setAttribute('style','display:none;'); 
           }
         }
       }
@@ -101,12 +101,12 @@ function load1()
           if (i <= 24 && i >= 13)
           {
             s = document.getElementById(String(i));
-            s.setAttribute('display','block');  
+            s.setAttribute('style','dispaly:block;');  
           }
           else 
           {
             s = document.getElementById(String(i));
-            s.setAttribute('display','none'); 
+            s.setAttribute('style','display:none;'); 
           }
         }
       }
@@ -119,12 +119,12 @@ function load1()
           if (i <= 36 && i >= 25)
           {
             s = document.getElementById(String(i));
-            s.setAttribute('display','block');  
+            s.setAttribute('style','dispaly:block;');  
           }
           else 
           {
             s = document.getElementById(String(i));
-            s.setAttribute('display','none'); 
+            s.setAttribute('style','display:none;'); 
           }
         }
       }
@@ -137,12 +137,12 @@ function load1()
           if (i <= 48 && i >= 37)
           {
             s = document.getElementById(String(i));
-            s.setAttribute('display','block');  
+            s.setAttribute('style','dispaly:block;');  
           }
           else 
           {
             s = document.getElementById(String(i));
-            s.setAttribute('display','none'); 
+            s.setAttribute('style','display:none;'); 
           }
         }
       }
@@ -155,12 +155,12 @@ function load1()
           if (i >= 49)
           {
             s = document.getElementById(String(i));
-            s.setAttribute('display','block');  
+            s.setAttribute('style','dispaly:block;');  
           }
           else 
           {
             s = document.getElementById(String(i));
-            s.setAttribute('display','none'); 
+            s.setAttribute('style','display:none;'); 
           }
         }
       }

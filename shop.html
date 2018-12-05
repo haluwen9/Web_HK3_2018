@@ -42,7 +42,7 @@
     <![endif]-->
 </head>
 
-<body>
+<body onload="load1()">
 
     <div class="header-area">
       <div class="container">
@@ -198,7 +198,7 @@
                 </a>
               </li>
               <li class="nav-item active">
-                <a class="nav-link" href="shop.html" onclick="load1()">
+                <a class="nav-link" href="shop.html">
                   <span class="nav-hidden"
                     ><span class="fa fa-2x fa-shopping-cart"></span><br
                   /></span>
@@ -1350,19 +1350,19 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="product-pagination text-center">
-                        <nav>
+                        <nav style="margin-left: 110px;">
                             <ul class="pagination">
-                                <li>
+                                <li style="display: none;">
                                     <a href="" aria-label="Trước">
                                         <span aria-hidden="true">&laquo;</span>
                                     </a>
                                 </li>
-                                <li><a href="" onclick="load1()">1</a></li>
-                                <li><a href="" onclick="load2()">2</a></li>
-                                <li><a href="" onclick="load3()">3</a></li>
-                                <li><a href="" onclick="load4()">4</a></li>
-                                <li><a href="" onclick="load5()">5</a></li>
-                                <li>
+                                <li><button onclick="load1()">1</button></li>
+                                <li><button onclick="load2()">2</button></li>
+                                <li><button onclick="load3()">3</button></li>
+                                <li><button onclick="load4()">4</button></li>
+                                <li><button onclick="load5()">5</button></li>
+                                <li style="display: none;">
                                     <a href="" aria-label="Sau">
                                         <span aria-hidden="true">&raquo;</span>
                                     </a>
