@@ -688,20 +688,8 @@ var data =
         Category: "Thú bông POKEMON", 
         LuotMua: 0, 
         Tag: ["gấu bông", "gấu POKEMON"]
-    },
-
-
-// Chi so SP trong mang data duoc load o trang single-product.html
-var LoadSP;
-var tensp = "";
-function setLoadSP(tsp) {
-    tensp = tsp;
-    LoadSP = data.findIndex(item => item.LinkImageSP == tensp);
-
-    if (typeof(Storage) !== "undefined") {
-        localStorage.setItem("LoadSP", LoadSP);
     }
-}
+]
 
 function load(page, array) {
   var container = $('.single-product-area .container .row');

@@ -306,20 +306,14 @@
                                 // San pham moi 
                                 var n = data.length - 1;
                                 for (var i=n; i >= n-3 && i>=0; i--)
-                                {
-                                    var t = "'" + data[i].LinkImageSP + "'";
-                                    txt += '<div class="thubmnail-recent"><img src="'
-                                            +data[i].LinkImageSP+
-                                            '" class="recent-thumb" alt=""><h2><a href="single-product.html" onclick="setLoadSP('
-                                            + t + ')">'
-                                            +data[i].NameSP+
-                                            '</a></h2><div class="product-sidebar-price"><ins>'
-                                            +data[i].SaleSP+
-                                            '<sup>đ</sup></ins> <del>'
-                                            +data[i].money+
-                                            '<sup>đ</sup></del></div></div>';
-                                }
-                                            
+                                    txt += `<div class="thubmnail-recent">
+                                                <img src="${data[i].LinkImageSP}" class="recent-thumb" alt="">
+                                                <h2><a href="single-product.html?id=${data[i].Id}">${data[i].NameSP}</a></h2>
+                                                <div class="product-sidebar-price">
+                                                    <ins>${data[i].SaleSP}<sup>đ</sup></ins>
+                                                    <del>${data[i].money}<sup>đ</sup></del>
+                                                </div>
+                                            </div>`;                                            
                                 document.getElementById("SPNew").innerHTML = txt;
                             </script>
                         </div>
@@ -333,11 +327,7 @@
                                 txt = "";
                                 var n = data.length - 1;
                                 for (var i=n; i >= n-4 && i>=0; i--)
-                                {
-                                    var t = "'" + data[i].LinkImageSP + "'";
-                                    txt += '<li><a href="single-product.html" onclick="setLoadSP('
-                                            + t + ')">' + data[i].NameSP + '</a></li>';
-                                }
+                                    txt += `<li><a href="single-product.html?id=${data[i].Id}">${data[i].NameSP}</a></li>`;
 
                                 document.getElementById("SPBanChay").innerHTML = txt;
                             </script>

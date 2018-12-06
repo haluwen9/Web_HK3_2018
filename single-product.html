@@ -43,15 +43,9 @@
 
     <script src="var.js"></script>
     <script>
-        try
-        {
-            LoadSP = localStorage.getItem("LoadSP");
-            if (LoadSP == null) LoadSP = 1;
-        } 
-        catch (exception) {
-            LoadSP = 1;
-        }
-        
+        var pram = new URLSearchParams(window.location.search).get('id');
+        var LoadSP = data.findIndex(item => item.Id == pram);
+        if (LoadSP == -1) LoadSP = 1;
     </script>
     
 </head>
@@ -325,7 +319,7 @@
                                 for (var i=n; i >= n-3 && i>=0; i--)
                                     txt += `<div class="thubmnail-recent">
                                                 <img src="${data[i].LinkImageSP}" class="recent-thumb" alt="">
-                                                <h2><a href="single-product.html" onclick="setLoadSP('${data[i].LinkImageSP}')">${data[i].NameSP}</a></h2>
+                                                <h2><a href="single-product.html?id=${data[i].Id}">${data[i].NameSP}</a></h2>
                                                 <div class="product-sidebar-price">
                                                     <ins>${data[i].SaleSP}<sup>đ</sup></ins>
                                                     <del>${data[i].money}<sup>đ</sup></del>
@@ -344,7 +338,7 @@
                                 txt = "";
                                 var n = data.length - 1;
                                 for (var i=n; i >= n-4 && i>=0; i--)
-                                    txt += `<li><a href="single-product.html" onclick="setLoadSP('${data[i].LinkImageSP}')">${data[i].NameSP}</a></li>`;
+                                    txt += `<li><a href="single-product.html?id=${data[i].Id}">${data[i].NameSP}</a></li>`;
 
                                 document.getElementById("SPBanChay").innerHTML = txt;
                             </script>
@@ -472,23 +466,22 @@
                                 txt = "";
                                 var n = data.length - 1;
                                 for (var i=n; i >= n-9 && i>=0; i--)
-                                {
-                                    var t = "'" + data[i].LinkImageSP + "'";
-                                    txt += '<div class="single-product"><div class="product-f-image"><img style=" height: 297px;" src="'
-                                    +data[i].LinkImageSP+
-                                    '"alt=""><div class="product-hover"><a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a><a href="single-product.html" class="view-details-link"href="single-product.html" onclick="setLoadSP('
-                                    + t + 
-                                    ')"><i class="fa fa-link"></i>Thông tin</a></div></div><h2><a href="single-product.html" onclick="setLoadSP('
-                                    + t + 
-                                    ')">'
-                                    +data[i].NameSP+
-                                    '</a></h2><div class="product-carousel-price"><ins>$'
-                                    +data[i].SaleSP+
-                                    '</ins><del>$'
-                                    +data[i].money+
-                                    '</del></div></div>';
-                                }
-
+                                    txt += `<div class="single-product">
+                                                <div class="product-f-image">
+                                                    <img style=" height: 297px;" src="${data[i].LinkImageSP}"alt="">
+                                                    <div class="product-hover">
+                                                        <a href="" class="add-to-cart-link">
+                                                            <i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
+                                                        <a href="single-product.html" class="view-details-link"href="single-product.html?id=${data[i].Id}">
+                                                        <i class="fa fa-link"></i>Thông tin</a>
+                                                    </div>
+                                                </div>
+                                                <h2><a href="single-product.html?id=${data[i].Id}">${data[i].NameSP}</a></h2>
+                                                <div class="product-carousel-price">
+                                                    <ins>$${data[i].SaleSP}</ins>
+                                                    <del>$${data[i].money}</del>
+                                                </div>
+                                            </div>`;
                                 document.getElementById("mathang").innerHTML = txt;
                                 
                             </script>
