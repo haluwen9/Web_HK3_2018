@@ -978,30 +978,20 @@ form.cart {
   margin-bottom: 30px;
 }
 
-.product-tab {
-  border-bottom: 1px solid #ddd;
-  list-style: outside none none;
-  margin: 0 0 30px;
-  padding: 0;
-  text-align: center;
-}
 
 .product-tab li {
   display: inline-block;
 }
 
-.product-tab li.active {
+.product-tab li.nav-item a.nav-link.active {
   background: none repeat scroll 0 0 #5a88ca;
 }
 
-.product-tab li.active a {
+.product-tab li.nav-item a.nav-link.active {
   color: #fff;
 }
 
 .product-tab li a {
-  color: #222;
-  display: block;
-  font-size: 16px;
   padding: 10px 30px;
 }
 
@@ -1340,4 +1330,9 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button {
 
 .product-option-shop {
   margin-top: 15px;
+}
+
+
+.customer-rating-wrap-post {
+  color: yellow;
 }

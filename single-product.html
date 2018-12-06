@@ -43,9 +43,10 @@
 
     <script src="var.js"></script>
     <script>
-        var pram = new URLSearchParams(window.location.search).get('id');
-        var LoadSP = data.findIndex(item => item.Id == pram);
-        if (LoadSP == -1) LoadSP = 1;
+        var pram = new URLSearchParams(window.location.search).get('id') || "";
+        var LoadSP;
+        if (pram == "") LoadSP = 1;
+        else LoadSP = data.findIndex(item => item.Id == pram);
     </script>
     
 </head>
@@ -385,14 +386,16 @@
                                         <script>document.write(data[LoadSP].NameSP);</script>
                                     </h2>
                                     <div class="product-inner-price">
-                                        <ins>
-                                            <script>document.write(data[LoadSP].SaleSP);</script>
-                                            <sup>đ</sup>
-                                        </ins>
-                                        <del>
-                                            <script>document.write(data[LoadSP].money);</script>
-                                            <sup>đ</sup>
-                                        </del>
+                                      <b>Giá bán:</b>
+                                      <ins>
+                                          <script>document.write(data[LoadSP].SaleSP);</script>
+                                          <sup>đ</sup>
+                                      </ins>
+                                      <b>Giá cũ:</b>
+                                      <del>
+                                          <script>document.write(data[LoadSP].money);</script>
+                                          <sup>đ</sup>
+                                      </del>
                                     </div>
 
                                     <form action="" class="cart">
@@ -400,7 +403,7 @@
                                             <input type="number" size="4" class="input-text qty text" title="Qty" value="1"
                                                 name="quantity" min="1" step="1">
                                         </div>
-                                        <a href="#" class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" onclick="addToCart(data[LoadSP].Id); return false;" draggable="false">Thêm vào giỏ hàng</a>
+                                        <a href="javascript: addToCart(data[LoadSP].Id,$('.input-text.qty').val());" class="add_to_cart_button w-auto" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" draggable="false">Thêm vào giỏ hàng</a>
                                     </form>
 
                                     <div class="product-inner-category">
@@ -418,46 +421,77 @@
 
 
                         <div class="row">
-                            <div role="tabpanel">
-                                <ul class="product-tab" role="tablist">
-                                    <li role="presentation" class="active">
-                                        <a href="#home" aria-controls="home" role="tab" data-toggle="tab">
+                            <div role="tabpanel" class="col-12">
+                                <ul class="product-tab nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="nav-item">
+                                        <a href="#description" aria-controls="description" role="tab" data-toggle="tab" class="nav-link active">
                                             Mô tả
                                         </a>
                                     </li>
 
-                                    <li role="presentation">
-                                        <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">
+                                    <li role="presentation" class="nav-item">
+                                        <a href="#comment" aria-controls="comment" role="tab" data-toggle="tab" class="nav-link">
                                             Nhận xét
                                         </a>
                                     </li>
                                 </ul>
-                                <div class="tab-content">
-                                    <div role="tabpanel" class="tab-pane active" id="home">
-                                        <h2>Product Description</h2>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                                            tristique, diam in consequat iaculis, est purus iaculis mauris,
-                                            imperdiet facilisis ante ligula at nulla. Quisque volutpat nulla
-                                            risus, id maximus ex aliquet ut. Suspendisse potenti. Nulla varius
-                                            lectus id turpis dignissim porta. Quisque magna arcu, blandit quis
-                                            felis vehicula, feugiat gravida diam. Nullam nec turpis ligula.
-                                            Aliquam quis blandit elit, ac sodales nisl. Aliquam eget dolor eget
-                                            elit malesuada aliquet. In varius lorem lorem, semper bibendum
-                                            lectus lobortis ac.</p>
-
-                                        <p>Mauris placerat vitae lorem gravida viverra. Mauris in fringilla ex.
-                                            Nulla facilisi. Etiam scelerisque tincidunt quam facilisis
-                                            lobortis. In malesuada pulvinar neque a consectetur. Nunc aliquam
-                                            gravida purus, non malesuada sem accumsan in. Morbi vel sodales
-                                            libero.</p>
+                                <div class="tab-content mt-2">
+                                    <div role="tabpanel" class="tab-pane fade active show" id="description">
+                                        <h2>Mô tả sản phẩm</h2>
+                                        <p>Một đoạn mô tả sản phẩm ngắn gọn về xuất sứ, chất liệu, kích cỡ...</p>
                                     </div>
-                                    <div role="tabpanel" class="tab-pane" id="profile">
-                                        <h2>Reviews</h2>
+                                    <div role="tabpanel" class="tab-pane fade" id="comment">
+                                        <h2>Nhận xét của khách hàng</h2>
+                                        <ul type="none">
+                                          <li>
+                                            <b>Lương Công Tâm: </b> 
+                                            <div class="customer-rating-wrap-post d-inline">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <p>Sản phẩm có chất lượng rất tốt, tôi rất thích sản phẩm của shop.</p>
+                                          </li>
+                                          <li>
+                                              <b>Vương Lê Minh Nguyên: </b> 
+                                              <div class="customer-rating-wrap-post d-inline">
+                                                  <i class="fa fa-star"></i>
+                                                  <i class="fa fa-star"></i>
+                                                  <i class="fa fa-star"></i>
+                                                  <i class="fa fa-star-half-o"></i>
+                                                  <i class="fa fa-star-o"></i>
+                                              </div>
+                                              <p>Sản phẩm tốt.</p>
+                                          </li>
+                                          <li>Nguyễn Thiên Ân: </b> 
+                                              <div class="customer-rating-wrap-post d-inline">
+                                                  <i class="fa fa-star"></i>
+                                                  <i class="fa fa-star"></i>
+                                                  <i class="fa fa-star"></i>
+                                                  <i class="fa fa-star"></i>
+                                                  <i class="fa fa-star"></i>
+                                              </div>
+                                              <p>Shop chăm sóc khách hàng rất tốt, sản phẩm cũng rất chất lượng. 5 <i class="fa fa-star"></i> cho Shop.</p>
+                                          </li>
+                                          <li>Hồ Khả Việt Huấn: </b> 
+                                            <div class="customer-rating-wrap-post d-inline">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <p>Sản phẩm vượt xa sự mong đợi của khách hàng. <i class="fa fa-thumbs-up"></i></p>
+                                        </li>
+                                        </ul>
+                                        <h2>Thêm nhận xét</h2>
                                         <div class="submit-review">
-                                            <p><label for="name">Name</label> <input name="name" type="text"></p>
+                                            <p><label for="name">Tên</label> <input name="name" type="text"></p>
                                             <p><label for="email">Email</label> <input name="email" type="email"></p>
                                             <div class="rating-chooser">
-                                                <p>Your rating</p>
+                                                <p>Bình chọn</p>
 
                                                 <div class="rating-wrap-post">
                                                     <i class="fa fa-star"></i>
@@ -467,7 +501,7 @@
                                                     <i class="fa fa-star"></i>
                                                 </div>
                                             </div>
-                                            <p><label for="review">Your review</label> <textarea name="review"
+                                            <p><label for="review">Nhận xét của bạn</label> <textarea name="review"
                                                     id="" cols="30" rows="10"></textarea></p>
                                             <p><input type="submit" value="Submit"></p>
                                         </div>

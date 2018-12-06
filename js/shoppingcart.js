@@ -43,21 +43,21 @@ function itemDrag(ev) {
     // console.log(ev.target);
 }
 
-function addToCart(id) {
+function addToCart(id, amount = 1) {
     var item;
     var has = false;
     for (var i = 0;i < listCart.length; i++) {
         if (listCart[i].Id === id) {
             console.log(`ID: ${id} -- listCart ${listCart[i].Id}`)
             item = listCart[i];
-            item.amount++;
+            item.amount += parseInt(amount);
             has = true;
             break;
         }
     }
     console.log(item);
     item = item || getItemById(id);
-    item.amount = item.amount || 1;
+    item.amount = item.amount || parseInt(amount);
     if (!has) listCart.push(item);
     if (typeof(Storage) !== 'undefined') {
         localStorage.setItem('cart', JSON.stringify(listCart));
