@@ -10,7 +10,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bông Xù Store</title>
+    <title>Bông Xù Store - Thanh toán</title>
 
     <!-- Google Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet' type='text/css'>
@@ -40,6 +40,7 @@
           <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
+    <script src="var.js"></script>
 </head>
 
 <body>
@@ -154,8 +155,8 @@
             <div class="shopping-item">
               <a href="cart.html">
                 <i class="fa fa-shopping-cart"></i>
-                <span class="hidden">Giỏ Hàng - </span><span class="cart-amunt">$100</span>
-                <span class="product-count">99</span></a>
+                <span class="hidden">Giỏ Hàng - </span><span class="cart-amunt"></span>
+                <span class="product-count"></span></a>
             </div>
           </div>
         </div>
@@ -277,7 +278,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="product-bit-title text-center">
-                        <h2>Thanh toán</h2>
+                        <h2>Thanh Toán</h2>
                     </div>
                 </div>
             </div>
@@ -293,51 +294,53 @@
                     <div class="single-sidebar">
                         <h2 class="sidebar-title">Tìm kiếm sản phẩm</h2>
                         <form action="">
-                            <input type="text" placeholder="Tìm kiếm sản phẩm...">
-                            <input type="submit" value="Tìm kiếm">
+                            <input type="text" placeholder="Tìm kiếm...">
+                            <input type="submit" value="Tìm">
                         </form>
                     </div>
 
                     <div class="single-sidebar">
                         <h2 class="sidebar-title">Các sản phẩm mới</h2>
-                        <div class="thubmnail-recent">
-                            <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                            <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
-                            <div class="product-sidebar-price">
-                                <ins>$700.00</ins> <del>$100.00</del>
-                            </div>
-                        </div>
-                        <div class="thubmnail-recent">
-                            <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                            <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
-                            <div class="product-sidebar-price">
-                                <ins>$700.00</ins> <del>$100.00</del>
-                            </div>
-                        </div>
-                        <div class="thubmnail-recent">
-                            <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                            <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
-                            <div class="product-sidebar-price">
-                                <ins>$700.00</ins> <del>$100.00</del>
-                            </div>
-                        </div>
-                        <div class="thubmnail-recent">
-                            <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                            <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
-                            <div class="product-sidebar-price">
-                                <ins>$700.00</ins> <del>$100.00</del>
-                            </div>
+                        <div id="SPNew">
+                            <script>
+                                // San pham moi 
+                                var n = data.length - 1;
+                                for (var i=n; i >= n-3 && i>=0; i--)
+                                {
+                                    var t = "'" + data[i].LinkImageSP + "'";
+                                    txt += '<div class="thubmnail-recent"><img src="'
+                                            +data[i].LinkImageSP+
+                                            '" class="recent-thumb" alt=""><h2><a href="single-product.html" onclick="setLoadSP('
+                                            + t + ')">'
+                                            +data[i].NameSP+
+                                            '</a></h2><div class="product-sidebar-price"><ins>'
+                                            +data[i].SaleSP+
+                                            '<sup>đ</sup></ins> <del>'
+                                            +data[i].money+
+                                            '<sup>đ</sup></del></div></div>';
+                                }
+                                            
+                                document.getElementById("SPNew").innerHTML = txt;
+                            </script>
                         </div>
                     </div>
 
                     <div class="single-sidebar">
                         <h2 class="sidebar-title">Sản phẩm bán chạy</h2>
-                        <ul>
-                            <li><a href="single-product.html">Sony Smart TV - 2015</a></li>
-                            <li><a href="single-product.html">Sony Smart TV - 2015</a></li>
-                            <li><a href="single-product.html">Sony Smart TV - 2015</a></li>
-                            <li><a href="single-product.html">Sony Smart TV - 2015</a></li>
-                            <li><a href="single-product.html">Sony Smart TV - 2015</a></li>
+                        <ul id="SPBanChay">
+                            <script>
+                                // San pham ban chay
+                                txt = "";
+                                var n = data.length - 1;
+                                for (var i=n; i >= n-4 && i>=0; i--)
+                                {
+                                    var t = "'" + data[i].LinkImageSP + "'";
+                                    txt += '<li><a href="single-product.html" onclick="setLoadSP('
+                                            + t + ')">' + data[i].NameSP + '</a></li>';
+                                }
+
+                                document.getElementById("SPBanChay").innerHTML = txt;
+                            </script>
                         </ul>
                     </div>
                 </div>
@@ -1094,7 +1097,7 @@
                                 <h3 id="order_review_heading">Đơn hàng của bạn</h3>
 
                                 <div id="order_review" style="position: relative;">
-                                    <table class="shop_table">
+                                    <table class="shop_table" id="checkout_items">
                                         <thead>
                                             <tr>
                                                 <th class="product-name">Sản phẩm</th>
@@ -1102,18 +1105,18 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr class="cart_item">
+                                            <!-- <tr class="cart_item">
                                                 <td class="product-name">
                                                     Ship Your Idea <strong class="product-quantity">× 1</strong> </td>
                                                 <td class="product-total">
                                                     <span class="amount">£15.00</span> </td>
-                                            </tr>
+                                            </tr> -->
                                         </tbody>
                                         <tfoot>
 
                                             <tr class="cart-subtotal">
                                                 <th>Tổng cộng giỏ hàng</th>
-                                                <td><span class="amount">£15.00</span>
+                                                <td><span class="amount" id="cart_checkout_total"></span>
                                                 </td>
                                             </tr>
 
@@ -1130,7 +1133,7 @@
 
                                             <tr class="order-total">
                                                 <th>Tổng cộng đơn hàng</th>
-                                                <td><strong><span class="amount">£15.00</span></strong> </td>
+                                                <td><strong><span class="amount" id="order_checkout_total"></span></strong> </td>
                                             </tr>
 
                                         </tfoot>
@@ -1366,6 +1369,7 @@
 
     <!-- Main Script -->
     <script src="js/main.js"></script>
+    <script src="js/shoppingcart.js"></script>
 
     <!-- Slider -->
     <script type="text/javascript" src="js/bxslider.min.js"></script>

@@ -15,12 +15,15 @@ $(document).ready(function() {
         }
     }
     fillCart();
+    displayCart();
+    displayTotal();
+    displayCheckout();
 });
 
 function fillCart() {
-    var price = '$' + calcPrice();
-    $('.product-count').text(listCart.length);
-    $('.cart-amunt').text(price);
+    var price = calcPrice() + '<sup>đ</sup>';
+    $('.product-count').html(listCart.length);
+    $('.cart-amunt').html(price);
 }
 
 function calcPrice() {
@@ -68,4 +71,79 @@ function dropCart(ev) {
     var item_id = ev.dataTransfer.getData("item");
     console.log(item_id);
     addToCart(item_id);
+}
+
+function displayCart() {
+    var txt = "";
+    for (var i = 0; i < listCart.length; ++i) {
+        txt += '<tr class="cart_item"><td class="product-remove"><a title="Remove this item" class="remove" href="#" onclick="removeItem(' + i + ')">×</a></td>\
+        <td class="product-thumbnail"><a href="single-product.html"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="' + listCart[i].LinkImageSP + '"></a></td>\
+        <td class="product-name"><a href="single-product.html" onclick="return false;">' + listCart[i].NameSP + '</a></td>\
+        <td class="product-price"><span class="amount">' + listCart[i].SaleSP + '<sup>đ</sup></span></td>\
+        <td class="product-quantity">\
+            <div class="quantity buttons_added">\
+                <input type="button" class="minus" value="-" onclick="decQty(' + i + ')">\
+                <input type="text" size="1" class="input-text qty text" title="Qty" value="' + listCart[i].amount + '" id >\
+                <input type="button" class="plus" value="+" onclick="incQty(' + i + ')">\
+            </div>\
+        </td>\
+        <td class="product-subtotal"><span class="amount">' + listCart[i].SaleSP * listCart[i].amount + '<sup>đ</sup> </span></td>\
+        </tr>';
+    }
+    $("#cart_items tbody").html(txt + '<tr><td class="actions" colspan="6"><input type="submit" value="Thanh toán" name="proceed" class="checkout-button button alt wc-forward" onclick="event.preventDefault(); location.href=\'checkout.html\'"> <input type="submit" value="Xóa đơn hàng" name="proceed" class="checkout-button button alt wc-forward" onclick="event.preventDefault(); cancelOrder();"></td></tr>');
+}
+
+function displayTotal() {
+    $("#cart_subtotal").html(calcPrice() + '<sup>đ</sup>');
+    $("#order_total").html(calcPrice() + '<sup>đ</sup>');
+}
+
+function cancelOrder() {
+    localStorage.clear();
+    listCart = [];
+    fillCart();
+    displayCart();
+    displayTotal();
+}
+
+function removeItem(id) {
+    listCart.splice(id, 1);
+    localStorage.setItem('cart', JSON.stringify(listCart));
+    fillCart();
+    displayCart();
+    displayTotal();
+}
+
+function incQty(id) {
+    listCart[id].amount += 1;
+    localStorage.setItem('cart', JSON.stringify(listCart));
+    fillCart();
+    displayCart();
+    displayTotal();
+}
+
+function decQty(id) {
+    if (listCart[id].amount > 1) {
+        listCart[id].amount -= 1;
+        localStorage.setItem('cart', JSON.stringify(listCart));
+        fillCart();
+        displayCart();
+        displayTotal();
+    }
+    else {
+        removeItem(id);
+    }
+}
+
+function displayCheckout() {
+    var txt = "";
+    for (var i = 0; i < listCart.length; ++i) {
+        txt += '<tr class="cart_item">\
+                    <td class="product-name"> ' + listCart[i].NameSP + ' <strong class="product-quantity">× ' + listCart[i].amount + '</strong> </td>\
+                    <td class="product-total"><span class="amount">'+ listCart[i].SaleSP * listCart[i].amount +'<sup>đ</sup> </span> </td>\
+                </tr>'
+    }
+    $("#checkout_items tbody").html(txt);
+    $("#cart_checkout_total").html(calcPrice()+'<sup>đ</sup>');
+    $("#order_checkout_total").html(calcPrice()+'<sup>đ</sup>');
 }
