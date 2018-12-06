@@ -16,7 +16,6 @@ $(document).ready(function() {
     }
     fillCart();
     displayCart();
-    displayTotal();
     displayCheckout();
 });
 
@@ -75,25 +74,32 @@ function dropCart(ev) {
 
 function displayCart() {
     var txt = "";
+    if (listCart.length > 0) {
     for (var i = 0; i < listCart.length; ++i) {
-        txt += '<tr class="cart_item"><td class="product-remove"><a title="Remove this item" class="remove" href="javascript:void(0)" onclick="removeItem(' + i + ')">×</a></td>\
-        <td class="product-thumbnail"><a href="single-product.html?id=' + listCart[i].Id +'"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="' + listCart[i].LinkImageSP + '"></a></td>\
-        <td class="product-name"><a href="single-product.html" onclick="return false;">' + listCart[i].NameSP + '</a></td>\
-        <td class="product-price"><span class="amount">' + listCart[i].SaleSP + '<sup>đ</sup></span></td>\
-        <td class="product-quantity">\
-            <div class="quantity buttons_added">\
-                <input type="button" class="minus" value="-" onclick="decQty(' + i + ')">\
-                <input type="text" size="1" class="input-text qty text" title="Qty" value="' + listCart[i].amount + '" id >\
-                <input type="button" class="plus" value="+" onclick="incQty(' + i + ')">\
-            </div>\
-        </td>\
-        <td class="product-subtotal"><span class="amount">' + listCart[i].SaleSP * listCart[i].amount + '<sup>đ</sup> </span></td>\
-        </tr>';
+            txt += '<tr class="cart_item"><td class="product-remove"><a title="Remove this item" class="remove" href="javascript:removeItem(' + i + ')">×</a></td>\
+            <td class="product-thumbnail"><a href="single-product.html?id=' + listCart[i].Id +'"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="' + listCart[i].LinkImageSP + '"></a></td>\
+            <td class="product-name"><a href="single-product.html?id=' + listCart[i].Id +'" onclick="return false;">' + listCart[i].NameSP + '</a></td>\
+            <td class="product-price"><span class="amount">' + listCart[i].SaleSP + '<sup>đ</sup></span></td>\
+            <td class="product-quantity">\
+                <div class="quantity buttons_added">\
+                    <input type="button" class="minus" value="-" onclick="decQty(' + i + ')">\
+                    <input type="text" size="1" class="input-text qty text" title="Qty" value="' + listCart[i].amount + '" style="padding: 5px" >\
+                    <input type="button" class="plus" value="+" onclick="incQty(' + i + ')">\
+                </div>\
+            </td>\
+            <td class="product-subtotal"><span class="amount">' + listCart[i].SaleSP * listCart[i].amount + '<sup>đ</sup> </span></td>\
+            </tr>';
+        }
+    }
+    else {
+        txt = '\
+        <tr class="cart_item">\
+            <td colspan="6">Đơn hàng trống. <a href="shop.html">Mua hàng ngay <i class="fa fa-shopping-cart"></i></a></td>\
+        </tr>\
+        '
     }
     $("#cart_items tbody").html(txt + '<tr><td class="actions" colspan="6"><input type="submit" value="Thanh toán" name="proceed" class="checkout-button button alt wc-forward" onclick="event.preventDefault(); location.href=\'checkout.html\'"> <input type="submit" value="Xóa đơn hàng" name="proceed" class="checkout-button button alt wc-forward" onclick="event.preventDefault(); cancelOrder();"></td></tr>');
-}
-
-function displayTotal() {
+    
     $("#cart_subtotal").html(calcPrice() + '<sup>đ</sup>');
     $("#order_total").html(calcPrice() + '<sup>đ</sup>');
 }
@@ -103,7 +109,6 @@ function cancelOrder() {
     listCart = [];
     fillCart();
     displayCart();
-    displayTotal();
 }
 
 function removeItem(id) {
@@ -111,7 +116,6 @@ function removeItem(id) {
     localStorage.setItem('cart', JSON.stringify(listCart));
     fillCart();
     displayCart();
-    displayTotal();
 }
 
 function incQty(id) {
@@ -119,7 +123,6 @@ function incQty(id) {
     localStorage.setItem('cart', JSON.stringify(listCart));
     fillCart();
     displayCart();
-    displayTotal();
 }
 
 function decQty(id) {
@@ -128,7 +131,6 @@ function decQty(id) {
         localStorage.setItem('cart', JSON.stringify(listCart));
         fillCart();
         displayCart();
-        displayTotal();
     }
     else {
         removeItem(id);
@@ -137,11 +139,20 @@ function decQty(id) {
 
 function displayCheckout() {
     var txt = "";
-    for (var i = 0; i < listCart.length; ++i) {
-        txt += '<tr class="cart_item">\
-                    <td class="product-name"> ' + listCart[i].NameSP + ' <strong class="product-quantity">× ' + listCart[i].amount + '</strong> </td>\
-                    <td class="product-total"><span class="amount">'+ listCart[i].SaleSP * listCart[i].amount +'<sup>đ</sup> </span> </td>\
-                </tr>'
+    if (listCart.length > 0){
+        for (var i = 0; i < listCart.length; ++i) {
+            txt += '<tr class="cart_item">\
+                        <td class="product-name"> ' + listCart[i].NameSP + ' <strong class="product-quantity">× ' + listCart[i].amount + '</strong> </td>\
+                        <td class="product-total"><span class="amount">'+ listCart[i].SaleSP * listCart[i].amount +'<sup>đ</sup> </span> </td>\
+                    </tr>'
+        }
+    }
+    else {
+        txt = '\
+        <tr class="cart_item">\
+            <td colspan="2">Đơn hàng trống<a href="shop.html">Mua hàng ngay <i class="fa fa-shopping-cart"></i></a></td>\
+        </tr>\
+        '
     }
     $("#checkout_items tbody").html(txt);
     $("#cart_checkout_total").html(calcPrice()+'<sup>đ</sup>');
