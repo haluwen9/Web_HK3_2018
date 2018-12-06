@@ -314,7 +314,8 @@
                         <h2 class="sidebar-title">Các sản phẩm mới</h2>
                         <div id="SPNew">
                             <script>
-                                // San pham moi 
+                                // San pham moi
+                                var txt = "";
                                 var n = data.length - 1;
                                 for (var i=n; i >= n-3 && i>=0; i--)
                                     txt += `<div class="thubmnail-recent">
@@ -355,6 +356,11 @@
                             <a href="">
                                 <script>document.write(data[LoadSP].NameSP);</script>
                             </a>
+<!-- 
+                  <a href="shop.html?category=Thú bông nhỏ" class="dropdown-item">Thú bông nhỏ</a>
+                  <a href="shop.html?category=Thú bông lớn" class="dropdown-item">Thú bông lớn</a>
+                  <a href="shop.html?category=Thú bông POKEMON" class="dropdown-item">Thú bông POKEMON</a>
+                   -->
                         </div>
 
                         <div class="row">
@@ -381,9 +387,11 @@
                                     <div class="product-inner-price">
                                         <ins>
                                             <script>document.write(data[LoadSP].SaleSP);</script>
+                                            <sup>đ</sup>
                                         </ins>
                                         <del>
                                             <script>document.write(data[LoadSP].money);</script>
+                                            <sup>đ</sup>
                                         </del>
                                     </div>
 
@@ -392,11 +400,14 @@
                                             <input type="number" size="4" class="input-text qty text" title="Qty" value="1"
                                                 name="quantity" min="1" step="1">
                                         </div>
-                                        <button class="add_to_cart_button" type="submit">Thêm giỏ hàng</button>
+                                        <a href="#" class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" onclick="addToCart(data[LoadSP].Id); return false;" draggable="false">Thêm vào giỏ hàng</a>
                                     </form>
 
                                     <div class="product-inner-category">
-                                        <p>Category: <a href=""><script>document.write(data[LoadSP].Category);</script></a> Tags: <a href=""></a>.</p>
+                                        <p>Category: 
+                                          <a href=""><script>document.write(data[LoadSP].Category);</script></a> 
+                                          <!-- Tags: <a href=""></a>. -->
+                                        </p>
                                     </div>
 
                                     <div role="tabpanel">
