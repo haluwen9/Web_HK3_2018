@@ -1343,13 +1343,9 @@ var data =
 // Chi so SP trong mang data duoc load o trang single-product.html
 var LoadSP;
 var tensp = "";
-function khongBietDatTenGi(value) {
-  return value.LinkImageSP == tensp;
-}
-
 function setLoadSP(tsp) {
     tensp = tsp;
-    LoadSP = data.findIndex(khongBietDatTenGi);
+    LoadSP = data.findIndex(item => item.LinkImageSP == tensp);
 
     if (typeof(Storage) !== "undefined") {
         localStorage.setItem("LoadSP", LoadSP);
@@ -1383,17 +1379,13 @@ function load(page, array) {
 }
 
 // ---------------------------------------------------------------------------
-var txtFilter="Tất cả";
+var txtFilter="all";
 function getLoai(f)
 {
-    txtFilter = f.options[f.selectedIndex].text;
+    txtFilter = f.options[f.selectedIndex].value;
 }
 
-function myFunction(value) {
-  return ( (txtFilter=="Tất cả") ? 1 : value.Category == txtFilter);
-}
 function testFilter()
 {
-
-    return data.filter(myFunction);
+    return data.filter(item => (txtFilter=="all") ? 1 : item.Category == txtFilter);
 }
