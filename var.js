@@ -1359,7 +1359,7 @@ function setLoadSP(tsp) {
 function load(page, array) {
   var container = $('.single-product-area .container .row');
   var content = "";
-  for (var i = (page-1)*12; i < page*12; i++) {
+  for (var i = (page-1)*12; i < page*12 && i<array.length; i++) {
     var it = array[i];
     content += `
       <div id="${it.Id}" class="col-lg-3 col-md-4 col-sm-6">
@@ -1367,13 +1367,13 @@ function load(page, array) {
           <div class="product-upper">
             <img src="${it.LinkImageSP}" alt="" style="width: 250px; height: 280px;" draggable="false">
           </div>
-          <h2><a href="single-product.html" draggable="false">${it.NameSP}</a></h2>
+          <h2><a href="single-product.html" onclick="setLoadSP('${data[i].LinkImageSP}')" draggable="false">${it.NameSP}</a></h2>
           <div class="product-carousel-price">
             <ins>${it.SaleSP}<sup>đ</sup></ins> <del>${it.money}<sup>đ</sup></del>
           </div>
 
           <div class="product-option-shop">
-            <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" onclick="addToCart('${it.Id}');" draggable="false">Thêm vào giỏ hàng</a>
+            <a href="" class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="" onclick="" draggable="false">Thêm vào giỏ hàng</a>
           </div>
         </div>
       </div>`
@@ -1382,10 +1382,17 @@ function load(page, array) {
   container.html(content);
 }
 
-function myFunction(value) {
-  return value.Category == "Thú bông POKEMON";
+// ---------------------------------------------------------------------------
+var txtFilter="all";
+function getLoai(f)
+{
+    txtFilter = f.options[f.selectedIndex].text;
 }
-function testfilter()
+
+function myFunction(value) {
+  return ( (txtFilter=="all") ? 1 : value.Category == txtFilter);
+}
+function testFilter()
 {
     return data.filter(myFunction);
 }
