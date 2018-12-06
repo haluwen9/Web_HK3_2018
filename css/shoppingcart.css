@@ -82,7 +82,7 @@
 
 .shopping-cart.shopping-item span.cart-amunt {
     display: block;
-    font-size: 11pt; 
+    font-size: 8pt; 
 }
 
 .shopping-cart.shopping-item .hidden {
@@ -124,4 +124,11 @@
 
 .shopping-cart.shopping-item:hover:before {
     border-color: #000;
+}
+
+.single-shop-product  {
+  padding: 15px;
+  margin: 5px;
+  border: 1pt #e0e0e0 solid;
+  box-shadow: 1px 1px 7px 1px #e0e0e0a0;
 }

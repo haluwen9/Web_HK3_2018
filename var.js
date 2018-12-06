@@ -1,34 +1,4 @@
-var txt = "";
-var MaxSPShow = 12;
-function getListItem() {
-  return data;
-}
-
-function getItemById(id) {
-  console.log('ID: ' + typeof(id) + ' - ' + id);
-  for (var i = 0; i < data.length; i++) {
-    // console.log(typeof(data[i].Id));
-    // console.log(data[i]);
-    if (data[i].Id === id) return data[i];
-  }
-  // return data[id];;
-}
-
-function getNameById(id) {
-  for (var i = 0; i < data.length; i++) {
-    if (data[i].Id === id) return data[i].NameSP;
-  }
-  // return data[id].NameSP;
-}
-
-function getPriceById(id) {
-  for (var i = 0; i < data.length; i++) {
-    if (data[i].Id === id) return data[i].SaleSP;
-  }
-  // return data[id].SaleSP;
-}
-
-var data = 
+const data = 
 [
     {
         Id: "1", 
@@ -121,7 +91,7 @@ var data =
     {
         Id: "9", 
         LinkImageSP: "images/small/img9.jpg",
-        NameSP: "Cặp gấu trắng-nâu", 
+        NameSP: "White & Brown", 
         SaleSP: 270000,
         money: 300000,
         Category: "Thú bông nhỏ", 
@@ -132,7 +102,7 @@ var data =
     {
         Id: "10", 
         LinkImageSP: "images/small/img10.jpg",
-        NameSP: "Gấu bông cặp VIOLET-PINK", 
+        NameSP: "Violet & Pink", 
         SaleSP: 300000,
         money: 600000,
         Category: "Thú bông nhỏ", 
@@ -198,7 +168,7 @@ var data =
     {
         Id: "16", 
         LinkImageSP: "images/large/img16.jpg",
-        NameSP: "Cặp gấu Hồng-Xám lớn", 
+        NameSP: "Pink & Gray lớn", 
         SaleSP: 700000,
         money: 730000,
         Category: "Thú bông lớn", 
@@ -220,7 +190,7 @@ var data =
     {
         Id: "18", 
         LinkImageSP: "images/large/img18.jpg",
-        NameSP: "Cặp gấu bông Cam-Trắng", 
+        NameSP: "Orange & White", 
         SaleSP: 700000,
         money: 720000,
         Category: "Thú bông lớn", 
@@ -691,43 +661,10 @@ var data =
     }
 ];
 
-
-// Chi so SP trong mang data duoc load o trang single-product.html
-var LoadSP;
-var tensp = "";
-function setLoadSP(tsp) {
-    tensp = tsp;
-    LoadSP = data.findIndex(item => item.LinkImageSP == tensp);
-
-    if (typeof(Storage) !== "undefined") {
-        localStorage.setItem("LoadSP", LoadSP);
-    }
-}
-
-function load(page, array) {
-  var container = $('.single-product-area .container .row');
-  var content = "";
-  for (var i = (page-1)*12; i < page*12 && i<array.length; i++) {
-    var it = array[i];
-    content += `
-      <div id="${it.Id}" class="col-lg-3 col-md-4 col-sm-6">
-        <div class="single-shop-product" ondragstart="itemDrag(event)" draggable="true" data-itemid="${it.Id}">
-          <div class="product-upper">
-            <img src="${it.LinkImageSP}" alt="" style="width: 250px; height: 280px;" draggable="false">
-          </div>
-          <h2><a href="single-product.html" onclick="setLoadSP('${data[i].LinkImageSP}')" draggable="false">${it.NameSP}</a></h2>
-          <div class="product-carousel-price">
-            <ins>${it.SaleSP}<sup>đ</sup></ins> <del>${it.money}<sup>đ</sup></del>
-          </div>
-
-          <div class="product-option-shop">
-            <a href="#" class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" onclick="addToCart('${it.Id}'); return false;" draggable="false">Thêm vào giỏ hàng</a>
-          </div>
-        </div>
-      </div>`
+function getItemById(id) {
+  console.log('ID: ' + typeof(id) + ' - ' + id);
+  for (var i = 0; i < data.length; i++) {
+    if (data[i].Id === id) return data[i];
   }
-  // console.log(content);
-  container.html(content);
+  // return data[id];;
 }
-
-// ---------------------------------------------------------------------------

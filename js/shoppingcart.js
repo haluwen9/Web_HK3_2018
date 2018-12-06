@@ -76,7 +76,7 @@ function dropCart(ev) {
 function displayCart() {
     var txt = "";
     for (var i = 0; i < listCart.length; ++i) {
-        txt += '<tr class="cart_item"><td class="product-remove"><a title="Remove this item" class="remove" href="#" onclick="removeItem(' + i + ')">×</a></td>\
+        txt += '<tr class="cart_item"><td class="product-remove"><a title="Remove this item" class="remove" href="javascript:void(0)" onclick="removeItem(' + i + ')">×</a></td>\
         <td class="product-thumbnail"><a href="single-product.html"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="' + listCart[i].LinkImageSP + '"></a></td>\
         <td class="product-name"><a href="single-product.html" onclick="return false;">' + listCart[i].NameSP + '</a></td>\
         <td class="product-price"><span class="amount">' + listCart[i].SaleSP + '<sup>đ</sup></span></td>\
@@ -99,7 +99,7 @@ function displayTotal() {
 }
 
 function cancelOrder() {
-    localStorage.clear();
+    localStorage.removeItem('cart');
     listCart = [];
     fillCart();
     displayCart();
