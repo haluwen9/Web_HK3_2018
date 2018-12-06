@@ -682,13 +682,14 @@ var data =
     {
         Id: "60", 
         LinkImageSP: "images/pokemon/img67.jpg",
-        NameSP: "Aceu", 
+        NameSP: "Aceus", 
         SaleSP: 99000,
         money: 100000,
         Category: "Thú bông POKEMON", 
         LuotMua: 0, 
         Tag: ["gấu bông", "gấu POKEMON"]
-    },
+    }
+];
 
 
 // Chi so SP trong mang data duoc load o trang single-product.html
@@ -734,17 +735,3 @@ function load(page, array) {
 }
 
 // ---------------------------------------------------------------------------
-var txtFilter="Tất cả";
-function getLoai(f)
-{
-    txtFilter = f.options[f.selectedIndex].text;
-}
-
-function myFunction(value) {
-  return ( (txtFilter=="Tất cả") ? 1 : value.Category == txtFilter);
-}
-function testFilter()
-{
-
-    return data.filter(myFunction);
-}
