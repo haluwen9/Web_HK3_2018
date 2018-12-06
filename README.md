@@ -13,7 +13,7 @@
 - [x] Thay đổi Navigation Bar **Ân+Tâm**
 - [x] Header, Footer **Ân**
 - [x] Thay đổi trang HOMEPAGE **Ân+Tâm+Huấn**
-- [x] Thay đổi trang Mua sắm (SHOP) **Ân+Tâm+Huấn**
+- [x] Thay đổi trang Mua sắm (SHOP) **Ân+Tâm+Huấn+Nguyên**
 - [x] Thay đổi trang Chi tiết sản phẩm (SINGLEPRODUCT) **Huấn+Tâm**
 - [x] Thay đổi trang Giỏ hàng (CART) **Nguyên+Tâm+Huấn**
 - [x] Thay đổi trang Thanh toán (CHECKOUT) **Nguyên**
