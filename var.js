@@ -695,13 +695,9 @@ var data =
 // Chi so SP trong mang data duoc load o trang single-product.html
 var LoadSP;
 var tensp = "";
-function khongBietDatTenGi(value) {
-  return value.LinkImageSP == tensp;
-}
-
 function setLoadSP(tsp) {
     tensp = tsp;
-    LoadSP = data.findIndex(khongBietDatTenGi);
+    LoadSP = data.findIndex(item => item.LinkImageSP == tensp);
 
     if (typeof(Storage) !== "undefined") {
         localStorage.setItem("LoadSP", LoadSP);
