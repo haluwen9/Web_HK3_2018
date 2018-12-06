@@ -155,8 +155,8 @@
             <div class="shopping-item">
               <a href="cart.html">
                 <i class="fa fa-shopping-cart"></i>
-                <span class="hidden">Giỏ Hàng - </span><span class="cart-amunt">$100</span>
-                <span class="product-count">99</span></a>
+                <span class="hidden">Giỏ Hàng - </span><span class="cart-amunt"></span>
+                <span class="product-count"></span></a>
             </div>
           </div>
         </div>
@@ -278,7 +278,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="product-bit-title text-center">
-                        <h2>Thanh toán</h2>
+                        <h2>Thanh Toán</h2>
                     </div>
                 </div>
             </div>
@@ -313,11 +313,11 @@
                                             '" class="recent-thumb" alt=""><h2><a href="single-product.html" onclick="setLoadSP('
                                             + t + ')">'
                                             +data[i].NameSP+
-                                            '</a></h2><div class="product-sidebar-price"><ins>$'
+                                            '</a></h2><div class="product-sidebar-price"><ins>'
                                             +data[i].SaleSP+
-                                            '</ins> <del>$'
+                                            '<sup>đ</sup></ins> <del>'
                                             +data[i].money+
-                                            '</del></div></div>';
+                                            '<sup>đ</sup></del></div></div>';
                                 }
                                             
                                 document.getElementById("SPNew").innerHTML = txt;
