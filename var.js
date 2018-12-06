@@ -1383,16 +1383,17 @@ function load(page, array) {
 }
 
 // ---------------------------------------------------------------------------
-var txtFilter="all";
+var txtFilter="Tất cả";
 function getLoai(f)
 {
     txtFilter = f.options[f.selectedIndex].text;
 }
 
 function myFunction(value) {
-  return ( (txtFilter=="all") ? 1 : value.Category == txtFilter);
+  return ( (txtFilter=="Tất cả") ? 1 : value.Category == txtFilter);
 }
 function testFilter()
 {
+
     return data.filter(myFunction);
 }
