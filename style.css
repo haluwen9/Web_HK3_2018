@@ -1336,3 +1336,8 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button {
 .customer-rating-wrap-post {
   color: yellow;
 }
+
+#order_review_overall {
+  position: sticky;
+  top: 10%;
+}
