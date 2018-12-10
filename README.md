@@ -16,7 +16,7 @@
 - [x] Thay đổi trang Mua sắm (SHOP) **Ân+Tâm+Huấn+Nguyên**
 - [x] Thay đổi trang Chi tiết sản phẩm (SINGLEPRODUCT) **Huấn+Tâm**
 - [x] Thay đổi trang Giỏ hàng (CART) **Nguyên+Tâm+Huấn**
-- [x] Thay đổi trang Thanh toán (CHECKOUT) **Nguyên**
+- [x] Thay đổi trang Thanh toán (CHECKOUT) **Nguyên+Tâm**
 - [x] Thêm trang Liên hệ (CONTACT) **Huấn+Tâm(fix Responsive)**
 - [x] Xây dựng chức năng Shopping Cart, Drag-Drop hàng hoá vào giỏ hàng để thêm vào giỏ. Sử dụng HTML Local Storage **Tâm**
 
@@ -34,9 +34,9 @@
 - Flags Icon Css (http://flag-icon-css.lip.is/)
   
 ## Danh sách thành viên
-1. **Hồ Khả Việt Huấn** - Nhóm trưởng
-2. **Nguyễn Thiên Ân**
-3. **Vương Lê Minh Nguyên**
-4. **Lương Công Tâm**
+1. **Hồ Khả Việt Huấn : 43.01.104.058** - Nhóm trưởng
+2. **Nguyễn Thiên Ân : 43.01.104.003**
+3. **Vương Lê Minh Nguyên : 43.01.104.117**
+4. **Lương Công Tâm : 43.01.104.157**
 
 ## Tài liệu tham khảo
