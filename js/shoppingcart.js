@@ -16,16 +16,6 @@ $(document).ready(function () {
     fillCart();
     displayCart();
     displayCheckout();
-    $('.qty.text').on('keypress', function (event) {
-        event.preventDefault();
-        if (event.key >= '0' && event.key <= '9') {
-            event.target.value += event.key;
-        }
-
-    })
-    $('.qty.text').on('change', function (event) {
-        event.target.value
-    })
 });
 
 function fillCart() {
@@ -57,14 +47,14 @@ function addToCart(id, amount = 1) {
     var has = false;
     for (var i = 0; i < listCart.length; i++) {
         if (listCart[i].Id === id) {
-            console.log(`ID: ${id} -- listCart ${listCart[i].Id}`)
+            // console.log(`ID: ${id} -- listCart ${listCart[i].Id}`)
             item = listCart[i];
             item.amount += parseInt(amount);
             has = true;
             break;
         }
     }
-    console.log(item);
+    // console.log(item);
     item = item || getItemById(id);
     item.amount = item.amount || parseInt(amount);
     if (!has) listCart.push(item);
@@ -92,7 +82,7 @@ function displayCart() {
             <td class="product-quantity">\
                 <div class="quantity buttons_added">\
                     <input type="button" class="minus" value="-" onclick="decQty(' + i + ')">\
-                    <input type="text" size="1" class="input-text qty text" title="Qty" value="' + listCart[i].amount + '" onchange="modifyQty( ' + i + ', event)"  style="padding: 5px" >\
+                    <input type="text" size="1" class="input-text qty text" title="Qty" value="' + listCart[i].amount + '" onkeypress="filterInput(event)" onchange="modifyQty( ' + i + ', event)"  style="padding: 5px" >\
                     <input type="button" class="plus" value="+" onclick="incQty(' + i + ')">\
                 </div>\
             </td>\
@@ -150,6 +140,13 @@ function modifyQty(id, e) {
         localStorage.setItem('cart', JSON.stringify(listCart));
         fillCart();
         displayCart();
+    }
+}
+
+function filterInput(e) {
+    e.preventDefault();
+    if (e.key >= '0' && e.key <= '9') {
+        e.target.value += e.key;
     }
 }
 
