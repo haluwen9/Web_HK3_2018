@@ -28,7 +28,7 @@
 - [x] Thêm thanh tìm kiếm trên thanh Navigation Bar - **Tâm**
 - [x] Thêm các chức năng tìm kiếm, lọc, sắp xếp bên trang sản phẩm **Tâm+Huấn**
 - [ ] ...
-- [ ] ...
+
 ### Extensions, Plugins
 - Bootstrap 4
 - Flags Icon Css (http://flag-icon-css.lip.is/)

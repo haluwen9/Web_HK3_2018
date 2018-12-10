@@ -210,8 +210,8 @@
                 Tìm kiếm
               </a>
               <div class="dropdown-menu dropdown-menu-right bg-light p-2 border-0" aria-labelledby="searchbox-dropdown">
-                <form action="#" class="form-inline dropdown-item">
-                  <input class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm..." aria-label="Search" />
+                <form action="shop.html" class="form-inline dropdown-item" method="GET">
+                  <input name="q" class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm..." aria-label="Search" />
                   <button type="submit" class="btn-success" style="line-height: 0">
                     <span class=" fa fa-search"></span>
                   </button>
@@ -245,8 +245,8 @@
         <div class="col-md-4">
           <div class="single-sidebar">
             <h2 class="sidebar-title">Tìm kiếm sản phẩm</h2>
-            <form action="">
-              <input type="text" placeholder="Tìm kiếm...">
+            <form action="shop.html" method="GET">
+              <input name="q" type="text" placeholder="Tìm kiếm...">
               <input type="submit" value="Tìm">
             </form>
           </div>
@@ -260,13 +260,13 @@
                 var n = data.length - 1;
                 for (var i = n; i >= n - 3 && i >= 0; i--)
                   txt += `<div class="thubmnail-recent">
-                                                <img src="${data[i].LinkImageSP}" class="recent-thumb" alt="">
-                                                <h2><a href="single-product.html?id=${data[i].Id}">${data[i].NameSP}</a></h2>
-                                                <div class="product-sidebar-price">
-                                                    <ins>${data[i].SaleSP}<sup>đ</sup></ins>
-                                                    <del>${data[i].money}<sup>đ</sup></del>
-                                                </div>
-                                            </div>`;
+                            <img src="${data[i].LinkImageSP}" class="recent-thumb" alt="">
+                            <h2><a href="single-product.html?id=${data[i].Id}">${data[i].NameSP}</a></h2>
+                            <div class="product-sidebar-price">
+                              <ins>${data[i].SaleSP}<sup>đ</sup></ins>
+                              <del>${data[i].money}<sup>đ</sup></del>
+                            </div>
+                          </div>`;
                 document.getElementById("SPNew").innerHTML = txt;
               </script>
             </div>
@@ -341,7 +341,7 @@
                   <form action="" class="cart">
                     <div class="quantity">
                       <input type="number" size="4" class="input-text qty text" title="Qty" value="1" name="quantity"
-                        min="1" step="1">
+                        min="1" step="1" onkeypress="validateNumber(event)">
                     </div>
                     <a href="javascript: addToCart(data[LoadSP].Id,$('.input-text.qty').val());" class="add_to_cart_button w-auto"
                       data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" draggable="false">Thêm
@@ -408,7 +408,7 @@
                         </div>
                         <p>Sản phẩm tốt.</p>
                       </li>
-                      <li>Nguyễn Thiên Ân: </b>
+                      <li><b>Nguyễn Thiên Ân: </b>
                         <div class="customer-rating-wrap-post d-inline">
                           <i class="fa fa-star"></i>
                           <i class="fa fa-star"></i>
@@ -419,7 +419,7 @@
                         <p>Shop chăm sóc khách hàng rất tốt, sản phẩm cũng rất chất lượng. 5 <i class="fa fa-star"></i>
                           cho Shop.</p>
                       </li>
-                      <li>Hồ Khả Việt Huấn: </b>
+                      <li><b>Hồ Khả Việt Huấn: </b>
                         <div class="customer-rating-wrap-post d-inline">
                           <i class="fa fa-star"></i>
                           <i class="fa fa-star"></i>
@@ -469,21 +469,21 @@
                 var n = data.length - 1;
                 for (var i = n; i >= n - 9 && i >= 0; i--)
                   txt += `<div class="single-product">
-                                                <div class="product-f-image">
-                                                    <img style=" height: 297px;" src="${data[i].LinkImageSP}"alt="">
-                                                    <div class="product-hover">
-                                                        <a href="" class="add-to-cart-link">
-                                                            <i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
-                                                        <a href="single-product.html" class="view-details-link"href="single-product.html?id=${data[i].Id}">
-                                                        <i class="fa fa-link"></i>Thông tin</a>
-                                                    </div>
-                                                </div>
-                                                <h2><a href="single-product.html?id=${data[i].Id}">${data[i].NameSP}</a></h2>
-                                                <div class="product-carousel-price">
-                                                    <ins>$${data[i].SaleSP}</ins>
-                                                    <del>$${data[i].money}</del>
-                                                </div>
-                                            </div>`;
+                            <div class="product-f-image">
+                              <img style=" height: 297px;" src="${data[i].LinkImageSP}"alt="">
+                              <div class="product-hover">
+                                <a href="" class="add-to-cart-link">
+                                    <i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
+                                <a href="single-product.html" class="view-details-link"href="single-product.html?id=${data[i].Id}">
+                                <i class="fa fa-link"></i>Thông tin</a>
+                              </div>
+                            </div>
+                            <h2><a href="single-product.html?id=${data[i].Id}">${data[i].NameSP}</a></h2>
+                            <div class="product-carousel-price">
+                              <ins>$${data[i].SaleSP}</ins>
+                              <del>$${data[i].money}</del>
+                            </div>
+                          </div>`;
                 document.getElementById("mathang").innerHTML = txt;
 
               </script>

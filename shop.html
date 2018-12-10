@@ -204,8 +204,8 @@
                 Tìm kiếm
               </a>
               <div class="dropdown-menu dropdown-menu-right bg-light p-2 border-0" aria-labelledby="searchbox-dropdown">
-                <form action="#" class="form-inline dropdown-item">
-                  <input class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm..." aria-label="Search" />
+                <form action="shop.html" class="form-inline dropdown-item" method="GET">
+                  <input name="q" class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm..." aria-label="Search" />
                   <button type="submit" class="btn-success" style="line-height: 0">
                     <span class=" fa fa-search"></span>
                   </button>
@@ -500,8 +500,10 @@
   <script type="text/javascript" src="js/script.slider.js"></script>
 
   <script>
-    function shopFilter(filterStr) {
-      filtedData = data.filter(exp => (filterStr == "" || filterStr == 'undefined') ? true : (exp.Category == filterStr));
+    function shopFilter(filterStr, searchStr = "") {
+      searchStr = searchStr.toLocaleLowerCase();
+      filtedData = data.filter(exp => ((filterStr == "" || filterStr == 'undefined') ? true : (exp.Category == filterStr))
+        && (exp.Category.toLocaleLowerCase().includes(searchStr) || exp.NameSP.toLocaleLowerCase().includes(searchStr)));
       loadProduct(1, filtedData);
       generatePage();
     }
@@ -510,10 +512,12 @@
       loadProduct(1, filtedData);
     }
     $(document).ready(function () {
-      var filterStr = (new URLSearchParams(window.location.search)).get('category') || "";
+      var param = new URLSearchParams(window.location.search);
+      var filterStr = param.get('category') || "";
+      var searchStr = param.get('q') || "";
       // console.log($('#categoryFilter').text());
       $('#categoryFilter').val(filterStr);
-      shopFilter(filterStr);
+      shopFilter(filterStr, searchStr);
     });
   </script>
 </body>
