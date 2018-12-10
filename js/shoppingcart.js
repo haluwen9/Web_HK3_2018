@@ -147,7 +147,8 @@ function validateNumber(e) {
     // if (e.key >= '0' && e.key <= '9') {
     //     e.target.value += e.key;
     // }
-    if (/[a-z]/.test(e.key)) {
+    console.log(e);
+    if (/^[a-zA-Z]$/.test(e.key)) {
         // console.log("prevented!");
         e.preventDefault();
     }
