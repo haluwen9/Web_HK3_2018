@@ -47,35 +47,12 @@
       margin: 0px;
       padding: 20px;
       background-color: #f4f4f4;
-    }
-
-    .content-contact {
-      float: left;
-      width: 100%;
       color: #795548;
     }
 
-    .content-conntact-left {
-      float: left;
-      width: 50%;
-    }
-
-    .content-conntact-left input[type="text"] {
-      width: 80%;
-    }
-
-    .content-conntact-left textarea {
-      width: 90%;
-      height: 150px;
-    }
-
-    .content-conntact-right {
-      float: left;
-      width: 50%;
-    }
-
-    .content-conntact-right h5 {
-      margin-bottom: 5px;
+    .content-contact h1,
+    .content-contact h5 {
+      color: #6e6a6a;
     }
   </style>
 </head>
@@ -258,230 +235,238 @@
     -->
   <div class="maincontent-area">
     <div class="container">
-      <div class="content-contact">
-        <div class="content-conntact-left">
-          <h1>Góp ý</h1>
-          <form action="">
-            <h5>Tên của bạn (bắt buộc):</h5>
-            <input type="text" name="name" /><br /><br />
-            <h5>Email (bắt buộc):</h5>
-            <input type="text" name="email" /><br /><br />
-            <h5>Tiêu đề:</h5>
-            <input type="text" name="email" /> <br /><br />
-            <h5>Nội dung:</h5>
-            <textarea></textarea><br /><br />
-            <input type="submit" value="Gửi đi" />
-          </form>
-        </div>
-        <div class="content-conntact-right">
-          <h1>Liên hệ</h1>
-          <div class="">
-            <h5>Bông Xù Store - Chuyên gấu bông cho đời sống thêm vui</h5>
-            <br />
-            <h5>Địa chỉ:</h5>
-            <p>280 An Dương Vương, Phường 4, Quận 5, TP.HCM</p>
-            <h5>ĐT:</h5>
-            <p>0935587687</p>
-
-            <h5>Email:</h5>
-            <p>chelinh123@gmail.com</p>
+      <form class="form-group" action="">
+        <div class="content-contact row">
+          <div class="col-md-6">
+            <h1>Góp ý</h1>
+            <label for="contact-name">
+              <h5>Tên của bạn (bắt buộc):</h5>
+            </label>
+            <input id="contact-name" class="form-text w-100 mb-3" type="text" name="name" />
+            <label for="contact-email">
+              <h5>Email (bắt buộc):</h5>
+            </label>
+            <input id="contact-email" class="form-text w-100 mb-3" type="text" name="email" />
+            <label for="contact-title">
+              <h5>Tiêu đề:</h5>
+            </label>
+            <input id="contact-title" class="form-text w-100 mb-3" type="text" name="title" />
+            <label for="contact-content">
+              <h5>Nội dung:</h5>
+            </label>
+            <textarea id="contact-content" class="form-text w-100 mb-3" name="content"></textarea>
+            <input class="w-100" type="submit" value="Gửi đi" />
           </div>
-          <div class="footer-social">
-            <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
-            <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
-            <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
-            <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
+          <div class="col-md-6">
+            <h1>Liên hệ</h1>
+            <div class="">
+              <h5>Bông Xù Store - Chuyên gấu bông cho đời sống thêm vui</h5>
+              <br />
+              <h5>Địa chỉ:</h5>
+              <p>280 An Dương Vương, Phường 4, Quận 5, TP.HCM</p>
+              <h5>ĐT:</h5>
+              <p>0935587687</p>
+
+              <h5>Email:</h5>
+              <p><a href="mailto:chelinh123@gmail.com">chelinh123@gmail.com</a></p>
+            </div>
+            <div class="footer-social">
+              <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
+              <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
+              <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
+              <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+      </form>
+      <!-- </div> -->
+    </div>
+    <div style="clear: left;"><br /></div>
+    <!-- End main content area -->
+    <!--
+      ----------------------------------------------------------------------------------
+    -->
+    <div class="footer-top-area">
+      <div class="zigzag-bottom"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 col-sm-6">
+            <div class="footer-about-us">
+              <h2><span>Bông Xù Store</span></h2>
+              <p>
+                Cửa hàng chúng tôi bán tất cả các loại thú bông có trên Thế
+                Giới. Chúng tôi liên kết với tất cả các công ty và doanh nghiệp
+                nổi tiếng trên toàn Thế Giới, vì vậy chất lượng thú bông của
+                chúng tôi rất tuyệt vời và đáng giá mà các bạn bỏ ra. Các bạn có
+                thể đặt làm thú nhồi bông riêng theo mẫu hình, khuôn mà các bạn
+                có, giá cả rất hợp lý, nhận, làm và giao hàng rất nhanh.
+              </p>
+              <div class="footer-social">
+                <a href="https://facebook.com" target="_blank"><i class="fa fa-facebook"></i></a>
+                <a href="https://twitter.com" target="_blank"><i class="fa fa-twitter"></i></a>
+                <a href="https://youtube.com" target="_blank"><i class="fa fa-youtube"></i></a>
+                <a href="https://linkedin.com" target="_blank"><i class="fa fa-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3 col-sm-6">
+            <div class="footer-menu">
+              <h2 class="footer-wid-title">Điều Hướng</h2>
+              <ul>
+                <li><a href="index.html">Trang chủ</a></li>
+                <li><a href="shop.html">Cửa hàng</a></li>
+                <li><a href="cart.html">Giỏ hàng</a></li>
+                <li><a href="checkout.html">Thanh toán</a></li>
+                <li><a href="contact.html">Liên hệ</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-3 col-sm-6">
+            <div class="footer-menu">
+              <h2 class="footer-wid-title">Danh Mục</h2>
+              <ul>
+                <li><a href="shop.html?category=Thú bông nhỏ" class="dropdown-item">Thú bông nhỏ</a></li>
+                <li><a href="shop.html?category=Thú bông lớn" class="dropdown-item">Thú bông lớn</a></li>
+                <li><a href="shop.html?category=Thú bông POKEMON" class="dropdown-item">Thú bông POKEMON</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-3 col-sm-6">
+            <div class="footer-newsletter">
+              <h2 class="footer-wid-title">Nhận thông báo</h2>
+              <p>
+                Nếu bạn muốn nhận thông tin mới nhất của chúng tôi thường xuyên,
+                hãy đăng ký Email ở đây nhé!
+              </p>
+              <div class="newsletter-form">
+                <form action="#">
+                  <input type="email" placeholder="Nhập Email" />
+                  <input type="submit" value="Nhận thông báo" />
+                </form>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div style="clear: left;"><br /></div>
-  <!-- End main content area -->
-  <!--
-      ----------------------------------------------------------------------------------
-    -->
-  <div class="footer-top-area">
-    <div class="zigzag-bottom"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3 col-sm-6">
-          <div class="footer-about-us">
-            <h2><span>Bông Xù Store</span></h2>
-            <p>
-              Cửa hàng chúng tôi bán tất cả các loại thú bông có trên Thế
-              Giới. Chúng tôi liên kết với tất cả các công ty và doanh nghiệp
-              nổi tiếng trên toàn Thế Giới, vì vậy chất lượng thú bông của
-              chúng tôi rất tuyệt vời và đáng giá mà các bạn bỏ ra. Các bạn có
-              thể đặt làm thú nhồi bông riêng theo mẫu hình, khuôn mà các bạn
-              có, giá cả rất hợp lý, nhận, làm và giao hàng rất nhanh.
-            </p>
-            <div class="footer-social">
-              <a href="https://facebook.com" target="_blank"><i class="fa fa-facebook"></i></a>
-              <a href="https://twitter.com" target="_blank"><i class="fa fa-twitter"></i></a>
-              <a href="https://youtube.com" target="_blank"><i class="fa fa-youtube"></i></a>
-              <a href="https://linkedin.com" target="_blank"><i class="fa fa-linkedin"></i></a>
+    <!-- End footer top area -->
+
+    <div class="footer-bottom-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="copyright">
+              <p>
+                &copy; 2015 uCommerce. All Rights Reserved.
+                <a href="http://www.freshdesignweb.com" target="_blank">freshDesignweb.com</a>
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="footer-card-icon">
+              <i class="fa fa-cc-discover"></i>
+              <i class="fa fa-cc-mastercard"></i>
+              <i class="fa fa-cc-paypal"></i> <i class="fa fa-cc-visa"></i>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+    <!-- End footer bottom area -->
 
-        <div class="col-md-3 col-sm-6">
-          <div class="footer-menu">
-            <h2 class="footer-wid-title">Điều Hướng</h2>
-            <ul>
-              <li><a href="index.html">Trang chủ</a></li>
-              <li><a href="shop.html">Cửa hàng</a></li>
-              <li><a href="cart.html">Giỏ hàng</a></li>
-              <li><a href="checkout.html">Thanh toán</a></li>
-              <li><a href="contact.html">Liên hệ</a></li>
-            </ul>
+    <div action="#" class="modal fade" role="dialog" id="login-dialog">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header" style="background: #5a88ca url('img/crossword.png') repeat;">
+            <button class="close" data-dismiss="modal">x</button>
           </div>
-        </div>
-
-        <div class="col-md-3 col-sm-6">
-          <div class="footer-menu">
-            <h2 class="footer-wid-title">Danh Mục</h2>
-            <ul>
-              <li><a href="shop.html?category=Thú bông nhỏ" class="dropdown-item">Thú bông nhỏ</a></li>
-              <li><a href="shop.html?category=Thú bông lớn" class="dropdown-item">Thú bông lớn</a></li>
-              <li><a href="shop.html?category=Thú bông POKEMON" class="dropdown-item">Thú bông POKEMON</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="col-md-3 col-sm-6">
-          <div class="footer-newsletter">
-            <h2 class="footer-wid-title">Nhận thông báo</h2>
-            <p>
-              Nếu bạn muốn nhận thông tin mới nhất của chúng tôi thường xuyên,
-              hãy đăng ký Email ở đây nhé!
-            </p>
-            <div class="newsletter-form">
-              <form action="#">
-                <input type="email" placeholder="Nhập Email" />
-                <input type="submit" value="Nhận thông báo" />
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-6 text-center social-connect my-auto">
+                <h4 class="modal-title">Kết nối với</h4>
+                <ul>
+                  <li class="fb-login">
+                    <a href="https://facebook.com" class="btn">
+                      <span class="fa fa-2x fa-facebook-square"></span> facebook
+                    </a>
+                  </li>
+                  <li class="gg-login">
+                    <a href="https://google.com" class="btn">
+                      <span class="fa fa-2x fa-google-plus-square"></span>
+                      Google
+                    </a>
+                  </li>
+                  <li class="twit-login">
+                    <a href="https://twitter.com" class="btn">
+                      <span class="fa fa-2x fa-twitter-square"></span> Twitter
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <form action="" class="col-md-6 ml-auto text-center" id="login-form">
+                <h4 class="modal-title">Đăng nhập</h4>
+                <label for="loginID">Tên đăng nhập</label>
+                <input type="text" name="loginID" placeholder="Tên đăng nhập..." />
+                <label for="loginPW">Mật khẩu</label>
+                <input type="password" name="loginPW" placeholder="Mật khẩu..." />
+                <label>
+                  Chưa có tài khoản?
+                  <a href="#" class="openReg" onclick="switchForm('register')">Đăng ký</a>
+                </label>
+                <label>
+                  Quên mật khẩu?
+                  <a href="#" class="openForgetPW">Tìm mật khẩu</a>
+                </label>
+                <button type="submit" class="btn">Đăng nhập</button>
+              </form>
+              <form action="" class="col-md-6 ml-auto text-center" id="register-form" style="display: none;">
+                <h5 class="modal-title">Đăng ký</h5>
+                <label for="regID">Tên đăng nhập</label>
+                <input type="text" name="regID" placeholder="Tên đăng nhập..." />
+                <label for="regPW">Mật khẩu</label>
+                <input type="password" name="regPW" placeholder="Mật khẩu..." />
+                <label for="regMail">Địa chỉ Email</label>
+                <input type="email" name="regMail" placeholder="abc@xyz.com" />
+                <label>Đã có tài khoản?
+                  <a href="#" onclick="switchForm('login')">Đăng nhập</a></label>
+                <button type="submit" class="btn">Đăng ký</button>
               </form>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- End footer top area -->
-
-  <div class="footer-bottom-area">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8">
-          <div class="copyright">
-            <p>
-              &copy; 2015 uCommerce. All Rights Reserved.
-              <a href="http://www.freshdesignweb.com" target="_blank">freshDesignweb.com</a>
-            </p>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="footer-card-icon">
-            <i class="fa fa-cc-discover"></i>
-            <i class="fa fa-cc-mastercard"></i>
-            <i class="fa fa-cc-paypal"></i> <i class="fa fa-cc-visa"></i>
+          <div class="modal-footer">
+            <span style="margin: 0 auto;font-size: 13px; color: #8f8686;">Bông Xù Store &copy; 2018</span>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <!-- End footer bottom area -->
 
-  <div action="#" class="modal fade" role="dialog" id="login-dialog">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header" style="background: #5a88ca url('img/crossword.png') repeat;">
-          <button class="close" data-dismiss="modal">x</button>
-        </div>
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-md-6 text-center social-connect my-auto">
-              <h4 class="modal-title">Kết nối với</h4>
-              <ul>
-                <li class="fb-login">
-                  <a href="https://facebook.com" class="btn">
-                    <span class="fa fa-2x fa-facebook-square"></span> facebook
-                  </a>
-                </li>
-                <li class="gg-login">
-                  <a href="https://google.com" class="btn">
-                    <span class="fa fa-2x fa-google-plus-square"></span>
-                    Google
-                  </a>
-                </li>
-                <li class="twit-login">
-                  <a href="https://twitter.com" class="btn">
-                    <span class="fa fa-2x fa-twitter-square"></span> Twitter
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <form action="" class="col-md-6 ml-auto text-center" id="login-form">
-              <h4 class="modal-title">Đăng nhập</h4>
-              <label for="loginID">Tên đăng nhập</label>
-              <input type="text" name="loginID" placeholder="Tên đăng nhập..." />
-              <label for="loginPW">Mật khẩu</label>
-              <input type="password" name="loginPW" placeholder="Mật khẩu..." />
-              <label>
-                Chưa có tài khoản?
-                <a href="#" class="openReg" onclick="switchForm('register')">Đăng ký</a>
-              </label>
-              <label>
-                Quên mật khẩu?
-                <a href="#" class="openForgetPW">Tìm mật khẩu</a>
-              </label>
-              <button type="submit" class="btn">Đăng nhập</button>
-            </form>
-            <form action="" class="col-md-6 ml-auto text-center" id="register-form" style="display: none;">
-              <h5 class="modal-title">Đăng ký</h5>
-              <label for="regID">Tên đăng nhập</label>
-              <input type="text" name="regID" placeholder="Tên đăng nhập..." />
-              <label for="regPW">Mật khẩu</label>
-              <input type="password" name="regPW" placeholder="Mật khẩu..." />
-              <label for="regMail">Địa chỉ Email</label>
-              <input type="email" name="regMail" placeholder="abc@xyz.com" />
-              <label>Đã có tài khoản?
-                <a href="#" onclick="switchForm('login')">Đăng nhập</a></label>
-              <button type="submit" class="btn">Đăng ký</button>
-            </form>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <span style="margin: 0 auto;font-size: 13px; color: #8f8686;">Bông Xù Store &copy; 2018</span>
-        </div>
-      </div>
-    </div>
-  </div>
+    <!-- Latest jQuery form server -->
+    <script src="js/jquery.min.js"></script>
 
-  <!-- Latest jQuery form server -->
-  <script src="js/jquery.min.js"></script>
-
-  <!-- Bootstrap JS form CDN -->
-  <!--
+    <!-- Bootstrap JS form CDN -->
+    <!--
       <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     -->
-  <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
 
-  <!-- jQuery sticky menu -->
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.sticky.js"></script>
+    <!-- jQuery sticky menu -->
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
 
-  <!-- jQuery easing -->
-  <script src="js/jquery.easing.1.3.min.js"></script>
+    <!-- jQuery easing -->
+    <script src="js/jquery.easing.1.3.min.js"></script>
 
-  <!-- Main Script -->
-  <script src="js/main.js"></script>
-  <script src="js/shoppingcart.js"></script>
+    <!-- Main Script -->
+    <script src="js/main.js"></script>
+    <script src="js/shoppingcart.js"></script>
 
-  <!-- Slider -->
-  <script type="text/javascript" src="js/bxslider.min.js"></script>
-  <script type="text/javascript" src="js/script.slider.js"></script>
+    <!-- Slider -->
+    <script type="text/javascript" src="js/bxslider.min.js"></script>
+    <script type="text/javascript" src="js/script.slider.js"></script>
 </body>
 
 </html>
