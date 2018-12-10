@@ -146,7 +146,7 @@ function modifyQty(id, e) {
     if (e.target.value == "" || e.target.value == 0) {
         e.target.value = listCart[id].amount;
     } else {
-        listCart[id].amount = e.target.value;
+        listCart[id].amount = parseInt(e.target.value);
         localStorage.setItem('cart', JSON.stringify(listCart));
         fillCart();
         displayCart();
