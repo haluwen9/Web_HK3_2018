@@ -82,7 +82,7 @@ function displayCart() {
             <td class="product-quantity">\
                 <div class="quantity buttons_added">\
                     <input type="button" class="minus" value="-" onclick="decQty(' + i + ')">\
-                    <input type="text" size="1" class="input-text qty text" title="Qty" value="' + listCart[i].amount + '" onkeypress="function() {validateNumber(event); modifyQty('+i+',event);}" onchange="modifyQty( ' + i + ', event)"  style="padding: 5px" >\
+                    <input type="text" size="1" class="input-text qty text" title="Qty" value="' + listCart[i].amount + '" onkeypress="validateNumber(event)" onchange="modifyQty( ' + i + ', event)"  style="padding: 5px" >\
                     <input type="button" class="plus" value="+" onclick="incQty(' + i + ')">\
                 </div>\
             </td>\
@@ -144,9 +144,12 @@ function modifyQty(id, e) {
 }
 
 function validateNumber(e) {
-    e.preventDefault();
-    if (e.key >= '0' && e.key <= '9') {
-        e.target.value += e.key;
+    // if (e.key >= '0' && e.key <= '9') {
+    //     e.target.value += e.key;
+    // }
+    if (/[a-z]/.test(e.key)) {
+        // console.log("prevented!");
+        e.preventDefault();
     }
 }
 
