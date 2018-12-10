@@ -136,17 +136,15 @@ function incQty(id) {
 function decQty(id) {
     if (listCart[id].amount > 1) {
         listCart[id].amount -= 1;
-        localStorage.setItem('cart', JSON.stringify(listCart));
-        fillCart();
-        displayCart();
-    } else {
-        removeItem(id);
     }
+    localStorage.setItem('cart', JSON.stringify(listCart));
+    fillCart();
+    displayCart();
 }
 
 function modifyQty(id, e) {
     if (e.target.value == "" || e.target.value == 0) {
-        removeItem(id);
+        e.target.value = listCart[id].amount;
     } else {
         listCart[id].amount = e.target.value;
         localStorage.setItem('cart', JSON.stringify(listCart));
