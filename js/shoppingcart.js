@@ -1,4 +1,3 @@
-
 $(window).scroll(function () {
     var cart = $('.shopping-item');
 
@@ -48,14 +47,14 @@ function addToCart(id, amount = 1) {
     var has = false;
     for (var i = 0; i < listCart.length; i++) {
         if (listCart[i].Id === id) {
-            console.log(`ID: ${id} -- listCart ${listCart[i].Id}`)
+            // console.log(`ID: ${id} -- listCart ${listCart[i].Id}`)
             item = listCart[i];
             item.amount += parseInt(amount);
             has = true;
             break;
         }
     }
-    console.log(item);
+    // console.log(item);
     item = item || getItemById(id);
     item.amount = item.amount || parseInt(amount);
     if (!has) listCart.push(item);
@@ -83,15 +82,14 @@ function displayCart() {
             <td class="product-quantity">\
                 <div class="quantity buttons_added">\
                     <input type="button" class="minus" value="-" onclick="decQty(' + i + ')">\
-                    <input type="text" size="1" class="input-text qty text" title="Qty" value="' + listCart[i].amount + '" style="padding: 5px" >\
+                    <input type="text" size="1" class="input-text qty text" title="Qty" value="' + listCart[i].amount + '" onkeypress="function() {validateNumber(event); modifyQty('+i+',event);}" onchange="modifyQty( ' + i + ', event)"  style="padding: 5px" >\
                     <input type="button" class="plus" value="+" onclick="incQty(' + i + ')">\
                 </div>\
             </td>\
             <td class="product-subtotal"><span class="amount">' + listCart[i].SaleSP * listCart[i].amount + '<sup>đ</sup> </span></td>\
             </tr>';
         }
-    }
-    else {
+    } else {
         txt = '\
         <tr class="cart_item">\
             <td colspan="6">Đơn hàng trống. <a href="shop.html">Mua hàng ngay <i class="fa fa-shopping-cart"></i></a></td>\
@@ -128,12 +126,27 @@ function incQty(id) {
 function decQty(id) {
     if (listCart[id].amount > 1) {
         listCart[id].amount -= 1;
+    }
+    localStorage.setItem('cart', JSON.stringify(listCart));
+    fillCart();
+    displayCart();
+}
+
+function modifyQty(id, e) {
+    if (e.target.value == "" || e.target.value == 0) {
+        e.target.value = listCart[id].amount;
+    } else {
+        listCart[id].amount = parseInt(e.target.value);
         localStorage.setItem('cart', JSON.stringify(listCart));
         fillCart();
         displayCart();
     }
-    else {
-        removeItem(id);
+}
+
+function validateNumber(e) {
+    e.preventDefault();
+    if (e.key >= '0' && e.key <= '9') {
+        e.target.value += e.key;
     }
 }
 
@@ -143,11 +156,10 @@ function displayCheckout() {
         for (var i = 0; i < listCart.length; ++i) {
             txt += '<tr class="cart_item">\
                         <td class="product-name"> ' + listCart[i].NameSP + ' <strong class="product-quantity">× ' + listCart[i].amount + '</strong> </td>\
-                        <td class="product-total"><span class="amount">'+ listCart[i].SaleSP * listCart[i].amount + '<sup>đ</sup> </span> </td>\
+                        <td class="product-total"><span class="amount">' + listCart[i].SaleSP * listCart[i].amount + '<sup>đ</sup> </span> </td>\
                     </tr>'
         }
-    }
-    else {
+    } else {
         txt = '\
         <tr class="cart_item">\
             <td colspan="2">Đơn hàng trống<a href="shop.html">Mua hàng ngay <i class="fa fa-shopping-cart"></i></a></td>\
