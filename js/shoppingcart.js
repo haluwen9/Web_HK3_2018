@@ -45,8 +45,11 @@ function itemDrag(ev) {
 function addToCart(id, amount = 1) {
     var item;
     var has = false;
+    console.log(listCart.length);
     for (var i = 0; i < listCart.length; i++) {
-        if (listCart[i].Id === id) {
+        console.log(listCart[i].Id == id);
+
+        if (listCart[i].Id == id) {
             // console.log(`ID: ${id} -- listCart ${listCart[i].Id}`)
             item = listCart[i];
             item.amount += parseInt(amount);

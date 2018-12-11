@@ -905,7 +905,7 @@ button[type='submit']:hover,
   content: '/';
   position: absolute;
   right: -20px;
-  
+  top: -3px;
 }
 
 .product-breadcroumb > a:last-child::before {
