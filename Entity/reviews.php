@@ -2,30 +2,30 @@
 	
 class reviews
 {
-	private $user_id;
-	private $product_id;
+	private $userId;
+	private $productId;
 	private $content;
-	private $posted_time;
+	private $postedTime;
 	
 	
-// user_id
-	public function Get_user_id()
+// userId
+	public function Get_userId()
 	{
-		return $this->user_id;
+		return $this->userId;
 	}
-	public function Set_user_id($_user_id)
+	public function Set_userId($_userId)
 	{
-		$this->user_id = $_user_id;
+		$this->userId = $_userId;
 	}
 
-// product_id
-	public function Get_product_id()
+// productId
+	public function Get_productId()
 	{
-		return $this->product_id;
+		return $this->productId;
 	}
-	public function Set_product_id($_product_id)
+	public function Set_productId($_productId)
 	{
-		$this->product_id = $_product_id;
+		$this->productId = $_productId;
 	}
 
 // content
@@ -38,14 +38,14 @@ class reviews
 		$this->content = $_content;
 	}
 
-// posted_time
-	public function Get_posted_time()
+// postedTime
+	public function Get_postedTime()
 	{
-		return $this->posted_time;
+		return $this->postedTime;
 	}
-	public function Set_posted_time($_posted_time)
+	public function Set_postedTime($_postedTime)
 	{
-		$this->posted_time = $_posted_time;
+		$this->postedTime = $_postedTime;
 	}
 
 }

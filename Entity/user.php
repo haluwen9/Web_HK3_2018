@@ -9,7 +9,7 @@ class User
 	private $country;
 	private $state;
 	private $province;
-	private $street_address;
+	private $streetAddress;
 	private $postcode;
 	private $tel;
 	private $note;
@@ -87,14 +87,14 @@ class User
 		$this->province = $_province;
 	}
 
-// street_address
-	public function Get_street_address()
+// streetAddress
+	public function Get_streetAddress()
 	{
-		return $this->street_address;
+		return $this->streetAddress;
 	}
-	public function Set_street_address($_street_address)
+	public function Set_streetAddress($_streetAddress)
 	{
-		$this->street_address = $_street_address;
+		$this->streetAddress = $_streetAddress;
 	}
 
 // postcode

@@ -2,28 +2,28 @@
 
 class order_content
 {
-	private $order_id;
-	private $product_id;
+	private $orderId;
+	private $productId;
 	private $amount;
 
-// order_id
-	public function Get_order_id()
+// orderId
+	public function Get_orderId()
 	{
-		return $this->order_id;
+		return $this->orderId;
 	}
-	public function Set_order_id($_order_id)
+	public function Set_orderId($_orderId)
 	{
-		$this->order_id = $_order_id;
+		$this->orderId = $_orderId;
 	}
 
-// product_id
-	public function Get_product_id()
+// productId
+	public function Get_productId()
 	{
-		return $this->product_id;
+		return $this->productId;
 	}
-	public function Set_product_id($_product_id)
+	public function Set_productId($_productId)
 	{
-		$this->product_id = $_product_id;
+		$this->productId = $_productId;
 	}
 
 // amount

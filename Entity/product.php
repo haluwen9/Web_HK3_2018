@@ -7,7 +7,7 @@ class Product
 	private $category;
 	private $price;
 	private $sale;
-	private $image_link;
+	private $imageLink;
 	private $tags;
 
 // id
@@ -60,14 +60,14 @@ class Product
 		$this->sale = $_sale;
 	}
 
-// image_link
-	public function Get_image_link()
+// imageLink
+	public function Get_imageLink()
 	{
-		return $this->image_link;
+		return $this->imageLink;
 	}
-	public function Set_image_link($_image_link)
+	public function Set_imageLink($_imageLink)
 	{
-		$this->image_link = $_image_link;
+		$this->imageLink = $_imageLink;
 	}
 
 // tags

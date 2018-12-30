@@ -3,9 +3,9 @@
 class Orders
 {
 	private $id;
-	private $user_id;
+	private $userId;
 	private $diffshipaddr;
-	private $total_price;
+	private $totalPrice;
 
 // id
 	public function Get_id()
@@ -17,14 +17,14 @@ class Orders
 		$this->id = $_id;
 	}
 
-// user_id
-	public function Get_user_id()
+// userId
+	public function Get_userId()
 	{
-		return $this->user_id;
+		return $this->userId;
 	}
-	public function Set_user_id($_user_id)
+	public function Set_userId($_userId)
 	{
-		$this->user_id = $_user_id;
+		$this->userId = $_userId;
 	}
 
 // diffshipaddr
@@ -37,14 +37,14 @@ class Orders
 		$this->diffshipaddr = $_diffshipaddr;
 	}
 
-// total_price
-	public function Get_total_price()
+// totalPrice
+	public function Get_totalPrice()
 	{
-		return $this->total_price;
+		return $this->totalPrice;
 	}
-	public function Set_total_price($_total_price)
+	public function Set_totalPrice($_totalPrice)
 	{
-		$this->total_price = $_total_price;
+		$this->totalPrice = $_totalPrice;
 	}
 
 }

@@ -2,17 +2,17 @@
 
 class Storage
 {
-	private $product_id;
+	private $productId;
 	private $amount;
 	
-// product_id
-	public function Get_product_id()
+// productId
+	public function Get_productId()
 	{
-		return $this->product_id;
+		return $this->productId;
 	}
-	public function Set_product_id($_product_id)
+	public function Set_productId($_productId)
 	{
-		$this->product_id = $_product_id;
+		$this->productId = $_productId;
 	}
 	
 // amount
