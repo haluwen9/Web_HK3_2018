@@ -2,8 +2,8 @@
 
 class Storage
 {
-	public $product_id;
-	public $amount;
+	private $product_id;
+	private $amount;
 	
 // product_id
 	public function Get_product_id()
