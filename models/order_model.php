@@ -53,10 +53,13 @@ class orderModel
 	}
 
 	// insert order 
-	public function addOrder($id, $or)
+	public function addOrder($or)
 	{
-		$set_set = '(USER_ID, DIFFSHIPADDR, TOTAL_PRICE) ' .
-				'VALUE ($or.getUserId(), $or.getdiffShipAddr(), $or.getTotalPrice()) ';
+		$set_set = '(ID, USER_ID, DIFFSHIPADDR, TOTAL_PRICE) ' .
+				'VALUE ($or.getID(),
+				$or.getUserId(), 
+				$or.getdiffShipAddr(), 
+				$or.getTotalPrice()) ';
 		$sql = 'INSERT INTO orders'. $set_set;
 		mysql_select_db('db_bongxustore');
 		$retval = mysql_query($sql, $conn);
@@ -76,6 +79,9 @@ class orderModel
 		$sql = 'SELECT * FROM orders WHERE USER_ID = $user';
 		mysql_select_db('db_bongxustore');
 		$retval = mysql_query($sql, $conn);
+
+		$order = mysql_fetch_object($retval);
+		return $order;
 	}
 
 	// get by id
@@ -84,6 +90,9 @@ class orderModel
 		$sql = 'SELECT * FROM orders WHERE ID = $id';
 		mysql_select_db('db_bongxustore');
 		$retval = mysql_query($sql, $conn);
+
+		$order = mysql_fetch_object($retval);
+		return $order;
 	}
 
 }
