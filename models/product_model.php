@@ -20,7 +20,7 @@ class productModel
 {
 	private $product;
 	private $productList;
-	private $sl = 0;
+	private $sl;
 
 	// list
 	public function getList()
@@ -34,18 +34,20 @@ class productModel
 			die('Khong co du lieu' . mysql_error());
 		}
 
+		$this->sl = 0;
 		while ($row = mysql_fetch_array($retval))
 		{
-			$productList[$sl] = $row;
-			$sl++;
+			$this->productList[$this->sl] = $row;
+			$this->sl++;
 		}
 
-		return $productList;
+		return $this->productList;
 	}
 
 	// update pro 
-	public function updateProduct($id, $pro)
+	public function updateProduct($id)
 	{
+		$pro = getProductById($id);
 		$set_set = '
 			SET NAME = $pro.getName(),
 				CATEGORY = $pro.getCategory(),
@@ -84,8 +86,8 @@ class productModel
 		mysql_select_db('db_bongxustore');
 		$retval = mysql_query($sql, $conn);
 
-		$product = mysql_fetch_object($retval);
-		return $product;
+		$this->product = mysql_fetch_object($retval);
+		return $this->product;
 	}
 
 	// get by id
@@ -95,8 +97,8 @@ class productModel
 		mysql_select_db('db_bongxustore');
 		$retval = mysql_query($sql, $conn);
 
-		$product = mysql_fetch_object($retval);
-		return $product;
+		$this->product = mysql_fetch_object($retval);
+		return $this->product;
 	}
 
 	// get category

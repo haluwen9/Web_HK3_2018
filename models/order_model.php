@@ -17,7 +17,7 @@ class orderModel
 {
 	private $order;
 	private $orderList;
-	private $sl = 0;
+	private $sl;
 
 	// list
 	public function getList()
@@ -31,18 +31,20 @@ class orderModel
 			die('Khong co du lieu' . mysql_error());
 		}
 
+		$this->sl = 0;
 		while ($row = mysql_fetch_array($retval))
 		{
-			$orderList[$sl] = $row;
-			$sl++;
+			$this->orderList[$this->sl] = $row;
+			$this->sl++;
 		}
 
-		return $orderList;
+		return $this->orderList;
 	}
 
 	// update order 
-	public function updateOrder($id, $or)
+	public function updateOrder($id)
 	{
+		$or = getOrderById($id);
 		$set_set = '
 			SET USER_ID = $or.getUserId(),
 				DIFFSHIPADDR = $or.getdiffShipAddr(),
@@ -80,8 +82,8 @@ class orderModel
 		mysql_select_db('db_bongxustore');
 		$retval = mysql_query($sql, $conn);
 
-		$order = mysql_fetch_object($retval);
-		return $order;
+		$this->order = mysql_fetch_object($retval);
+		return $this->order;
 	}
 
 	// get by id
@@ -91,8 +93,8 @@ class orderModel
 		mysql_select_db('db_bongxustore');
 		$retval = mysql_query($sql, $conn);
 
-		$order = mysql_fetch_object($retval);
-		return $order;
+		$this->order = mysql_fetch_object($retval);
+		return $this->order;
 	}
 
 }
