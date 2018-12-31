@@ -4,9 +4,7 @@
 ## Nội dung và yêu cầu
 > Sử dụng Template Ustora để xây dựng một trang web bán hàng, cụ thể là bán gấu bông.
 
-## Quá trình (Giữa kỳ)
-### Hoàn thành
-
+## Giữa kỳ
 ### To do
 - [x] Cập nhật Bootstrap 3 sang Bootstrap 4 - **Tâm**
 - [x] Chuẩn bị hình ảnh và dữ liệu sản phẩm **Ân+Nguyên+Huấn+Tâm**
@@ -33,6 +31,94 @@
 - Bootstrap 4
 - Flags Icon Css (http://flag-icon-css.lip.is/)
   
+## Cuối kỳ
+### To do
+- ### Models
+  - [ ] **Products**
+    #### General
+    - [ ] GetAllProducts
+    - [ ] GetCategorys
+    - [ ] GetProductsByCategory
+    - [ ] GetProductById
+    - [ ] AddProductReview
+    #### Admin
+    - [ ] AddProduct
+    - [ ] UpdateProduct
+    - [ ] DeleteProduct
+  - [ ] **Orders**
+    #### General
+    - [ ] GetOrdersByUser
+    - [ ] GetOrderById
+    - [ ] AddOrder
+    - [ ] DeleteOrder (Chỉ hóa đơn chưa thanh toán)
+    #### Admin
+    - [ ] GetAllOrders
+    - [ ] UpdateOrderStatus
+    - [ ] DeleteOrder
+  - [ ] **Users**
+    #### General
+    - [ ] Authentication (Login)
+    - [ ] AddUser (Register)
+    - [ ] GetUserInfo
+    - [ ] ModifyUserInfo
+    - [ ] DeleteUser
+    #### Admin
+    - [ ] GetAllUsers
+- ### Views
+  - [ ] Update View to PHP
+  - [ ] Layout Admin Page
+- ### Controllers
+  - [ ] Trang chủ
+  - [ ] Cửa hàng
+  - [ ] Sản phẩm
+  - [ ] Giỏ hàng
+  - [ ] Thanh toán
+  - [ ] Thông tin người dùng
+
+### Phân công cuối kỳ
+<table>
+  <tr>
+    <th><b>Người thực hiện</b></th>
+    <th><b>Công việc</b></th>
+  </tr>
+  <tr>
+    <td>Hồ Khả Việt Huấn</td>
+    <td>
+      <ul>
+        <li>Công việc 1</li>
+        <li>Công việc 2</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Nguyễn Thiên Ân</td>
+    <td>
+      <ul>
+        <li>Công việc 1</li>
+        <li>Công việc 2</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Vương Lê Minh Nguyên</td>
+    <td>
+      <ul>
+        <li>Công việc 1</li>
+        <li>Công việc 2</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Lương Công Tâm</td>
+    <td>
+      <ul>
+        <li>Công việc 1</li>
+        <li>Công việc 2</li>
+      </ul>
+    </td>
+  </tr>
+</table>
+
 ## Danh sách thành viên
 1. **Hồ Khả Việt Huấn : 43.01.104.058** - Nhóm trưởng
 2. **Nguyễn Thiên Ân : 43.01.104.003**
