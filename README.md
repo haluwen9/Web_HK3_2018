@@ -4,9 +4,7 @@
 ## Nội dung và yêu cầu
 > Sử dụng Template Ustora để xây dựng một trang web bán hàng, cụ thể là bán gấu bông.
 
-## Quá trình (Giữa kỳ)
-### Hoàn thành
-
+## Giữa kỳ
 ### To do
 - [x] Cập nhật Bootstrap 3 sang Bootstrap 4 - **Tâm**
 - [x] Chuẩn bị hình ảnh và dữ liệu sản phẩm **Ân+Nguyên+Huấn+Tâm**
@@ -33,6 +31,58 @@
 - Bootstrap 4
 - Flags Icon Css (http://flag-icon-css.lip.is/)
   
+## Cuối kỳ
+### To do
+- ### Models
+  - [ ] **__Products__*
+    #### General
+    - [ ] GetAllProducts
+    - [ ] GetCategorys
+    - [ ] GetProductsByCategory
+    - [ ] GetProductById
+    - [ ] AddProductReview
+    #### Admin
+    - [ ] AddProduct
+    - [ ] UpdateProduct
+    - [ ] DeleteProduct
+  - [ ] **__Orders__**
+    #### General
+    - [ ] GetOrdersByUser
+    - [ ] GetOrderById
+    - [ ] AddOrder
+    - [ ] DeleteOrder (Chỉ hóa đơn chưa thanh toán)
+    #### Admin
+    - [ ] GetAllOrders
+    - [ ] UpdateOrderStatus
+    - [ ] DeleteOrder
+  - [ ] **__Users__**
+    #### General
+    - [ ] Authentication (Login)
+    - [ ] AddUser (Register)
+    - [ ] GetUserInfo
+    - [ ] ModifyUserInfo
+    - [ ] DeleteUser
+    #### Admin
+    - [ ] GetAllUsers
+- ### Views
+  - [ ] Update View to PHP
+  - [ ] Layout Admin Page
+- ### Controllers
+  - [ ] Trang chủ
+  - [ ] Cửa hàng
+  - [ ] Sản phẩm
+  - [ ] Giỏ hàng
+  - [ ] Thanh toán
+  - [ ] Thông tin người dùng
+
+### Phân công cuối kỳ
+<b>Người thực hiện</b>|<b>Công việc</b>
+:----|:---
+Hồ Khả Việt Huấn| - Phá code xong khóc <br> - Khóc xong phá code <br> - Đây chỉ là ví dụ, mỗi người tự cập nhật, mỗi task cách nhau bởi \<br>
+Nguyễn Thiên Ân|
+Vương Lê Minh Nguyên|
+Lương Công Tâm|
+
 ## Danh sách thành viên
 1. **Hồ Khả Việt Huấn : 43.01.104.058** - Nhóm trưởng
 2. **Nguyễn Thiên Ân : 43.01.104.003**
