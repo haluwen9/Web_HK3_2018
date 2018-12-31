@@ -34,7 +34,7 @@
 ## Cuối kỳ
 ### To do
 - ### Models
-  - [ ] **__Products__*
+  - [ ] **Products**
     #### General
     - [ ] GetAllProducts
     - [ ] GetCategorys
@@ -45,7 +45,7 @@
     - [ ] AddProduct
     - [ ] UpdateProduct
     - [ ] DeleteProduct
-  - [ ] **__Orders__**
+  - [ ] **Orders**
     #### General
     - [ ] GetOrdersByUser
     - [ ] GetOrderById
@@ -55,7 +55,7 @@
     - [ ] GetAllOrders
     - [ ] UpdateOrderStatus
     - [ ] DeleteOrder
-  - [ ] **__Users__**
+  - [ ] **Users**
     #### General
     - [ ] Authentication (Login)
     - [ ] AddUser (Register)
