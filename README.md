@@ -36,34 +36,34 @@
 - ### Models
   - [ ] **Products**
     #### General
-    - [ ] GetAllProducts
+    - [x] GetAllProducts
     - [ ] GetCategorys
-    - [ ] GetProductsByCategory
-    - [ ] GetProductById
+    - [x] GetProductsByCategory
+    - [x] GetProductById
     - [ ] AddProductReview
     #### Admin
-    - [ ] AddProduct
-    - [ ] UpdateProduct
-    - [ ] DeleteProduct
+    - [x] AddProduct
+    - [x] UpdateProduct
+    - [x] DeleteProduct
   - [ ] **Orders**
     #### General
-    - [ ] GetOrdersByUser
-    - [ ] GetOrderById
-    - [ ] AddOrder
+    - [x] GetOrdersByUser
+    - [x] GetOrderById
+    - [x] AddOrder
     - [ ] DeleteOrder (Chỉ hóa đơn chưa thanh toán)
     #### Admin
-    - [ ] GetAllOrders
-    - [ ] UpdateOrderStatus
-    - [ ] DeleteOrder
+    - [x] GetAllOrders
+    - [x] UpdateOrderStatus
+    - [x] DeleteOrder
   - [ ] **Users**
     #### General
     - [ ] Authentication (Login)
-    - [ ] AddUser (Register)
-    - [ ] GetUserInfo
-    - [ ] ModifyUserInfo
-    - [ ] DeleteUser
+    - [x] AddUser (Register)
+    - [x] GetUserInfo
+    - [x] ModifyUserInfo
+    - [x] DeleteUser
     #### Admin
-    - [ ] GetAllUsers
+    - [x] GetAllUsers
 - ### Views
   - [ ] Update View to PHP
   - [ ] Layout Admin Page
