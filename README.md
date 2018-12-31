@@ -76,12 +76,12 @@
   - [ ] Thông tin người dùng
 
 ### Phân công cuối kỳ
-<b>Người thực hiện</b>|<b>Công việc</b>
-:----|:---
-Hồ Khả Việt Huấn| - Phá code xong khóc <br> - Khóc xong phá code <br> - Đây chỉ là ví dụ, mỗi người tự cập nhật, mỗi task cách nhau bởi \<br>
-Nguyễn Thiên Ân|
-Vương Lê Minh Nguyên|
-Lương Công Tâm|
+|<b>Người thực hiện</b>|<b>Công việc</b>|
+|:----|:---|
+|Hồ Khả Việt Huấn| - Phá code xong khóc <br> - Khóc xong phá code <br> - Đây chỉ là ví dụ, mỗi người tự cập nhật, mỗi task cách nhau bởi \<br>|
+|Nguyễn Thiên Ân||
+|Vương Lê Minh Nguyên||
+|Lương Công Tâm||
 
 ## Danh sách thành viên
 1. **Hồ Khả Việt Huấn : 43.01.104.058** - Nhóm trưởng
