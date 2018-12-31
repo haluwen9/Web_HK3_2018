@@ -1,5 +1,5 @@
 <?php
-include "entities/order.php";
+include_once "entities/product.php";
 
 $servername = "localhost";
 $database = "db_bongxustore";
