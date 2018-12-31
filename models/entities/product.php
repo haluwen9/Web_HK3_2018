@@ -115,7 +115,26 @@ class Product
 		}
 		return false;
 	}
-
+	
+// rating
+	public function getRating()
+	{
+		return $this->rating;
+	}
+	public function setRating($rating)
+	{
+		$this->rating = $rating;
+	}
+	
+// amount
+	public function getAmount()
+	{
+		return $this->amount;
+	}
+	public function setAmount($amount)
+	{
+		$this->amount = $amount;
+	}
 }
 
 ?>
