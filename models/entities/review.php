@@ -6,13 +6,15 @@ class Review
 	private $productId;
 	private $content;
 	private $postedTime;
+	private $rating;
 	
-	public function __construct($UserId, $ProductId, $Content, $PostedTime)
+	public function __construct($UserId, $ProductId, $Content, $PostedTime, $Rating)
 	{
 		$this->userId = $UserId;
 		$this->productId = $ProductId;
 		$this->content = $Content;
 		$this->postedTime = $PostedTime;
+		$this->rating = $Rating;
 	}
 	
 // userId
@@ -55,6 +57,15 @@ class Review
 		$this->postedTime = $_postedTime;
 	}
 
+// rating
+	public function getRating()
+	{
+		return $this->rating;
+	}
+	public function setRating($Rating)
+	{
+		$this->rating = $Rating;
+	}
 }
 
 ?>

@@ -14,6 +14,9 @@
       $dbname = $setting["databasename"];
 
       $db = new mysqli($host, $username, $password, $dbname, $port);
+      if ($db->connect_error) {
+        die("Lỗi kết nối cơ sở dữ liệu! ". $db->connect_error);
+      }
     }
 
     // Constructor function with parameter [string $filename]

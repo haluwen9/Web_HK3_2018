@@ -10,8 +10,9 @@ class Order
 	private $totalPrice;
 	private $shippingInfo;
 	private $content; // array of (product => amount)
+	private $successState;
 
-	public function __construct($Id, $UserId, $DiffShipAddr, $TotalPrice,  $ShippingInfo, $Content = array())
+	public function __construct($Id, $UserId, $DiffShipAddr, $TotalPrice,  $ShippingInfo, $Content = array(), $SuccessState = FALSE)
 	{
 		$this->id = $Id;
 		$this->userId = $UserId;
@@ -19,6 +20,7 @@ class Order
 		$this->totalPrice = $TotalPrice;
 		$this->shippingInfo = $ShippingInfo;
 		$this->content = $content;
+		$this->successState = $SuccessState;
 	}
 
 // id
@@ -100,5 +102,15 @@ class Order
 	{
 		$this->shippingInfo = $ShippingInfo;
 	}
+
+// successState
+	public function getSuccessState()
+	{
+		return $this->successState;
+	}
+	public function setSuccessState($successState)
+	{
+		$this->successState = $successState;
+}
 }
 ?>

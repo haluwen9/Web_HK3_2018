@@ -1,38 +1,30 @@
 <?php
-include "entities/order.php";
+include_once("entities/order.php");
+include_once("../config/db.php")
 
-$servername = "localhost";
-$database = "db_bongxustore";
-$username = "root";
-$password = "";
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $database);
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-echo "Connected successfully";
-
-class orderModel
+class orderModel extends DBConnection
 {
 	private $order;
 	private $orderList;
 	private $sl;
 
+	public function __construct() {
+		parent::__construct();
+	}
+
 	// list
 	public function getList()
 	{
 		$sql = 'SELECT * FROM orders';
-		mysql_select_db('db_bongxustore');
-		$retval = mysql_query($sql, $conn);
+		$result = runQuery($sql);
 
-		if (! $retval)
+		if ($result->num_rows == 0)
 		{
-			die('Khong co du lieu' . mysql_error());
+			die('Không có dữ liệu!' . mysql_error());
 		}
 
 		$this->sl = 0;
-		while ($row = mysql_fetch_array($retval))
+		while ($row = $result->fetch_assoc())
 		{
 			$this->orderList[$this->sl] = $row;
 			$this->sl++;
@@ -47,8 +39,8 @@ class orderModel
 		$or = getOrderById($id);
 		$set_set = '
 			SET USER_ID = $or.getUserId(),
-				DIFFSHIPADDR = $or.getdiffShipAddr(),
-				TOTAL_PRICE = $or.getTotalPrice() ';
+			DIFFSHIPADDR = $or.getdiffShipAddr(),
+			TOTAL_PRICE = $or.getTotalPrice() ';
 		$sql = 'UPDATE orders'. $set_set . 'WHERE ID = $id';
 		mysql_select_db('db_bongxustore');
 		$retval = mysql_query($sql, $conn);

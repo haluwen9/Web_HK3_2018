@@ -9,12 +9,13 @@ class Product
 	private $sale;
 	private $imageLink;
 	
-	private $rating;
 	private $amount;
 
 	private $tags; // array of tags
 
-	public function __construct($Id, $Name, $Category, $Price, $Sale, $ImageLink, $Rating, $Amount, $Tags = array())
+	private $sellState;
+
+	public function __construct($Id, $Name, $Category, $Price, $Sale, $ImageLink, $Amount, $Tags = array(), $SellState = TRUE)
 	{
 		$this->id = $Id;
 		$this->name = $Name;
@@ -22,9 +23,9 @@ class Product
 		$this->price = $Price;
 		$this->sale = $Sale;
 		$this->imageLink = $ImageLink;
-		$this->rating = $Rating;
 		$this->amount = $Amount;
 		$this->tags = $Tags;
+		$this->sellState = $SellState;
 	}
 	
 // id
@@ -117,13 +118,13 @@ class Product
 	}
 	
 // rating
-	public function getRating()
+	public function getSellState()
 	{
-		return $this->rating;
+		return $this->sellState;
 	}
-	public function setRating($rating)
+	public function setRating($sellState)
 	{
-		$this->rating = $rating;
+		$this->sellState = $sellState;
 	}
 	
 // amount
