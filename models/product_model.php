@@ -27,6 +27,19 @@ class orderModel extends DBConnection
 		return $categoriesList;
 	}
 
+	public function updateCategory($id, $name)
+	{
+		$this->runQuery(
+			'UPDATE categories 
+			SET name = {$name}
+			WHERE id = {$id}');
+	}
+
+	public function deleteCategory($id)
+	{
+		$this->runQuery('DELETE FROM categories WHERE id = {$id}');
+	}
+
 	// all products
 	public function getAllProducts()
 	{
@@ -57,8 +70,9 @@ class orderModel extends DBConnection
 	}
 
 	// get category
-	public function getProductByCategory($category)
+	public function getProductByCategory($id_cate)
 	{
+		$category = $this->runQuery('SELECT name FROM product_categories WHERE id = {$id_cate}'); 
 		$result1 = $this->runQuery('SELECT * FROM products WHERE category = {$category}');
 
 		if ($result->num_rows == 0)
