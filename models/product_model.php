@@ -1,115 +1,157 @@
 <?php
-include_once "entities/product.php";
+include_once("entities/product.php");
+include_once("../config/db.php");
 
-$servername = "localhost";
-$database = "db_bongxustore";
-$username = "root";
-$password = "";
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $database);
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-echo "Connected successfully";
-
-
-
-
-class productModel
+class orderModel extends DBConnection
 {
-	private $product;
-	private $productList;
-	private $sl;
+	public function __construct() {
+		parent::__construct();
+	}
 
-	// list
-	public function getList()
+	// all products
+	public function getAllProducts()
 	{
-		$sql = 'SELECT * FROM orders';
-		mysql_select_db('db_bongxustore');
-		$retval = mysql_query($sql, $conn);
+		$result = $this->runQuery('SELECT * FROM products');
 
-		if (! $retval)
+		$productList = array();
+		while ($row = $result->fetch_assoc())
 		{
-			die('Khong co du lieu' . mysql_error());
+			$id = $row['id'];
+			$result2 = $this->runQuery('SELECT * FROM storage WHERE product_id = $id');
+			$row2 = $result2->fetch_assoc();
+			$product new Order(
+				intval($row['id']), 
+				$row['name'], 
+				$row['category'], 
+				$row['price'], 
+				$row['sale'],
+				$row['image_link'],
+				$row2['amount'],
+				$row['tags'],
+				$row['sell_state']
+				)
+			);
+			array_push($productList, $product);
 		}
-
-		$this->sl = 0;
-		while ($row = mysql_fetch_array($retval))
-		{
-			$this->productList[$this->sl] = $row;
-			$this->sl++;
-		}
-
-		return $this->productList;
-	}
-
-	// update pro 
-	public function updateProduct($id)
-	{
-		$pro = getProductById($id);
-		$set_set = '
-			SET NAME = $pro.getName(),
-				CATEGORY = $pro.getCategory(),
-				PRICE = $pro.getPrice(),
-				SALE = $pro.getSale(),
-				IMAGE_LINK = $pro.getImageLink(),
-				TAGS = $pro.getTags(),
-				RATING = $pro.getRating() ';
-		$sql = 'UPDATE products'. $set_set . 'WHERE ID = $id';
-		mysql_select_db('db_bongxustore');
-		$retval = mysql_query($sql, $conn);
-	}
-
-	// insert pro 
-	public function addProduct($pro)
-	{
-		$set_set = '(ID, NAME, CATEGORY, PRICE, SALE, IMAGE_LINK, TAGS, RATING) ' .
-				'VALUE ($pro.getId(), $pro.getName(), $pro.getCategory(), $pro.getPrice(), $pro.getSale(), $pro.getImageLink(), $pro.getTags(), $pro.getRating() )';
-		$sql = 'INSERT INTO products'. $set_set;
-		mysql_select_db('db_bongxustore');
-		$retval = mysql_query($sql, $conn);
-	}
-
-	// delete pro
-	public function deleteProduct($id)
-	{
-		$sql = "DELETE products " . "WHERE ID = $id" ;
-        mysql_select_db('test_db');
-        $retval = mysql_query( $sql, $conn );
-	}
-
-	// get by category 
-	public function getProductByCategory($category)
-	{
-		$sql = 'SELECT * FROM products WHERE CATEGORY = $category';
-		mysql_select_db('db_bongxustore');
-		$retval = mysql_query($sql, $conn);
-
-		$this->product = mysql_fetch_object($retval);
-		return $this->product;
-	}
-
-	// get by id
-	public function getProductById($id)
-	{
-		$sql = 'SELECT * FROM products WHERE ID = $id';
-		mysql_select_db('db_bongxustore');
-		$retval = mysql_query($sql, $conn);
-
-		$this->product = mysql_fetch_object($retval);
-		return $this->product;
+		
+		return $productList;
 	}
 
 	// get category
-	public function getCategory(){}
+	public function getProductByCategory($category)
+	{
+		$result1 = $this->runQuery('SELECT * FROM products WHERE category = $category');
 
+		if ($result->num_rows == 0)
+		{
+			die('Cannot retrieve product\'s info (category=$category)!');
+		}
+
+		$productList = array();
+		while ($row = $result1->fetch_assoc())
+		{
+			$id = $row['id'];
+			$result2 = $this->runQuery('SELECT * FROM storage WHERE product_id = $id');
+			$row2 = $result2->fetch_assoc();
+			$product new Order(
+				intval($row['id']), 
+				$row['name'], 
+				$row['category'], 
+				$row['price'], 
+				$row['sale'],
+				$row['image_link'],
+				$row2['amount'],
+				$row['tags'],
+				$row['sell_state']
+				)
+			);
+			array_push($productList, $product);
+		}
+		
+		return $productList;
+		
+	}
+
+	// get id
+	public function getProductById($id)
+	{
+		$result1 = $this->runQuery('SELECT * FROM products WHERE id = $id');
+		$result2 = $this->runQuery('SELECT * FROM storage WHERE product_id = $id');
+
+		if ($result->num_rows == 0)
+		{
+			die('Cannot retrieve product\'s info (id=$id)!');
+		}
+
+		$row = $result1->fetch_assoc();
+		$row2 = $result2->fetch_assoc();
+		return new Order(
+			intval($row['id']), 
+			$row['name'], 
+			$row['category'], 
+			$row['price'], 
+			$row['sale'],
+			$row['image_link'],
+			$row2['amount'],
+			$row['tags'],
+			$row['sell_state']
+			)
+		);
+	}
+
+	// insert
+	public function insertProduct($product)
+	{
+		$this->runQuery(
+			'INSERT INTO products(id, name, category, price, sale, image_link, tags, sell_state) 
+			VALUE (
+				{$product->getId()},
+				{$product->getName()},
+				{$product->getCategory()},
+				{$product->getPrice()},
+				{$product->getSale()},
+				{$product->getImageLink()},
+				{$product->getTags()},
+				{$product->getSellState()}
+			)'
+		);
+
+		$this->runQuery(
+			'INSERT INTO storage(product_id, amount)
+			VALUE (
+				{$product->getId()},
+				{$product->getAmount()}
+			)'
+		);
+	}
+
+	// delete
+	public function deleteProduct($id)
+	{
+		$this->runQuery('DELETE FROM storage WHERE product_id = $id');
+		$this->runQuery('DELETE FROM products WHERE id = $id');
+	}
+
+	// update info product
+	public function updateProduct($id, $product)
+	{
+		$this->runQuery(
+			'UPDATE products 
+			SET name = {$product->getName()},
+				category = {$product->getCategory()},
+				price = {$product->getPrice()},
+				sale = {$product->getSale()},
+				image_link = {$product->getImageLink()},
+				tags = {$product->getTags()},
+				sell_state = {$product->getSellState()}
+			WHERE id = $id');	
+	}
+
+	// update amount product
+	public function updateProductAmount($id, $amount)
+	{
+		$this->runQuery('UPDATE storage SET amount = $amount WHERE product_id = $id');
+	}
 }
 
-
-
-
-
-
-mysqli_close($conn);
 ?>

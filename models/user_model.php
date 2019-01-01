@@ -1,95 +1,135 @@
 <?php
-include_once "entities/user.php";
+include_once("entities/user.php");
+include_once("../config/db.php");
 
-$servername = "localhost";
-$database = "db_bongxustore";
-$username = "root";
-$password = "";
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $database);
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-echo "Connected successfully";
-
-
-
-
-class userModel
+class userModel extends DBConnection
 {
-	private $user;
-	private $userList;
-	private $sl;
-
-	// list
-	public function getList()
-	{
-		$sql = 'SELECT * FROM users';
-		mysql_select_db('db_bongxustore');
-		$retval = mysql_query($sql, $conn);
-
-		if (! $retval)
-		{
-			die('Khong co du lieu' . mysql_error());
-		}
-
-		$this->sl = 0;
-		while ($row = mysql_fetch_array($retval))
-		{
-			$this->userList[$this->sl] = $row;
-			$this->sl++;
-		}
-
-		return $this->userList;
+	public function __construct() {
+		parent::__construct();
 	}
 
-	// update pro 
-	public function updateUser($id)
+	// all user
+	public function getAllUsers()
 	{
-		$user = getUserInfo($id);
-		$set_set = '
-			SET ID = $user.getId(), PW = $user.getPw(), EMAIL = $user.getEmail(), FIRSTNAME = $user.getFirstname(), LASTNAME = $user.getLastname(), COUNTRY = $user.getCountry(), COUNTY = $user.getCounty(), PROVINCE = $user.getProvince(), STREET_ADDRESS = $user.getStreetAddress(), POSTCODE = $user.getPostcode(), TEL = $user.getTel(), FACEBOOK = $user.getFacebook(), TWITTER = $user.getTwitter(), GOOGLE = $user.getGoogle() ';
-		$sql = 'UPDATE users'. $set_set . 'WHERE ID = $id';
-		mysql_select_db('db_bongxustore');
-		$retval = mysql_query($sql, $conn);
+		$result = $this->runQuery('SELECT * FROM users');
+
+		if ($result->num_rows == 0)
+		{
+			die('No result!');
+		}
+
+		$userList = array();
+		while ($row = $result->fetch_assoc())
+		{
+			$user = new User(
+				intval($row['id']), 
+				$row['pw'], 
+				$row['email'], 
+				$row['firstname'], 
+				$row['lastname'],
+				$row['country'],
+				$row['county'],
+				$row['province'],
+				$row['street_address'],
+				$row['postcode'],
+				$row['tel'],
+				$row['facebook'],
+				$row['twitter'],
+				$row['google']
+				)
+			);
+			array_push($this->userList, $user);
+		}
+
+		return $userList;
+	}
+
+	// update user
+	public function updateUser($id, $user)
+	{
+		$this->runQuery(
+			'UPDATE users 
+			SET 
+				pw = {$user->getPw()},
+				email = {$user->getEmail()},
+				firstname = {$user->getFirstname()},
+				lastname = {$user->getLastname()},
+				country = {$user->getCountry()},
+				county = {$user->getCounty()},
+				province = {$user->getProvince()},
+				street_address = {$user->getStreetAddress()},
+				postcode = {$user->getPostcode()},
+				tel = {$user->getTel()},
+				facebook = {$user->getFacebook()},
+				twitter = {$user->getTwitter()},
+				google = {$user->getGoogle()}
+			WHERE id = $id');
 	}
 
 	// insert user
-	public function addUser($user)
+	public function insertUser($user)
 	{
-		$set_set = '(ID, PW, EMAIL, FIRSTNAME, LASTNAME, COUNTRY, COUNTY, PROVINCE, STREET_ADDRESS, POSTCODE, TEL, FACEBOOK, TWITTER, GOOGLE) ' .
-				'VALUE ($user.getId(), $user.getPw(), $user.getEmail(), $user.getFirstname(), $user.getLastname(), $user.getCountry(), $user.getCounty(), $user.getProvince(), $user.getStreetAddress(), $user.getPostcode(), $user.getTel(), $user.getFacebook(), $user.getTwitter(), $user.getGoogle() )';
-		$sql = 'INSERT INTO users'. $set_set;
-		mysql_select_db('db_bongxustore');
-		$retval = mysql_query($sql, $conn);
+		$this->runQuery(
+			'INSERT INTO users(id, pw, email, firstname, lastname, country, county, province, street_address, postcode, tel, facebook, twitter, google) 
+			VALUE (
+				{$user->getId()},
+				{$user->getPw()},
+				{$user->getEmail()},
+				{$user->getFirstname()},
+				{$user->getLastname()},
+				{$user->getCountry()},
+				{$user->getCounty()},
+				{$user->getProvince()},
+				{$user->getStreetAddress()},
+				{$user->getPostcode()},
+				{$user->getTel()},
+				{$user->getFacebook()},
+				{$user->getTwitter()},
+				{$user->getGoogle()}
+			)'
+		);
 	}
 
 	// delete user
 	public function deleteUser($id)
 	{
-		$sql = "DELETE users " . "WHERE ID = $id" ;
-        mysql_select_db('test_db');
-        $retval = mysql_query( $sql, $conn );
+		$user = $this->getUserInfoById($id);
+		if ($user->getId() == 'ADMIN')
+		{
+			die('Cannot delete this user ADMIN');
+		}
+		$this->runQuery('DELETE FROM users WHERE id = $id');
 	}
 
 	// get info
-	public function getUserInfo($id)
+	public function getUserInfoById($id)
 	{
-		$sql = 'SELECT * FROM users WHERE ID = $id';
-		mysql_select_db('db_bongxustore');
-		$retval = mysql_query($sql, $conn);
+		$result = $this->runQuery('SELECT * FROM users WHERE id = $id');
 
-		$this->user = mysql_fetch_object($retval);
-		return $this->user;
+		if ($result->num_rows == 0)
+		{
+			die('Cannot retrieve user\'s info (id=$id)!');
+		}
+
+		$row = $result->fetch_assoc();
+		return new User(
+			intval($row['id']), 
+				$row['pw'], 
+				$row['email'], 
+				$row['firstname'], 
+				$row['lastname'],
+				$row['country'],
+				$row['county'],
+				$row['province'],
+				$row['street_address'],
+				$row['postcode'],
+				$row['tel'],
+				$row['facebook'],
+				$row['twitter'],
+				$row['google'])
+		);
 	}
 	
 }
 
-
-
-
-
-
-mysqli_close($conn);
 ?>

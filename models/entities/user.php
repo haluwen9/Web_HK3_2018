@@ -4,7 +4,7 @@ class User
 {
 	private $id;
 	private $email;
-	
+	private $pw;
 	private $firstname;
 	private $lastname;
 	private $country;
@@ -17,10 +17,11 @@ class User
 	private $twitter; 
 	private $google;
 	
-	public function __construct($Id, $Email, $FirstName, $LastName, $Country, $County, $Province, $StreetAddress, $Postcode, $Tel, $Facebook = null, $Twitter = null, $Google = null)
+	public function __construct($Id, $Pw, $Email, $FirstName, $LastName, $Country, $County, $Province, $StreetAddress, $Postcode, $Tel, $Facebook = null, $Twitter = null, $Google = null)
 	{
 		$this->email = $Email;
 		$this->id = $Id;
+		$this->pw = $Pw;
 		$this->firstname = $FirstName;
 		$this->lastname = $LastName;
 		$this->country = $Country;
@@ -54,6 +55,16 @@ class User
 	public function setId($Id)
 	{
 		$this->id = $Id;
+	}
+
+// pw
+	public function getPw()
+	{
+		return $this->this->pw;
+	}
+	public function setPw($Pw)
+	{
+		$this->pw = $Pw;
 	}
 	
 // firstname	

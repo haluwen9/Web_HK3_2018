@@ -1,6 +1,6 @@
 <?php
 include_once("entities/order.php");
-include_once("../config/db.php")
+include_once("../config/db.php");
 
 class orderModel extends DBConnection
 {
@@ -122,7 +122,7 @@ class orderModel extends DBConnection
 		);
 	}
 
-	public function insertOrder($Order)
+	public function insertOrder($order)
 	{
 		$this->runQuery(
 			'INSERT INTO orders(id, user_id, diffshipaddr, total_price, success_state) 
