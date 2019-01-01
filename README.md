@@ -41,7 +41,10 @@
     - [x] GetProductsByCategory
     - [x] GetProductById
     - [ ] AddProductReview
+    - [ ] DeleteProductReview
     #### Admin
+    - [ ] UpdateCategory
+    - [ ] DeleteCategory
     - [x] AddProduct
     - [x] UpdateProduct
     - [x] DeleteProduct
