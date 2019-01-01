@@ -63,7 +63,7 @@ class userModel extends DBConnection
 				facebook = {$user->getFacebook()},
 				twitter = {$user->getTwitter()},
 				google = {$user->getGoogle()}
-			WHERE id = $id');
+			WHERE id = {$id}');
 	}
 
 	// insert user
@@ -98,17 +98,17 @@ class userModel extends DBConnection
 		{
 			die('Cannot delete this user ADMIN');
 		}
-		$this->runQuery('DELETE FROM users WHERE id = $id');
+		$this->runQuery('DELETE FROM users WHERE id = {$id}');
 	}
 
 	// get info
 	public function getUserInfoById($id)
 	{
-		$result = $this->runQuery('SELECT * FROM users WHERE id = $id');
+		$result = $this->runQuery('SELECT * FROM users WHERE id = {$id}');
 
 		if ($result->num_rows == 0)
 		{
-			die('Cannot retrieve user\'s info (id=$id)!');
+			die('Cannot retrieve user\'s info (id={$id})!');
 		}
 
 		$row = $result->fetch_assoc();
