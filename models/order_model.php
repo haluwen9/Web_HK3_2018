@@ -11,7 +11,7 @@ class orderModel extends DBConnection
 	// shipping_info
 	public function getShippingInfo($OrderID)
 	{
-		$result = $this->runQuery('SELECT * FROM shipping_info where order_id = {$OrderID}');
+		$result = $this->runQuery('SELECT * FROM shipping_info where order_id = "{$OrderID}"');
 		if ($result->num_rows == 0)
 		{
 			die('Cannot retrieve shipping info of order (id={$OrderID})!');
@@ -33,7 +33,7 @@ class orderModel extends DBConnection
 	// order_content
 	public function getOrderContent($OrderID)
 	{
-		$result = $this->runQuery('SELECT product_id, amount FROM order_content WHERE order_id = {$OrderID}');
+		$result = $this->runQuery('SELECT product_id, amount FROM order_content WHERE order_id = "{$OrderID}"');
 		if ($result->num_rows == 0)
 		{
 			die('Cannot retrieve content of order (id={$OrderID})!');
@@ -76,7 +76,7 @@ class orderModel extends DBConnection
 
 	public function getOrdersByUser($UserID)
 	{
-		$result = $this->runQuery('SELECT * FROM orders WHERE id = {$UserID}');
+		$result = $this->runQuery('SELECT * FROM orders WHERE id = "{$UserID}"');
 
 		if ($result->num_rows == 0)
 		{
@@ -103,7 +103,7 @@ class orderModel extends DBConnection
 
 	public function getOrderById($OrderID)
 	{
-		$result = $this->runQuery('SELECT * FROM orders WHERE id = {$OrderID}');
+		$result = $this->runQuery('SELECT * FROM orders WHERE id = "{$OrderID}"');
 
 		if ($result->num_rows == 0)
 		{
@@ -127,11 +127,11 @@ class orderModel extends DBConnection
 		$this->runQuery(
 			'INSERT INTO orders(id, user_id, diffshipaddr, total_price, success_state) 
 			VALUE (
-				{$order->getId()},
-				{$order->getUserId()},
-				{$order->getDiffShipAddr()},
-				{$order->getTotalPrice()},
-				{$order->getSuccessState()}
+				"{$order->getId()}",
+				"{$order->getUserId()}",
+				"{$order->getDiffShipAddr()}",
+				"{$order->getTotalPrice()}",
+				"{$order->getSuccessState()}"
 			)'
 		);
 	}
@@ -143,14 +143,14 @@ class orderModel extends DBConnection
 		{
 			die('Cannot delete this order (id={$OrderID}) since its success state is TRUE!');
 		}
-		$this->runQuery('DELETE FROM shipping_info WHERE order_id = {$OrderID}');
-		$this->runQuery('DELETE FROM order_content WHERE order_id = {$OrderID}');
-		$this->runQuery('DELETE FROM orders WHERE id = {$OrderID}');
+		$this->runQuery('DELETE FROM shipping_info WHERE order_id = "{$OrderID}"');
+		$this->runQuery('DELETE FROM order_content WHERE order_id = "{$OrderID}"');
+		$this->runQuery('DELETE FROM orders WHERE id = "{$OrderID}"');
 	}
 
 	public function updateOrderState($OrderID, $NewState)
 	{
-		$this->runQuery('UPDATE orders SET success_state = {$NewState} WHERE id = {$OrderID}');
+		$this->runQuery('UPDATE orders SET success_state = "{$NewState}" WHERE id = "{$OrderID}"');
 	}
 }
 
