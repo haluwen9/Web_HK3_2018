@@ -36,15 +36,15 @@
 - ### Models
   - [ ] **Products**
     #### General
-    - [ ] GetAllProducts
+    - [x] GetAllProducts
     - [ ] GetCategorys
-    - [ ] GetProductsByCategory
-    - [ ] GetProductById
+    - [x] GetProductsByCategory
+    - [x] GetProductById
     - [ ] AddProductReview
     #### Admin
-    - [ ] AddProduct
-    - [ ] UpdateProduct
-    - [ ] DeleteProduct
+    - [x] AddProduct
+    - [x] UpdateProduct
+    - [x] DeleteProduct
   - [X] **Orders**
     #### General
     - [X] GetOrdersByUser
@@ -58,12 +58,12 @@
   - [ ] **Users**
     #### General
     - [ ] Authentication (Login)
-    - [ ] AddUser (Register)
-    - [ ] GetUserInfo
-    - [ ] ModifyUserInfo
-    - [ ] DeleteUser
+    - [x] AddUser (Register)
+    - [x] GetUserInfo
+    - [x] ModifyUserInfo
+    - [x] DeleteUser
     #### Admin
-    - [ ] GetAllUsers
+    - [x] GetAllUsers
 - ### Views
   - [ ] Update View to PHP
   - [ ] Layout Admin Page
