@@ -44,11 +44,11 @@ class Order
 	}
 
 // diffShipAddr
-	public function getdiffShipAddr()
+	public function getDiffShipAddr()
 	{
 		return $this->diffShipAddr;
 	}
-	public function setdiffShipAddr($_diffShipAddr)
+	public function setDiffShipAddr($_diffShipAddr)
 	{
 		$this->diffShipAddr = $_diffShipAddr;
 	}

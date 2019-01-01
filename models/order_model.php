@@ -4,96 +4,154 @@ include_once("../config/db.php")
 
 class orderModel extends DBConnection
 {
-	private $order;
-	private $orderList;
-	private $sl;
-
 	public function __construct() {
 		parent::__construct();
 	}
 
-	// list
-	public function getList()
+	// shipping_info
+	public function getShippingInfo($OrderID)
 	{
-		$sql = 'SELECT * FROM orders';
-		$result = runQuery($sql);
+		$result = $this->runQuery('SELECT * FROM shipping_info where order_id = $OrderID');
+		if ($result->num_rows == 0)
+		{
+			die('Cannot retrieve shipping info of order (id=$OrderID)!');
+		}
+		$row = $result->fetch_assoc();
+		return new ShippingInfo(
+			$row['firstname'], 
+			$row['lastname'],
+			$row['country'], 
+			$row['county'], 
+			$row['province'], 
+			$row['street_address'], 
+			$row['postcode'], 
+			$row['tel'], 
+			$row['notes']
+		);
+	}
+
+	// order_content
+	public function getOrderContent($OrderID)
+	{
+		$result = $this->runQuery('SELECT product_id, amount FROM order_content WHERE order_id = %OrderID');
+		if ($result->num_rows == 0)
+		{
+			die('Cannot retrieve content of order (id=$OrderID)!');
+		}
+		$content = array();
+		while ($row = $result->fetch_assoc())
+		{
+			$content[$row['product_id']] = intval($row['amount']);
+		}
+		return $content;
+	}
+
+	// orders
+	public function getAllOrders()
+	{
+		$result = $this->runQuery('SELECT * FROM orders');
 
 		if ($result->num_rows == 0)
 		{
-			die('Không có dữ liệu!' . mysql_error());
+			die('No result!');
 		}
 
-		$this->sl = 0;
+		$orderList = array();
 		while ($row = $result->fetch_assoc())
 		{
-			$this->orderList[$this->sl] = $row;
-			$this->sl++;
+			$order = new Order(
+				intval($row['id']), 
+				$row['user_id'], 
+				$row['diffshipaddr'], 
+				$row['total_price'], 
+				$this->getShippingInfo(intval($row['id'])),
+				$this->getOrderContent(intval($row['id'])),
+				boolval($row['success_state'])
+			);
+			array_push($this->orderList, $order);
 		}
 
-		return $this->orderList;
+		return $orderList;
 	}
 
-	// update order 
-	public function updateOrder($id)
+	public function getOrdersByUser($UserID)
 	{
-		$or = getOrderById($id);
-		$set_set = '
-			SET USER_ID = $or.getUserId(),
-			DIFFSHIPADDR = $or.getdiffShipAddr(),
-			TOTAL_PRICE = $or.getTotalPrice() ';
-		$sql = 'UPDATE orders'. $set_set . 'WHERE ID = $id';
-		mysql_select_db('db_bongxustore');
-		$retval = mysql_query($sql, $conn);
+		$result = $this->runQuery('SELECT * FROM orders WHERE id = $UserID');
+
+		if ($result->num_rows == 0)
+		{
+			die('No result!');
+		}
+
+		$orderList = array();
+		while ($row = $result->fetch_assoc())
+		{
+			$order = new Order(
+				intval($row['id']), 
+				$row['user_id'], 
+				$row['diffshipaddr'], 
+				$row['total_price'], 
+				$this->getShippingInfo(intval($row['id'])),
+				$this->getOrderContent(intval($row['id'])),
+				boolval($row['success_state'])
+			);
+			array_push($this->orderList, $order);
+		}
+
+		return $orderList;
 	}
 
-	// insert order 
-	public function addOrder($or)
+	public function getOrderById($OrderID)
 	{
-		$set_set = '(ID, USER_ID, DIFFSHIPADDR, TOTAL_PRICE) ' .
-				'VALUE ($or.getID(),
-				$or.getUserId(), 
-				$or.getdiffShipAddr(), 
-				$or.getTotalPrice()) ';
-		$sql = 'INSERT INTO orders'. $set_set;
-		mysql_select_db('db_bongxustore');
-		$retval = mysql_query($sql, $conn);
+		$result = $this->runQuery('SELECT * FROM orders WHERE id = $OrderID');
+
+		if ($result->num_rows == 0)
+		{
+			die('Cannot retrieve order\'s info (id=$OrderID)!');
+		}
+
+		$row = $result->fetch_assoc();
+		return new Order(
+			intval($row['id']), 
+			$row['user_id'], 
+			$row['diffshipaddr'], 
+			$row['total_price'], 
+			$this->getShippingInfo(intval($row['id'])),
+			$this->getOrderContent(intval($row['id'])),
+			boolval($row['success_state'])
+		);
 	}
 
-	// delete order
-	public function deleteOrder($id)
+	public function insertOrder($Order)
 	{
-		$sql = "DELETE orders " . "WHERE ID = $id" ;
-        mysql_select_db('test_db');
-        $retval = mysql_query( $sql, $conn );
+		$this->runQuery(
+			'INSERT INTO orders(id, user_id, diffshipaddr, total_price, success_state) 
+			VALUE (
+				{$order->getId()},
+				{$order->getUserId()},
+				{$order->getDiffShipAddr()},
+				{$order->getTotalPrice()},
+				{$order->getSuccessState()}
+			)'
+		);
 	}
 
-	// get by user 
-	public function getOrderByUser($user)
+	public function deleteOrder($OrderID)
 	{
-		$sql = 'SELECT * FROM orders WHERE USER_ID = $user';
-		mysql_select_db('db_bongxustore');
-		$retval = mysql_query($sql, $conn);
-
-		$this->order = mysql_fetch_object($retval);
-		return $this->order;
+		$order = $this->getOrderById($OrderID);
+		if ($order->successState)
+		{
+			die('Cannot delete this order (id=$OrderID) since its success state is TRUE!');
+		}
+		$this->runQuery('DELETE FROM shipping_info WHERE order_id = $OrderID');
+		$this->runQuery('DELETE FROM order_content WHERE order_id = $OrderID');
+		$this->runQuery('DELETE FROM orders WHERE id = $OrderID');
 	}
 
-	// get by id
-	public function getOrderById($id)
+	public function updateOrderState($OrderID, $NewState)
 	{
-		$sql = 'SELECT * FROM orders WHERE ID = $id';
-		mysql_select_db('db_bongxustore');
-		$retval = mysql_query($sql, $conn);
-
-		$this->order = mysql_fetch_object($retval);
-		return $this->order;
+		$this->runQuery('UPDATE orders SET success_state = $NewState WHERE id = $OrderID');
 	}
-
 }
 
-
-
-
-
-mysqli_close($conn);
 ?>

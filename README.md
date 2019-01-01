@@ -45,16 +45,16 @@
     - [ ] AddProduct
     - [ ] UpdateProduct
     - [ ] DeleteProduct
-  - [ ] **Orders**
+  - [X] **Orders**
     #### General
-    - [ ] GetOrdersByUser
-    - [ ] GetOrderById
-    - [ ] AddOrder
-    - [ ] DeleteOrder (Chỉ hóa đơn chưa thanh toán)
+    - [X] GetOrdersByUser
+    - [X] GetOrderById
+    - [X] InsertOrder
+    - [X] DeleteOrder (Chỉ hóa đơn chưa thanh toán)
     #### Admin
-    - [ ] GetAllOrders
-    - [ ] UpdateOrderStatus
-    - [ ] DeleteOrder
+    - [X] GetAllOrders
+    - [X] UpdateOrderState
+    - [X] DeleteOrder
   - [ ] **Users**
     #### General
     - [ ] Authentication (Login)

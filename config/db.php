@@ -15,7 +15,7 @@
 
       $db = new mysqli($host, $username, $password, $dbname, $port);
       if ($db->connect_error) {
-        die("Lỗi kết nối cơ sở dữ liệu! ". $db->connect_error);
+        die("Cannot connect to Database!". $db->connect_error);
       }
     }
 
@@ -31,7 +31,7 @@
 
       $db = new mysqli($host, $username, $password, $dbname, $port);
       if ($db->connect_error) {
-        die("Lỗi kết nối cơ sở dữ liệu! ". $db->connect_error);
+        die("Cannot connect to Database!". $db->connect_error);
       }
     }
 
