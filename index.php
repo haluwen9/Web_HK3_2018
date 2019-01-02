@@ -9,8 +9,6 @@ include_once("models/entities/user.php");
 session_start();
 
 $homeUrl = $_SERVER['REQUEST_URI'];
-$asset_folder = $homeUrl."assets";
-$files_folder = $homeUrl."/files";
 
 if (isset($_GET['u'])) {
   switch ($_GET['u'])
@@ -23,7 +21,7 @@ if (isset($_GET['u'])) {
     case 'logout':
       include_once("controllers/utilities.php");
       Logout();
-      header("Location: ?");
+      header("Location: index.php");
       break;
     case 'register':
 

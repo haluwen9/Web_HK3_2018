@@ -53,7 +53,7 @@ class productModel extends DBConnection
 	// products
 	public function getAllProducts()
 	{
-		$result = $this->runQuery("SELECT products.*, storage.AMOUNT	FROM products LEFT JOIN storage on products.id = storage.product_id");
+		$result = $this->runQuery("SELECT products.*, storage.amount	FROM products LEFT JOIN storage on products.id = storage.product_id");
 
 		$productList = array();
 		while ($row = $result->fetch_assoc())

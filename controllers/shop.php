@@ -5,6 +5,8 @@ include_once("models/product_model.php");
 class shopController
 {
     private $productModel;
+    private $categoryList;
+    private $productList;
 
     public function __construct()
     {
@@ -15,17 +17,9 @@ class shopController
     {
         $productList = NULL;
         $categoryList = $this->productModel->getCategories();
+        $productList = $this->productModel->getAllProducts();
 
-        if (isset($_GET['category']))
-        {
-            $productList = $this->productModel->getProductsByCategory($_GET['category']);
-        }
-        else
-        {
-            $productList = $this->productModel->getAllProducts();
-        }
-
-        include_once("views/shop.html");
+        include_once("views/shoppage.php");
     }
 
     public function getAllProducts() {

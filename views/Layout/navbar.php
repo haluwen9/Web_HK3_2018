@@ -15,12 +15,12 @@
     <div class="navbar-collapse collapse" id="main-navbar-collapse">
       <ul class="nav navbar-nav ml-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="index.php">
+          <a class="nav-link" href="">
             <span class="nav-hidden"><span class="fa fa-2x fa-home"></span><br /></span>Trang chủ
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="index.php?page=shop">
+          <a class="nav-link" href="?page=shop">
             <span class="nav-hidden"><span class="fa fa-2x fa-shopping-cart"></span><br /></span>Cửa hàng
           </a>
         </li>
@@ -38,9 +38,9 @@
             Danh mục
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="category-dropdown">
-            <a href="shop.html?category=Thú bông nhỏ" class="dropdown-item">Thú bông nhỏ</a>
-            <a href="shop.html?category=Thú bông lớn" class="dropdown-item">Thú bông lớn</a>
-            <a href="shop.html?category=Thú bông POKEMON" class="dropdown-item">Thú bông POKEMON</a>
+            <a href="?page=shop&category=1" class="dropdown-item">Thú bông nhỏ</a>
+            <a href="?page=shop&category=2" class="dropdown-item">Thú bông lớn</a>
+            <a href="?page=shop&category=3" class="dropdown-item">Thú bông POKEMON</a>
           </div>
         </li>
         <li class="nav-item">
@@ -69,7 +69,8 @@
             Tìm kiếm
           </a>
           <div class="dropdown-menu dropdown-menu-right bg-light p-2 border-0" aria-labelledby="searchbox-dropdown">
-            <form action="shop.html" class="form-inline dropdown-item" method="GET">
+            <form action="?page=shop" class="form-inline dropdown-item" method="GET">
+              <input name="page" type="hidden" value="shop" />
               <input name="q" class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm..." aria-label="Search" />
               <button type="submit" class="btn-success" style="line-height: 0">
                 <span class=" fa fa-search"></span>

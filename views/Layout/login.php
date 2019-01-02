@@ -76,7 +76,7 @@ function signin(ev) {
       loginPW: $('#login-form input[name=loginPW').val()
     },
     function(res) {
-      // console.log(res);
+      console.log(res);
       if (res == 0) {
         resBox.html('Tài khoản không tồn tại!');
         resBox.css('color','red');
@@ -88,11 +88,11 @@ function signin(ev) {
         $('#login-form input[name=loginPW]').css('border-color','#ff0000');
       }
       else if (res == 2) {
-          resBox.text('Đăng nhập thành công');
-          resBox.css('color','green');
-          $('#login-form input').css('border-color','#00ff00');
-        setTimeout(() => {
-        document.location = document.location;
+        resBox.text('Đăng nhập thành công');
+        resBox.css('color','green');
+        $('#login-form input').css('border-color','#00ff00');
+          setTimeout(() => {
+          document.location = document.location;
         }, 1000);
       }
     } 

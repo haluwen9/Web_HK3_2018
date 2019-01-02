@@ -1,4 +1,4 @@
-jQuery(document).ready(function($) {
+jQuery(document).ready(function ($) {
     // jQuery sticky Menu
     $('.mainmenu-area').sticky({
         topSpacing: 0
@@ -99,16 +99,19 @@ jQuery(document).ready(function($) {
 function switchForm(frm) {
     var lginfrm = $('#login-form');
     var regfrm = $('#register-form');
-    
+
     if (frm === "login") {
-        lginfrm.css('display','');
-        regfrm.css('display','none');
+        lginfrm.css('display', '');
+        regfrm.css('display', 'none');
     }
     else if (frm === 'register') {
-        lginfrm.css('display','none');
-        regfrm.css('display','');
+        lginfrm.css('display', 'none');
+        regfrm.css('display', '');
     }
 }
 
+function formatNumber(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+}
 
 // END
