@@ -3,7 +3,7 @@ include_once("entities/product.php");
 include_once("entities/product_category.php");
 include_once("../config/db.php");
 
-class orderModel extends DBConnection
+class productModel extends DBConnection
 {
 	public function __construct() {
 		parent::__construct();
@@ -76,7 +76,7 @@ class orderModel extends DBConnection
 		return $productList;
 	}
 
-	public function getProductByCategory($CategoryID)
+	public function getProductsByCategory($CategoryID)
 	{
 		$result = $this->runQuery(
 			'SELECT products.* storate.amount
