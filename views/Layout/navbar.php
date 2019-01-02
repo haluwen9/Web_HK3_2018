@@ -44,7 +44,7 @@
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="cart.html">
+          <a class="nav-link" href="index.php?page=cart">
             <span class="nav-hidden"><span class="fa fa-2x fa-gift"></span><br /></span>
             Giỏ hàng
           </a>
