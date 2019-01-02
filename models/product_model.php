@@ -9,7 +9,7 @@ class orderModel extends DBConnection
 		parent::__construct();
 	}
 
-	// get categories
+	// product_categories
 	public function getCategories()
 	{
 		$result = $this->runQuery('SELECT * FROM product_categories');
@@ -30,17 +30,23 @@ class orderModel extends DBConnection
 	public function updateCategory($Category)
 	{
 		$this->runQuery(
-			'UPDATE categories 
+			'UPDATE product_categories
 			SET name = \'{$Category->name}\'
-			WHERE id = \'{$Category->id}\'');
+			WHERE id = {$Category->id})'
+		);
 	}
 
-	public function deleteCategory($id)
+	public function insertCategory($Category)
 	{
-		$this->runQuery('DELETE FROM categories WHERE id = \'{$id}\'');
+		$this->runQuery('INSERT INTO product_categories(ID, NAME) VALUE ({$Category->id}, \'{$Category->name})\'');
 	}
 
-	// all products
+	public function deleteCategory($CategoryID)
+	{
+		$this->runQuery('DELETE FROM product_categories WHERE id = {$CategoryID}');
+	}
+
+	// products
 	public function getAllProducts()
 	{
 		$result = $this->runQuery(
@@ -51,7 +57,7 @@ class orderModel extends DBConnection
 		$productList = array();
 		while ($row = $result->fetch_assoc())
 		{
-			$result2 = $this->runQuery('SELECT amount FROM storage WHERE product_id = \'{$row[\'id\']}\'');
+			$result2 = $this->runQuery('SELECT amount FROM storage WHERE product_id = {$row[\'id\']}');
 			$row2 = $result2->fetch_assoc();
 			$product = new Product(
 				$row['id'], 
@@ -70,13 +76,12 @@ class orderModel extends DBConnection
 		return $productList;
 	}
 
-	// get category
 	public function getProductByCategory($CategoryID)
 	{
 		$result = $this->runQuery(
 			'SELECT products.* storate.amount
 			FROM products INNER JOIN storage on products.id = storage.product_id
-			WHERE category = \'{$CategoryID}\''
+			WHERE category = {$CategoryID}'
 		);
 
 		if ($result->num_rows == 0)
@@ -105,13 +110,12 @@ class orderModel extends DBConnection
 		
 	}
 
-	// get id
 	public function getProductById($ProductID)
 	{
 		$result = $this->runQuery(
 			'SELECT products.* storate.amount
 			FROM products INNER JOIN storage on products.id = storage.product_id
-			WHERE products.id = \'{$ProductID}\''
+			WHERE products.id = {$ProductID}'
 		);
 
 		if ($result->num_rows == 0)
@@ -133,13 +137,12 @@ class orderModel extends DBConnection
 		);
 	}
 
-	// insert
 	public function insertProduct($product)
 	{
 		$this->runQuery(
 			'INSERT INTO products(id, name, category, price, sale, image_link, tags, sell_state) 
 			VALUE (
-				\'{$product->getId()}\',
+				{$product->getId()},
 				\'{$product->getName()}\',
 				\'{$product->getCategory()}\',
 				\'{$product->getPrice()}\',
@@ -153,42 +156,39 @@ class orderModel extends DBConnection
 		$this->runQuery(
 			'INSERT INTO storage(product_id, amount)
 			VALUE (
-				\'{$product->getId()}\',
+				{$product->getId()},
 				\'{$product->getAmount()}\'
 			)'
 		);
 	}
 
-	// delete
 	public function deleteProduct($ProductID)
 	{
-		$this->runQuery('DELETE FROM storage WHERE product_id = \'{$ProductID}\'');
-		$this->runQuery('DELETE FROM products WHERE id = \'{$ProductID}\'');
+		$this->runQuery('DELETE FROM storage WHERE product_id = {$ProductID}');
+		$this->runQuery('DELETE FROM products WHERE id = {$ProductID}');
 	}
 
-	// update product info
 	public function updateProduct($product)
 	{
 		$this->runQuery(
 			'UPDATE products 
 			SET name = \'{$product->getName()}\',
-				category = \'{$product->getCategory()}\',
+				category = {$product->getCategory()},
 				price = \'{$product->getPrice()}\',
 				sale = \'{$product->getSale()}\',
 				image_link = \'{$product->getImageLink()}\',
 				tags = \'{implode(\' \', $product->getTags())}\',
 				sell_state = \'{$product->getSellState()}\'
-			WHERE id = \'{$product->id}\''
+			WHERE id = {$product->id}'
 		);
 	}
 
-	// update amount product
 	public function updateProductAmount($ProductID, $amount)
 	{
-		$this->runQuery('UPDATE storage SET amount = {$amount} WHERE product_id = \'{$ProductID}\'');
+		$this->runQuery('UPDATE storage SET amount = {$amount} WHERE product_id = {$ProductID}');
 	}
 
-	// review
+	// Review
 
 	public function getAllReviews()
 	{
@@ -216,7 +216,7 @@ class orderModel extends DBConnection
 			'INSERT INTO reviews(user_id, product_id, content, posted_time, rating) 
 			VALUE (
 				\'{$review->getUserId()}\',
-				\'{$review->getProductId()}\',
+				{$review->getProductId()},
 				\'{$review->getContent()}\',
 				\'{$review->getPostedTime()}\',
 				\'{$review->getRating()}\'
@@ -231,12 +231,12 @@ class orderModel extends DBConnection
 
 	public function deleteReviewsByProduct($ProductID)
 	{
-		$this->runQuery('DELETE FROM reviews WHERE product_id = \'{$ProductID}\'');
+		$this->runQuery('DELETE FROM reviews WHERE product_id = {$ProductID}');
 	}
 
 	public function deleteReviewByUserAndProduct($UserID, $ProductID)
 	{
-		$this->runQuery('DELETE FROM reviews WHERE user_id = \'{$UserID}\' AND product_id = \'{$ProductID}\'');
+		$this->runQuery('DELETE FROM reviews WHERE user_id = \'{$UserID}\' AND product_id = {$ProductID}');
 	}
 }
 

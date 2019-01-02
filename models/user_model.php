@@ -8,7 +8,7 @@ class userModel extends DBConnection
 		parent::__construct();
 	}
 
-	// all user
+	// users
 	public function getAllUsers()
 	{
 		$result = $this->runQuery('SELECT * FROM users');
@@ -43,7 +43,6 @@ class userModel extends DBConnection
 		return $userList;
 	}
 
-	// update user
 	public function updateUser($user)
 	{
 		$this->runQuery(
@@ -65,7 +64,6 @@ class userModel extends DBConnection
 			WHERE id = \'{$user->id}\'');
 	}
 
-	// insert user
 	public function insertUser($user)
 	{
 		$this->runQuery(
@@ -89,7 +87,6 @@ class userModel extends DBConnection
 		);
 	}
 
-	// delete user
 	public function deleteUser($UserID)
 	{
 		$user = $this->getUserInfoById($UserID);
@@ -100,7 +97,6 @@ class userModel extends DBConnection
 		$this->runQuery('DELETE FROM users WHERE id = \'{$UserID}\'');
 	}
 
-	// get user info
 	public function getUserInfoById($UserID)
 	{
 		$result = $this->runQuery('SELECT * FROM users WHERE id = \'{$UserID}\'');
