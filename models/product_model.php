@@ -38,7 +38,7 @@ class productModel extends DBConnection
 
 	public function insertCategory($Category)
 	{
-		$this->runQuery("INSERT INTO product_categories(ID, NAME) VALUE ({$Category->id}, {$Category->name})");
+		$this->runQuery("INSERT INTO product_categories(ID, NAME) VALUE ({$Category->id}, '{$Category->name}')");
 	}
 
 	public function deleteCategory($CategoryID)

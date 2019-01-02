@@ -30,7 +30,6 @@ class User
 		$this->streetAddress = $StreetAddress;
 		$this->postcode = $Postcode;
 		$this->tel = $Tel;
-		$this->notes = $Notes;
 		$this->facebook = $Facebook;
 		$this->twitter = $Twitter;
 		$this->google = $Google;
@@ -70,7 +69,7 @@ class User
 // firstname	
 	public function getFirstname()
 	{
-		return $this->this->firstname;
+		return $this->firstname;
 	}
 	public function setFirstname($FirstName)
 	{

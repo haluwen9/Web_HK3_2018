@@ -13,22 +13,27 @@
             <a href="cart.html"><i class="fa fa-user"></i> Giỏ hàng của tôi</a>
           </li>
           <?php
-            if (isset($_SESSION["userSession"])) {
-              echo '
+            if (isset($_SESSION['userSession'])) {
+              $str = $_SESSION['userSession']->getFirstname();
+              echo "
               <li>
-                Xin chào, <a href="#">{$_SESSION["userSession"]->getFirstname()}</a>
-              </li>';
-            }
-            else {
-              echo '
-              <li>
-                <a href="#" data-toggle="modal" data-target="#login-dialog" onclick="switchForm('."'login'".')">
-                  <i class="fa fa-user"></i> Đăng nhập</a>
+                Xin chào, <a href=\"#\"><i class=\"fa fa-user\"></i>$str</a>
               </li>
               <li>
-                <a href="#" data-toggle="modal" data-target="#login-dialog" onclick="switchForm('."'register'".')">
-                  <i class="fa fa-user"></i> Đăng ký</a>
-              </li>';
+                <a href=\"?ctrl=logout\">
+                  <i class=\"fa fa-user\"></i> Đăng xuất</a>
+              </li>";
+            }
+            else {
+              echo "
+              <li>
+                <a href=\"#\" data-toggle=\"modal\" data-target=\"#login-dialog\" onclick=\"switchForm('login')\">
+                  <i class=\"fa fa-user\"></i> Đăng nhập</a>
+              </li>
+              <li>
+                <a href=\"#\" data-toggle=\"modal\" data-target=\"#login-dialog\" onclick=\"switchForm('register')\">
+                  <i class=\"fa fa-user\"></i> Đăng ký</a>
+              </li>";
             }
           ?>
         </ul>

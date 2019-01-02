@@ -8,7 +8,7 @@ function Login($UserID, $Password)
     if ($userModel->loginAuthenticate($UserID, $Password))
     {
         $_SESSION['userSession'] = $userModel->getUserInfoByID($UserID);
-        die("Login Successfully!");
+        // die("Login Successfully!");
         return TRUE;
     }
     return FALSE;
@@ -16,7 +16,7 @@ function Login($UserID, $Password)
 
 function Logout()
 {
-    unset($_SESSION['userSession']);
+    $_SESSION = array();
     session_destroy();
 }
 
