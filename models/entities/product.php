@@ -117,7 +117,7 @@ class Product
 		return false;
 	}
 	
-// rating
+// sellState
 	public function getSellState()
 	{
 		return $this->sellState;
@@ -126,7 +126,7 @@ class Product
 	{
 		$this->sellState = $sellState;
 	}
-	
+
 // amount
 	public function getAmount()
 	{
