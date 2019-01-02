@@ -28,6 +28,16 @@ if (isset($_GET['ctrl'])) {
       break;
   }
 }
+else if (isset($_GET['page'])) {
+  switch ($_GET['page'])
+  {
+    case 'shop':
+      include_once("controllers/shop.php");
+      $shopController = new shopController;
+      $shopController->invoke();
+      break;
+  }
+}
 else {
   include_once("controllers/home.php");
 }

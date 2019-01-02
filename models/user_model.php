@@ -1,5 +1,4 @@
 <?php
-include_once("models/entities/user.php");
 include_once("config/db.php");
 
 class userModel extends DBConnection

@@ -1,7 +1,5 @@
 <?php
-include_once("entities/product.php");
-include_once("entities/product_category.php");
-include_once("../config/db.php");
+include_once("config/db.php");
 
 class productModel extends DBConnection
 {
@@ -31,7 +29,7 @@ class productModel extends DBConnection
 	{
 		$this->runQuery(
 			"UPDATE product_categories
-			SET name = {$Category->name}
+			SET name = '{$Category->name}'
 			WHERE id = {$Category->id})"
 		);
 	}
@@ -50,7 +48,7 @@ class productModel extends DBConnection
 	public function getAllProducts()
 	{
 		$result = $this->runQuery(
-			"SELECT products.* storate.amount
+			"SELECT products.*, storage.amount
 			FROM products INNER JOIN storage on products.id = storage.product_id"
 		);
 
@@ -143,13 +141,13 @@ class productModel extends DBConnection
 			"INSERT INTO products(id, name, category, price, sale, image_link, tags, sell_state) 
 			VALUE (
 				{$product->getId()},
-				{$product->getName()},
-				{$product->getCategory()},
-				{$product->getPrice()},
-				{$product->getSale()},
-				{$product->getImageLink()},
-				{implode(' ', $product->getTags())},
-				{$product->getSellState()}
+				'{$product->getName()}',
+				'{$product->getCategory()}',
+				'{$product->getPrice()}',
+				'{$product->getSale()}',
+				'{$product->getImageLink()}',
+				'{implode(' ', $product->getTags())}',
+				'{$product->getSellState()}'
 			)"
 		);
 
@@ -157,7 +155,7 @@ class productModel extends DBConnection
 			"INSERT INTO storage(product_id, amount)
 			VALUE (
 				{$product->getId()},
-				{$product->getAmount()}
+				'{$product->getAmount()}'
 			)"
 		);
 	}
@@ -172,13 +170,13 @@ class productModel extends DBConnection
 	{
 		$this->runQuery(
 			"UPDATE products 
-			SET name = {$product->getName()},
-				category = {$product->getCategory()},
-				price = {$product->getPrice()},
-				sale = {$product->getSale()},
-				image_link = {$product->getImageLink()},
-				tags = {implode(' ', $product->getTags())},
-				sell_state = {$product->getSellState()}
+			SET name = '{$product->getName()}',
+				category = '{$product->getCategory()}',
+				price = '{$product->getPrice()}',
+				sale = '{$product->getSale()}',
+				image_link = '{$product->getImageLink()}',
+				tags = '{implode(' ', $product->getTags())}',
+				sell_state = '{$product->getSellState()}'
 			WHERE id = {$product->id}"
 		);
 	}
@@ -215,11 +213,11 @@ class productModel extends DBConnection
 		$this->runQuery(
 			"INSERT INTO reviews(user_id, product_id, content, posted_time, rating) 
 			VALUE (
-				{$review->getUserId()},
-				{$review->getProductId()},
-				{$review->getContent()},
-				{$review->getPostedTime()},
-				{$review->getRating()}
+				{$review->getUserId()}',
+				'{$review->getProductId()}',
+				'{$review->getContent()}',
+				'{$review->getPostedTime()}',
+				'{$review->getRating()}'
 			)"
 		);	
 	}
