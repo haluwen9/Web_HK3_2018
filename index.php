@@ -49,6 +49,11 @@ else if (isset($_GET['page'])) {
           header("Location: index.php?page=shop");
       }
       break;
+    case 'cart':
+      include_once("controllers/cart.php");
+      $cartController = new cartController;
+      $cartController->invoke();
+      break;
     default:
       include_once("controllers/home.php");
   }
