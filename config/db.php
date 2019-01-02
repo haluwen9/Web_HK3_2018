@@ -14,6 +14,7 @@
       $dbname = $setting["databasename"];
 
       $db = new mysqli($host, $username, $password, $dbname, $port);
+      $db->set_charset("utf8");
       if ($db->connect_error) {
         die("Cannot connect to Database!". $db->connect_error);
       }
