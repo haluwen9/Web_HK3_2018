@@ -12,7 +12,7 @@ class userModel extends DBConnection
 	public function loginAuthenticate($UserID, $Password)
 	{
 		$UserID = mysql_real_escape_string($UserID);
-		$result = $this->runQuery('SELECT pw FROM users WHERE user_id = \'$UserID\''));
+		$result = $this->runQuery("SELECT pw FROM users WHERE user_id = $UserID"));
 		if ($result->num_rows == 0)
 		{
 			die('Username does not exist!');
@@ -24,7 +24,7 @@ class userModel extends DBConnection
 	// users
 	public function getAllUsers()
 	{
-		$result = $this->runQuery('SELECT * FROM users');
+		$result = $this->runQuery("SELECT * FROM users");
 
 		if ($result->num_rows == 0)
 		{
@@ -59,44 +59,44 @@ class userModel extends DBConnection
 	public function updateUser($user)
 	{
 		$this->runQuery(
-			'UPDATE users 
+			"UPDATE users 
 			SET 
-				pw = \'{$user->getPw()}\',
-				email = \'{$user->getEmail()}\',
-				firstname = \'{$user->getFirstname()}\',
-				lastname = \'{$user->getLastname()}\',
-				country = \'{$user->getCountry()}\',
-				county = \'{$user->getCounty()}\',
-				province = \'{$user->getProvince()}\',
-				street_address = \'{$user->getStreetAddress()}\',
-				postcode = \'{$user->getPostcode()}\',
-				tel = \'{$user->getTel()}\',
-				facebook = \'{$user->getFacebook()}\',
-				twitter = \'{$user->getTwitter()}\',
-				google = \'{$user->getGoogle()}\'
-			WHERE id = \'{$user->id}\'');
+				pw = {$user->getPw()},
+				email = {$user->getEmail()},
+				firstname = {$user->getFirstname()},
+				lastname = {$user->getLastname()},
+				country = {$user->getCountry()},
+				county = {$user->getCounty()},
+				province = {$user->getProvince()},
+				street_address = {$user->getStreetAddress()},
+				postcode = {$user->getPostcode()},
+				tel = {$user->getTel()},
+				facebook = {$user->getFacebook()},
+				twitter = {$user->getTwitter()},
+				google = {$user->getGoogle()}
+			WHERE id = {$user->id}");
 	}
 
 	public function insertUser($user)
 	{
 		$this->runQuery(
-			'INSERT INTO users(id, pw, email, firstname, lastname, country, county, province, street_address, postcode, tel, facebook, twitter, google) 
+			"INSERT INTO users(id, pw, email, firstname, lastname, country, county, province, street_address, postcode, tel, facebook, twitter, google) 
 			VALUE (
-				\'{$user->getId()}\',
-				\'{$user->getPw()}\',
-				\'{$user->getEmail()}\',
-				\'{$user->getFirstname()}\',
-				\'{$user->getLastname()}\',
-				\'{$user->getCountry()}\',
-				\'{$user->getCounty()}\',
-				\'{$user->getProvince()}\',
-				\'{$user->getStreetAddress()}\',
-				\'{$user->getPostcode()}\',
-				\'{$user->getTel()}\',
-				\'{$user->getFacebook()}\',
-				\'{$user->getTwitter()}\',
-				\'{$user->getGoogle()}\'
-			)'
+				{$user->getId()},
+				{$user->getPw()},
+				{$user->getEmail()},
+				{$user->getFirstname()},
+				{$user->getLastname()},
+				{$user->getCountry()},
+				{$user->getCounty()},
+				{$user->getProvince()},
+				{$user->getStreetAddress()},
+				{$user->getPostcode()},
+				{$user->getTel()},
+				{$user->getFacebook()},
+				{$user->getTwitter()},
+				{$user->getGoogle()}
+			)"
 		);
 	}
 
@@ -107,16 +107,16 @@ class userModel extends DBConnection
 		{
 			die('Cannot delete ADMIN');
 		}
-		$this->runQuery('DELETE FROM users WHERE id = \'{$UserID}\'');
+		$this->runQuery("DELETE FROM users WHERE id = {$UserID}");
 	}
 
 	public function getUserInfoById($UserID)
 	{
-		$result = $this->runQuery('SELECT * FROM users WHERE id = \'{$UserID}\'');
+		$result = $this->runQuery("SELECT * FROM users WHERE id = {$UserID}");
 
 		if ($result->num_rows == 0)
 		{
-			die('Cannot retrieve user\'s info (id={$UserID})!');
+			die("Cannot retrieve user\'s info (id={$UserID})!");
 		}
 
 		$row = $result->fetch_assoc();
