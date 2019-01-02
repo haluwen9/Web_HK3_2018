@@ -14,21 +14,21 @@
           </li>
           <?php
             if (isset($_SESSION["userSession"])) {
-              echo `
+              echo '
               <li>
-                Xin chào, <a href="#">{$_SESSION["userSession"]->FirstName}</a>
-              </li>`;
+                Xin chào, <a href="#">{$_SESSION["userSession"]->getFirstname()}</a>
+              </li>';
             }
             else {
-              echo `
+              echo '
               <li>
-                <a href="#" data-toggle="modal" data-target="#login-dialog" onclick="switchForm('login')">
+                <a href="#" data-toggle="modal" data-target="#login-dialog" onclick="switchForm('."'login'".')">
                   <i class="fa fa-user"></i> Đăng nhập</a>
               </li>
               <li>
-                <a href="#" data-toggle="modal" data-target="#login-dialog" onclick="switchForm('register')">
+                <a href="#" data-toggle="modal" data-target="#login-dialog" onclick="switchForm('."'register'".')">
                   <i class="fa fa-user"></i> Đăng ký</a>
-              </li>`;
+              </li>';
             }
           ?>
         </ul>
