@@ -1,6 +1,4 @@
 
-  <!-- Latest jQuery form server -->
-  <script src="assets/js/jquery.min.js"></script>
 
   <!-- Bootstrap JS form CDN -->
   <!--
@@ -18,7 +16,7 @@
   <!-- Main Script -->
   <script src="assets/js/main.js"></script>
   <script src="assets/js/shoppingcart.js"></script>
-  <script src="views/var.js"></script>
+  <!-- <script src="views/var.js"></script> -->
 
   <!-- Slider -->
   <script type="text/javascript" src="assets/js/bxslider.min.js"></script>

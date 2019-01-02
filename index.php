@@ -43,4 +43,12 @@ else {
 }
   
 
+  if (isset($_GET["c"]) && $_GET["c"]=="shop") {
+    include_once("controllers/shop.php");
+    $s = new shopController();
+    echo json_encode($s->getAllProducts());
+  }
+  else {
+    include_once("controllers/home.php");
+  }
 ?>

@@ -1,3 +1,4 @@
+<link type="text/css" rel="stylesheet" href="assets/css/dialog.css" />
 <div action="#" class="modal fade" role="dialog" id="login-dialog">
   <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
     <div class="modal-content">

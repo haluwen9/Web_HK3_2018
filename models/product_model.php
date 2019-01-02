@@ -47,30 +47,26 @@ class productModel extends DBConnection
 	// products
 	public function getAllProducts()
 	{
-		$result = $this->runQuery(
-			"SELECT products.*, storage.amount
-			FROM products INNER JOIN storage on products.id = storage.product_id"
-		);
+		$result = $this->runQuery("SELECT products.*, storage.AMOUNT	FROM products LEFT JOIN storage on products.id = storage.product_id");
 
 		$productList = array();
 		while ($row = $result->fetch_assoc())
 		{
-			$result2 = $this->runQuery("SELECT amount FROM storage WHERE product_id = {$row[id]}");
-			$row2 = $result2->fetch_assoc();
 			$product = new Product(
-				$row['id'], 
-				$row['name'], 
-				$row['category'], 
-				$row['price'], 
-				$row['sale'],
-				$row['image_link'],
-				$row2['amount'],
-				explode(' ', $row['tags']),
-				$row['sell_state']
+				$row['ID'], 
+				$row['NAME'], 
+				$row['CATEGORY'], 
+				$row['PRICE'], 
+				$row['SALE'],
+				$row['IMAGE_LINK'],
+				$row['AMOUNT'],
+				explode(' ', $row['TAGS']),
+				$row['SELL_STATE']
 			);
 			array_push($productList, $product);
 		}
-		
+		$result->free();
+		// return count($productList);
 		return $productList;
 	}
 

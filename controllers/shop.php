@@ -27,6 +27,10 @@ class shopController
 
         include_once("views/shop.html");
     }
+
+    public function getAllProducts() {
+        return $this->productModel->getAllProducts();
+    }
 }
 
 ?>
