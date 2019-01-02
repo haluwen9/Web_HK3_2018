@@ -25,7 +25,7 @@ class shopController
             $productList = $productModel->getAllProducts();
         }
 
-        include_once("../views/shop.php");
+        include_once("../views/shop.html");
     }
 }
 

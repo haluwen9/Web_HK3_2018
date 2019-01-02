@@ -1,6 +1,6 @@
 <?php
 
-include_once("../models/user_model.php")
+include_once("models/user_model.php");
 
 function Login($UserID, $Password)
 {
@@ -8,9 +8,10 @@ function Login($UserID, $Password)
     if ($userModel->loginAuthenticate($UserID, $Password))
     {
         $_SESSION['userSession'] = $userModel->getUserInfoByID($UserID);
-        die ("Đăng nhập thành công!");
+        die("Login Successfully!");
+        return TRUE;
     }
-    die ("Sai mật khẩu!");
+    return FALSE;
 }
 
 function Logout()

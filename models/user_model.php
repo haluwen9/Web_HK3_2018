@@ -1,6 +1,6 @@
 <?php
-include_once("entities/user.php");
-include_once("../config/db.php");
+include_once("models/entities/user.php");
+include_once("config/db.php");
 
 class userModel extends DBConnection
 {
@@ -11,14 +11,9 @@ class userModel extends DBConnection
 	// Authentication
 	public function loginAuthenticate($UserID, $Password)
 	{
-		$UserID = mysql_real_escape_string($UserID);
-		$result = $this->runQuery("SELECT pw FROM users WHERE user_id = $UserID"));
-		if ($result->num_rows == 0)
-		{
-			die('Username does not exist!');
-		}
-
-		return $Password == $result->fetch_assoc()['pw'];
+		$result = $this->runQuery("SELECT pw FROM users WHERE id = '$UserID'");
+		$resultPassword = $result->fetch_assoc()['pw'];
+		return $Password == $resultPassword;
 	}
 
 	// users

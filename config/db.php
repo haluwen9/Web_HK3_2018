@@ -11,12 +11,12 @@
       $port = $setting["port"];
       $username = $setting["username"];
       $password = $setting["password"];
-      $dbname = $setting["databasename"];
+      $dbname = $setting["dbname"];
 
-      $db = new mysqli($host, $username, $password, $dbname, $port);
-      $db->set_charset("utf8");
-      if ($db->connect_error) {
-        die("Cannot connect to Database!". $db->connect_error);
+      $this->db = new mysqli($host, $username, $password, $dbname, $port);
+      $this->db->set_charset("utf8");
+      if ($this->db->connect_error) {
+        die("Cannot connect to Database!". $this->db->connect_error);
       }
     }
 
@@ -28,21 +28,21 @@
       $port = $setting["port"];
       $username = $setting["username"];
       $password = $setting["password"];
-      $dbname = $setting["databasename"];
+      $dbname = $setting["dbname"];
 
-      $db = new mysqli($host, $username, $password, $dbname, $port);
-      if ($db->connect_error) {
-        die("Cannot connect to Database!". $db->connect_error);
+      $this->db = new mysqli($host, $username, $password, $dbname, $port);
+      if ($this->db->connect_error) {
+        die("Cannot connect to Database!". $this->db->connect_error);
       }
     }
 
     public function runQuery(string $sql) {
-      try {
-        $res = $db->query($sql);
-        return res;
+      $result = $this->db->query($sql);
+      if ($result === FALSE) {
+        die($this->db->error);
       }
-      catch (Exception $e) {
-        echo $e;
+      else {
+        return $result; 
       }
     }
 

@@ -27,7 +27,7 @@
               </li>
             </ul>
           </div>
-          <form action="" class="col-md-6 ml-auto text-center" id="login-form">
+          <form action="index.php?ctrl=login" method="post" class="col-md-6 ml-auto text-center" id="login-form">
             <h4 class="modal-title">Đăng nhập</h4>
             <label for="loginID">Tên đăng nhập</label>
             <input type="text" name="loginID" placeholder="Tên đăng nhập..." />
@@ -41,7 +41,7 @@
             </label>
             <button type="submit" class="btn">Đăng nhập</button>
           </form>
-          <form action="" class="col-md-6 ml-auto text-center" id="register-form" style="display: none;">
+          <form action="" method="post" class="col-md-6 ml-auto text-center" id="register-form" style="display: none;">
             <h5 class="modal-title">Đăng ký</h5>
             <label for="regID">Tên đăng nhập</label>
             <input type="text" name="regID" placeholder="Tên đăng nhập..." />
