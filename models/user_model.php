@@ -8,6 +8,19 @@ class userModel extends DBConnection
 		parent::__construct();
 	}
 
+	// Authentication
+	public function loginAuthenticate($UserID, $Password)
+	{
+		$UserID = mysql_real_escape_string($UserID);
+		$result = $this->runQuery('SELECT pw FROM users WHERE user_id = \'$UserID\''));
+		if ($result->num_rows == 0)
+		{
+			die('Username does not exist!');
+		}
+
+		return $Password == $result->fetch_assoc()['pw'];
+	}
+
 	// users
 	public function getAllUsers()
 	{
