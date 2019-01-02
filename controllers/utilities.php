@@ -1,5 +1,7 @@
 <?php
 
+include_once("models/user_model.php");
+
 function Login($UserID, $Password)
 {
     $userModel = new userModel;

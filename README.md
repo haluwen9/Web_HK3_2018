@@ -58,20 +58,20 @@
     - [X] GetAllOrders
     - [X] UpdateOrderState
     - [X] DeleteOrder
-  - [ ] **Users**
+  - [X] **Users**
     #### General
-    - [ ] Authentication (Login)
-    - [x] AddUser (Register)
-    - [x] GetUserInfo
-    - [x] ModifyUserInfo
-    - [x] DeleteUser
+    - [X] Authentication (Login)
+    - [X] AddUser (Register)
+    - [X] GetUserInfo
+    - [X] ModifyUserInfo
+    - [X] DeleteUser
     #### Admin
-    - [x] GetAllUsers
+    - [X] GetAllUsers
 - ### Views
   - [ ] Update View to PHP
   - [ ] Layout Admin Page
 - ### Controllers
-  - [ ] Trang chủ
+  - [X] Trang chủ
   - [ ] Cửa hàng
   - [ ] Sản phẩm
   - [ ] Giỏ hàng
