@@ -8,9 +8,10 @@ function Login($UserID, $Password)
     if ($userModel->loginAuthenticate($UserID, $Password))
     {
         $_SESSION['userSession'] = $userModel->getUserInfoByID($UserID);
-        // die("Login Successfully!");
+        header("Location: index.php");
         return TRUE;
     }
+    header("Location: index.php");
     return FALSE;
 }
 

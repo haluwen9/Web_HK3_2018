@@ -8,6 +8,12 @@ class productModel extends DBConnection
 	}
 
 	// product_categories
+	public function getCategoryById($CategoryID)
+	{
+		$result = $this->runQuery("SELECT name FROM product_categories WHERE id = '$CategoryID' ");
+		return $result->fetch_assoc()['name'];
+	}
+
 	public function getCategories()
 	{
 		$result = $this->runQuery("SELECT * FROM product_categories");
@@ -55,7 +61,7 @@ class productModel extends DBConnection
 		$productList = array();
 		while ($row = $result->fetch_assoc())
 		{
-			$result2 = $this->runQuery("SELECT amount FROM storage WHERE product_id = {$row[id]}");
+			$result2 = $this->runQuery("SELECT amount FROM storage WHERE product_id = {$row['id']}");
 			$row2 = $result2->fetch_assoc();
 			$product = new Product(
 				$row['id'], 
@@ -77,7 +83,7 @@ class productModel extends DBConnection
 	public function getProductsByCategory($CategoryID)
 	{
 		$result = $this->runQuery(
-			"SELECT products.* storate.amount
+			"SELECT products.*, storage.amount
 			FROM products INNER JOIN storage on products.id = storage.product_id
 			WHERE category = {$CategoryID}"
 		);
@@ -111,17 +117,18 @@ class productModel extends DBConnection
 	public function getProductById($ProductID)
 	{
 		$result = $this->runQuery(
-			"SELECT products.* storate.amount
+			"SELECT products.*, storage.amount
 			FROM products INNER JOIN storage on products.id = storage.product_id
 			WHERE products.id = {$ProductID}"
 		);
 
 		if ($result->num_rows == 0)
 		{
-			die("Cannot retrieve product\'s info (id={$id})!");
+			echo ("Cannot retrieve product's info (id={$ProductID})!");
+			return NULL;
 		}
 
-		$row = $result1->fetch_assoc();
+		$row = $result->fetch_assoc();
 		return new Product(
 			$row['id'], 
 			$row['name'], 

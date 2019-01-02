@@ -8,7 +8,6 @@ include_once("models/entities/user.php");
 
 session_start();
 
-
 $homeUrl = $_SERVER['REQUEST_URI'];
 $asset_folder = $homeUrl."assets";
 $files_folder = $homeUrl."/files";
@@ -19,13 +18,14 @@ if (isset($_GET['ctrl'])) {
     case 'login':
       include_once("controllers/utilities.php");
       Login($_POST['loginID'], $_POST['loginPW']);
-      header("Location: index.php");
       break;
     case 'logout':
       include_once("controllers/utilities.php");
       Logout();
       header("Location: index.php");
       break;
+    default:
+      include_once("controllers/home.php");
   }
 }
 else if (isset($_GET['page'])) {
@@ -36,6 +36,19 @@ else if (isset($_GET['page'])) {
       $shopController = new shopController;
       $shopController->invoke();
       break;
+    case 'product':
+      if (!isset($_GET['id'])) {
+        header("Location: index.php?page=shop");
+      }
+      else {
+        include_once("controllers/single-product.php");
+        $productController = new productController;
+        if (!$productController->invoke($_GET['id']))
+          header("Location: index.php?page=shop");
+      }
+      break;
+    default:
+      include_once("controllers/home.php");
   }
 }
 else {
