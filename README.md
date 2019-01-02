@@ -34,17 +34,17 @@
 ## Cuối kỳ
 ### To do
 - ### Models
-  - [ ] **Products**
+  - [x] **Products**
     #### General
     - [x] GetAllProducts
-    - [ ] GetCategorys
+    - [x] GetCategorys
     - [x] GetProductsByCategory
     - [x] GetProductById
-    - [ ] AddProductReview
-    - [ ] DeleteProductReview
+    - [x] AddProductReview
+    - [x] DeleteProductReview
     #### Admin
-    - [ ] UpdateCategory
-    - [ ] DeleteCategory
+    - [x] UpdateCategory
+    - [x] DeleteCategory
     - [x] AddProduct
     - [x] UpdateProduct
     - [x] DeleteProduct
