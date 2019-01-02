@@ -4,13 +4,13 @@ include_once('shipping_info.php');
 
 class Order
 {
-	private $id;
-	private $userId;
-	private $diffShipAddr;
-	private $totalPrice;
-	private $shippingInfo;
-	private $content; // array of (product => amount)
-	private $successState;
+	public $id;
+	public $userId;
+	public $diffShipAddr;
+	public $totalPrice;
+	public $shippingInfo;
+	public $content; // array of (product => amount)
+	public $successState;
 
 	public function __construct($Id, $UserId, $DiffShipAddr, $TotalPrice,  $ShippingInfo, $Content = array(), $SuccessState = FALSE)
 	{

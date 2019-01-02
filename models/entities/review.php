@@ -2,11 +2,11 @@
 	
 class Review
 {
-	private $userId;
-	private $productId;
-	private $content;
-	private $postedTime;
-	private $rating;
+	public $userId;
+	public $productId;
+	public $content;
+	public $postedTime;
+	public $rating;
 	
 	public function __construct($UserId, $ProductId, $Content, $PostedTime, $Rating)
 	{

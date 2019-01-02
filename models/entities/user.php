@@ -2,20 +2,20 @@
 
 class User
 {
-	private $id;
-	private $email;
-	private $pw;
-	private $firstname;
-	private $lastname;
-	private $country;
-	private $county;
-	private $province;
-	private $streetAddress;
-	private $postcode;
-	private $tel;
-	private $facebook;
-	private $twitter; 
-	private $google;
+	public $id;
+	public $email;
+	public $pw;
+	public $firstname;
+	public $lastname;
+	public $country;
+	public $county;
+	public $province;
+	public $streetAddress;
+	public $postcode;
+	public $tel;
+	public $facebook;
+	public $twitter; 
+	public $google;
 	
 	public function __construct($Id, $Pw, $Email, $FirstName, $LastName, $Country, $County, $Province, $StreetAddress, $Postcode, $Tel, $Facebook = null, $Twitter = null, $Google = null)
 	{

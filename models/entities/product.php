@@ -2,18 +2,18 @@
 
 class Product
 {
-	private $id;
-	private $name;
-	private $category;
-	private $price;
-	private $sale;
-	private $imageLink;
+	public $id;
+	public $name;
+	public $category;
+	public $price;
+	public $sale;
+	public $imageLink;
 	
-	private $amount;
+	public $amount;
 
-	private $tags; // array of tags
+	public $tags; // array of tags
 
-	private $sellState;
+	public $sellState;
 
 	public function __construct($Id, $Name, $Category, $Price, $Sale, $ImageLink, $Amount, $Tags = array(), $SellState = TRUE)
 	{

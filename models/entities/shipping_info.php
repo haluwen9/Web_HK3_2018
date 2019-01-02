@@ -2,15 +2,15 @@
 
 class ShippingInfo
 {
-	private $firstname;
-	private $lastname;
-	private $country;
-	private $county;
-	private $province;
-	private $streetAddress;
-	private $postcode;
-	private $tel;
-	private $notes;
+	public $firstname;
+	public $lastname;
+	public $country;
+	public $county;
+	public $province;
+	public $streetAddress;
+	public $postcode;
+	public $tel;
+	public $notes;
 	
 	public function __construct($FirstName, $LastName, $Country, $County, $Province, $StreetAddress, $Postcode, $Tel, $Notes)
 	{
