@@ -1,3 +1,3 @@
 <?php
-  include_once("views/index.php");
+  include_once("views/homepage.php");
 ?>
