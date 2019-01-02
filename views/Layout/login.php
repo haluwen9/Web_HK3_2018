@@ -28,7 +28,7 @@
               </li>
             </ul>
           </div>
-          <form action="index.php?ctrl=login" method="post" class="col-md-6 ml-auto text-center" id="login-form">
+          <form action="" method="post" class="col-md-6 ml-auto text-center" id="login-form">
             <h4 class="modal-title">Đăng nhập</h4>
             <label for="loginID">Tên đăng nhập</label>
             <input type="text" name="loginID" placeholder="Tên đăng nhập..." />
@@ -40,7 +40,8 @@
             <label>
               Quên mật khẩu? <a href="#" class="openForgetPW">Tìm mật khẩu</a>
             </label>
-            <button type="submit" class="btn">Đăng nhập</button>
+            <button type="submit" class="btn" onclick="signin(event)">Đăng nhập</button>
+            <label id="login-result" style="text-align: center;"></label>
           </form>
           <form action="" method="post" class="col-md-6 ml-auto text-center" id="register-form" style="display: none;">
             <h5 class="modal-title">Đăng ký</h5>
@@ -51,7 +52,7 @@
             <label for="regMail">Địa chỉ Email</label>
             <input type="email" name="regMail" placeholder="abc@xyz.com" />
             <label>Đã có tài khoản? <a href="#" onclick="switchForm('login')">Đăng nhập</a></label>
-            <button type="submit" class="btn">Đăng ký</button>
+            <button type="submit" class="btn" onclick="signup(event)">Đăng ký</button>
           </form>
         </div>
       </div>
@@ -61,3 +62,43 @@
     </div>
   </div>
 </div>
+<script>
+function signin(ev) {  
+  ev.preventDefault();
+  var resBox = $('#login-result');
+
+  $('#login-form input').css('border-color','#ddd');
+
+  $.post(
+    '?u=login',
+    {
+      loginID: $('#login-form input[name=loginID]').val(),
+      loginPW: $('#login-form input[name=loginPW').val()
+    },
+    function(res) {
+      // console.log(res);
+      if (res == 0) {
+        resBox.html('Tài khoản không tồn tại!');
+        resBox.css('color','red');
+        $('#login-form input[name=loginID]').css('border-color','#ff0000');
+      }
+      else if (res == 1) {
+        resBox.html('Sai mật khẩu!');
+        resBox.css('color','red');
+        $('#login-form input[name=loginPW]').css('border-color','#ff0000');
+      }
+      else if (res == 2) {
+          resBox.text('Đăng nhập thành công');
+          resBox.css('color','green');
+          $('#login-form input').css('border-color','#00ff00');
+        setTimeout(() => {
+        document.location = document.location;
+        }, 1000);
+      }
+    } 
+  );
+}
+function signup(ev) {
+  ev.preventDefault();
+}
+</script>

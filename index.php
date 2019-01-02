@@ -13,19 +13,22 @@ $homeUrl = $_SERVER['REQUEST_URI'];
 $asset_folder = $homeUrl."assets";
 $files_folder = $homeUrl."/files";
 
-if (isset($_GET['ctrl'])) {
-  switch ($_GET['ctrl'])
+if (isset($_GET['u'])) {
+  switch ($_GET['u'])
   {
     case 'login':
       include_once("controllers/utilities.php");
-      Login($_POST['loginID'], $_POST['loginPW']);
-      header("Location: index.php");
+      echo Login($_POST['loginID'], $_POST['loginPW']);
+      // header("Location: index.php");
       break;
     case 'logout':
       include_once("controllers/utilities.php");
       Logout();
-      header("Location: index.php");
+      header("Location: ?");
       break;
+    case 'register':
+
+    beak;
   }
 }
 else if (isset($_GET['page'])) {
@@ -43,12 +46,12 @@ else {
 }
   
 
-  if (isset($_GET["c"]) && $_GET["c"]=="shop") {
-    include_once("controllers/shop.php");
-    $s = new shopController();
-    echo json_encode($s->getAllProducts());
-  }
-  else {
-    include_once("controllers/home.php");
-  }
+  // if (isset($_GET["c"]) && $_GET["c"]=="shop") {
+  //   include_once("controllers/shop.php");
+  //   $s = new shopController();
+  //   echo json_encode($s->getAllProducts());
+  // }
+  // else {
+  //   include_once("controllers/home.php");
+  // }
 ?>

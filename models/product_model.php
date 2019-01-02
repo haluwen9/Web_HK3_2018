@@ -53,15 +53,15 @@ class productModel extends DBConnection
 		while ($row = $result->fetch_assoc())
 		{
 			$product = new Product(
-				$row['ID'], 
-				$row['NAME'], 
-				$row['CATEGORY'], 
-				$row['PRICE'], 
-				$row['SALE'],
-				$row['IMAGE_LINK'],
-				$row['AMOUNT'],
-				explode(' ', $row['TAGS']),
-				$row['SELL_STATE']
+				$row['id'], 
+				$row['name'], 
+				$row['category'], 
+				$row['price'], 
+				$row['sale'],
+				$row['image_link'],
+				$row['amount'],
+				explode(' ', $row['tags']),
+				$row['sell_state']
 			);
 			array_push($productList, $product);
 		}
@@ -99,6 +99,7 @@ class productModel extends DBConnection
 			);
 			array_push($productList, $product);
 		}
+		$result->free();
 		
 		return $productList;
 		

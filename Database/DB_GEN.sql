@@ -99,7 +99,7 @@ alter table order_content add constraint order_content_fk1 foreign key (product_
 
 alter table shipping_info add constraint shipping_info_fk0 foreign key (order_id) references orders(id);
 
-insert into users(id, pw, email ,firstname,lastname ,country,county,province,street_address,postcode,tel,facebook,twitter,google) value ('admin', 'admin', 'admin@example.com', 'admin', 'admin', '', '', '', '', '', '', '', '', '')
+insert into users(id, pw, email ,firstname,lastname ,country,county,province,street_address,postcode,tel,facebook,twitter,google) value ('admin', '21232f297a57a5a743894a0e4a801fc3', 'admin@example.com', 'admin', 'admin', '', '', '', '', '', '', '', '', '');
 
 use db_bongxustore;
 
@@ -411,3 +411,6 @@ VALUES
 160000,
 0.22,'files/img/pokemon/img67.jpg','Gấu bông',
 1);
+
+INSERT INTO storage(product_id, amount)
+SELECT id, 10000 FROM products

@@ -11,8 +11,10 @@ class userModel extends DBConnection
 	public function loginAuthenticate($UserID, $Password)
 	{
 		$result = $this->runQuery("SELECT pw FROM users WHERE id = '$UserID'");
+		if ($result->num_rows == 0) return 0;
 		$resultPassword = $result->fetch_assoc()['pw'];
-		return $Password == $resultPassword;
+		if (md5($Password) != $resultPassword) return 1;
+		return 2;
 	}
 
 	// users
