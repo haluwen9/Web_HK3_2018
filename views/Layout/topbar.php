@@ -17,7 +17,7 @@
               $str = $_SESSION['userSession']->getFirstname();
               echo "
               <li>
-                Xin chào, <a href=\"#\"><i class=\"fa fa-user\"></i>$str</a>
+                <a href=\"#\"><i class=\"fa fa-user\"></i>Xin chào, $str</a>
               </li>
               <li>
                 <a href=\"?ctrl=logout\">
