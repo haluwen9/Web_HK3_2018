@@ -29,7 +29,7 @@
 			<!-- nav left -->
 			<ul class="nav">
 				<li class="nav-item">
-					<a class="nav-link" href="index.php"><h5>Bông Xù Store</h5></a>
+					<a class="nav-link" href="."><h5>Bông Xù Store</h5></a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="?page=dashboard"><h5>Quản lý</h5></a>
@@ -56,7 +56,7 @@
 	
 	
 	<!-- Sidebar vs Content -->
-    <div class="container-fluid">
+    <div class="container-fluid main-area">
         <div class="row row-offcanvas row-offcanvas-left">
 			<!-- Sidebar -->	
 			<div class="col-md-2 d-none d-md-block bg-light sidebar">
@@ -116,72 +116,77 @@
 			
 				<!-- content manage Product -->
 				<div class="panel panel-default" id="ManageProduct">
+					
 					<h2>Quản lý</h2>
-
-					<div class="container table-hover">
-					<br>
-						<h3>Danh sách sản phẩm</h3>
-						<?php include_once"Layout/dashboard-table-product.php"?>
-						
-						
-						<!-- Button trigger modal Add Product-->
-						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddProduct">Thêm sản phẩm</button>
-						<!-- Modal Add Product -->
-						<form action="/web_hk3_2018?page=dashboard" class="col-sm-12">
-							<div class="modal fade" id="AddProduct" tabindex="-1" role="dialog" aria-labelledby="AddProductModalLabel" aria-hidden="true">
-							  <div class="modal-dialog" role="document">
-								<div class="modal-content container">
-									<div class="modal-header">
-										<h3 class="modal-title" id="AddProductModalLabel">Thêm sản phẩm</h3>
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-								  
-									<div class="modal-body">
-										<div class="form-group">
-											<label for="NameProduct">Tên sản phẩm</label>
-											<input type="text" class="form-control" id="NameProduct" placeholder="Tên . . .">
+					
+					<div class="container">
+						<div class="row">
+							<h3 class="d-inlineblock col-sm-10">Danh sách sản phẩm</h3>
+							
+							<!-- Button trigger modal Add Product-->
+							<div class="row">
+								<div class="col-sm-1"></div>
+								<button type="button" class="btn btn-primary col-sm-10" data-toggle="modal" data-target="#AddProduct">Thêm sản phẩm</button>							
+							</div>
+							<!-- Modal Add Product -->
+							<form action="?page=dashboard" method="post" class="col-sm-12">
+								<div class="modal fade" id="AddProduct" tabindex="-1" role="dialog" aria-labelledby="AddProductModalLabel" aria-hidden="true">
+								  <div class="modal-dialog" role="document">
+									<div class="modal-content container">
+										<div class="modal-header">
+											<h3 class="modal-title" id="AddProductModalLabel">Thêm sản phẩm</h3>
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
 										</div>
-										
-										<div class="form-group">
-											<label for="CategoryProduct">Loại sản phẩm</label>
-											<input type="text" class="form-control" id="CategoryProduct" placeholder="Loại . . .">
-										</div>
-
-										
-										<div class="form-row">
-											<div class="form-group col-sm-6">
-												<label for="PriceProduct">Giá bán</label>
-												<input type="text" class="form-control" id="PriceProduct" placeholder="Giá . . .">
+									  
+										<div class="modal-body">
+											<div class="form-group">
+												<label for="NameProduct">Tên sản phẩm</label>
+												<input type="text" name="NameProduct" class="form-control" id="NameProduct" placeholder="Tên . . .">
 											</div>
 											
-											<div class="form-group col-sm-6">
-												<label for="SaleProduct">Giảm giá</label>
-												<input type="text" class="form-control" id="SaleProduct" placeholder="Giảm giá . . .">
+											<div class="form-group">
+												<label for="CategoryProduct">Loại sản phẩm</label>
+												<input type="text" name="CategoryProduct" class="form-control" id="CategoryProduct" placeholder="Loại . . .">
 											</div>
-										</div>
-										
-										<div class="form-row" >
-											<div class="form-group col-sm-12">
-												<div class="custom-file">
-													<input type="file" class="form-control custom-file-input" id="customFile">
-													<label class="custom-file-label" for="customFile">Ảnh sản phẩm</label>
+
+											
+											<div class="form-row">
+												<div class="form-group col-sm-6">
+													<label for="PriceProduct">Giá bán</label>
+													<input type="text" name="PriceProduct" class="form-control" id="PriceProduct" placeholder="Giá . . .">
+												</div>
+												
+												<div class="form-group col-sm-6">
+													<label for="SaleProduct">Giảm giá</label>
+													<input type="text" name="SaleProduct" class="form-control" id="SaleProduct" placeholder="Giảm giá . . .">
 												</div>
 											</div>
-										</div>	
+											
+											<div class="form-row" >
+												<div class="form-group col-sm-12">
+													<div class="custom-file">
+														<input type="file" name="ImageProduct" class="form-control custom-file-input" id="customFile">
+														<label class="custom-file-label" for="customFile">Ảnh sản phẩm</label>
+													</div>
+												</div>
+											</div>	
+										</div>
+										
+										<div class="modal-footer">
+											<input type="submit" class="btn btn-primary btn-lg btn-block" value="Thêm sản phẩm">
+										</div>
 									</div>
-									
-									<div class="modal-footer">
-										<input type="submit" class="btn btn-primary btn-lg btn-block" value="Thêm sản phẩm">
-									</div>
+								  </div>
 								</div>
-							  </div>
-							</div>
-						</form>
-						
+							</form>
+						<br>
+						<?php include_once"Layout/dashboard-table-product.php"?>
+						</div>
 					<br>
 					</div>
+					
 				</div>
 		
 				<!-- content manage Category -->
@@ -229,7 +234,6 @@
 					<h2>Quản lý</h2>
 
 					<div class="container table-hover">
-					<br>
 						<h3>Danh sách hóa đơn</h3>
 						<table class="table ListProducts">
 							<thead>
@@ -382,7 +386,7 @@
 					<h2>Quản lý</h2>
 
 					<div class="container table-hover">
-					<br>
+
 						<h3>Danh sách tài khoản</h3>
 						<table class="table ListProducts">
 							<thead>
@@ -433,6 +437,7 @@
 			<script>
 				document.getElementById('{$Dashboard}').style.display = 'block';
 			</script>";
+		echo $NameProduct;
 	?>
 </body>
 </html>

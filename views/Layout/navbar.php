@@ -10,12 +10,12 @@
         -->
       <span class="navbar-toggler-icon"></span>
     </button>
-    <span class="navbar-brand"><a href="index.html">Bông Xù Store</a></span>
+    <span class="navbar-brand"><a href="?">Bông Xù Store</a></span>
     <!-- </div> -->
     <div class="navbar-collapse collapse" id="main-navbar-collapse">
       <ul class="nav navbar-nav ml-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="index.php">
+        <li class="nav-item">
+          <a class="nav-link" href="?">
             <span class="nav-hidden"><span class="fa fa-2x fa-home"></span><br /></span>Trang chủ
           </a>
         </li>
@@ -38,13 +38,28 @@
             Danh mục
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="category-dropdown">
-            <a href="?page=shop&category=1" class="dropdown-item">Thú bông nhỏ</a>
+            <!-- <a href="?page=shop&category=1" class="dropdown-item">Thú bông nhỏ</a>
             <a href="?page=shop&category=2" class="dropdown-item">Thú bông lớn</a>
-            <a href="?page=shop&category=3" class="dropdown-item">Thú bông POKEMON</a>
+            <a href="?page=shop&category=3" class="dropdown-item">Thú bông POKEMON</a> -->
+            <script>
+              $.ajax({
+                url: '?u=category',
+                async: true,
+                success: function (res) {
+                  var cate = JSON.parse(res);
+                  var html = "";
+                  cate.forEach(item => {
+                    console.log(item);
+                    html += `<a href="?page=shop&category=${item.id}" class="dropdown-item">${item.name}</a>`;
+                  });
+                  $('#category-dropdown ~ div').html(html);
+                }
+              });
+            </script>
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="index.php?page=cart">
+          <a class="nav-link" href="?page=cart">
             <span class="nav-hidden"><span class="fa fa-2x fa-gift"></span><br /></span>
             Giỏ hàng
           </a>

@@ -46,7 +46,7 @@ class userModel extends DBConnection
 				$row['twitter'],
 				$row['google']
 			);
-			array_push($this->userList, $user);
+			array_push($userList, $user);
 		}
 
 		return $userList;

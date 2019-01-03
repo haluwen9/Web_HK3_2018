@@ -8,8 +8,11 @@ include_once("models/user_model.php");
 
 
 //if (!isset($_SESSION["Dashboard"])) 
-	$_SESSION["Dashboard"] = "ManageProduct";
+	//$_SESSION["Dashboard"] = "ManageProduct";
 
+$NameProduct = NULL;
+if (isset($_POST["NameProduct"])) $NameProduct = $_POST["NameProduct"];
+	
 
 $Dashboard;
 if (isset($_GET["Dashboard"])) 

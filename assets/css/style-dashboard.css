@@ -20,7 +20,7 @@ hr {
 .container, .container-fluid {
 	background: #e6ffff;
 	margin-top: 10px;
-	border-radius: 50px;
+	border-radius: 30px;
 }
 
 .navbar-custom {
@@ -88,6 +88,10 @@ hr {
 
 .collapse .list-group-item{
 	padding-left: 40px;
+}
+
+.panel {
+	display: none;
 }
 
 .panel h2 {
