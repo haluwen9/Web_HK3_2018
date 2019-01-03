@@ -112,7 +112,7 @@ class userModel extends DBConnection
 
 		if ($result->num_rows == 0)
 		{
-			die("Cannot retrieve user's info (id= '$UserID')!");
+			return FALSE;
 		}
 
 		$row = $result->fetch_assoc();
@@ -136,7 +136,13 @@ class userModel extends DBConnection
 			$row['google']
 		);
 	}
-	
+	public function validateAccount($UserID, $Email)
+	{
+		$result = $this->runQuery("SELECT * FROM users WHERE id = '$UserID' or email = '$Email'");
+		if ($result->num_rows == 0)
+			return TRUE;
+		return FALSE;
+	}
 }
 
 ?>

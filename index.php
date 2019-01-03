@@ -24,8 +24,10 @@ if (isset($_GET['u'])) {
       header("Location: index.php");
       break;
     case 'register':
-
-    beak;
+      include_once("controllers/utilities.php");
+      echo Signup($_POST['regID'], $_POST['regPW'], $_POST['regMail']);
+      // header("Location: index.php");
+      break;
   }
 }
 else if (isset($_GET['page'])) {

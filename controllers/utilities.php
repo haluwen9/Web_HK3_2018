@@ -21,4 +21,17 @@ function Logout()
     session_destroy();
 }
 
+function Signup($UserID, $Password, $Email)
+{
+    $userModel = new userModel;
+    if ($userModel->validateAccount($UserID, $Email)) {
+        $userModel->insertUser(new User($UserID, md5($Password), $Email, $UserID, '', '', '', '', '', '', '', '','', ''));
+        // Logout();
+        // $_SESSION['userSession'] = $userModel->getUserInfoByID($UserID);
+        
+        return 1;
+    }
+    return 0;
+}
+
 ?>
