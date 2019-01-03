@@ -9,7 +9,7 @@
               Gấu bông cặp <span class="primary">GIẢM GIÁ <strong> 50%</strong></span>
             </h2>
             <h4 class="caption subtitle">Siêu đẹp, siêu mềm.</h4>
-            <a class="caption button-radius" href="single-product.html?id=10"><span class="icon"></span>Mua ngay</a>
+            <a class="caption button-radius" href="?page=shop"><span class="icon"></span>Mua ngay</a>
           </div>
         </li>
         <li>
@@ -20,7 +20,7 @@
               <span class="primary">GIẢM GIÁ <strong> 30%</strong></span>
             </h2>
             <h4 class="caption subtitle">Mua gấu tặng kèm người.</h4>
-            <a class="caption button-radius" href="single-product.html?id=17" class="html">
+            <a class="caption button-radius" href="?page=shop" class="html">
               <span class="icon"></span>Mua ngay</a>
           </div>
         </li>
@@ -31,7 +31,7 @@
               Bộ chó Husky <span class="primary">GIẢM GIÁ <strong> 25%</strong></span>
             </h2>
             <h4 class="caption subtitle">Đa kích cỡ, tha hồ lựa chọn.</h4>
-            <a class="caption button-radius" href="single-product.html?id=22"><span class="icon"></span>Mua ngay</a>
+            <a class="caption button-radius" href="?page=shop"><span class="icon"></span>Mua ngay</a>
           </div>
         </li>
         <li>
@@ -41,7 +41,7 @@
               Thú bông POKEMON <span class="primary">Thế hệ <strong>MỚI</strong></span>
             </h2>
             <h4 class="caption subtitle">Bộ Eevee tiến hóa.</h4>
-            <a class="caption button-radius" href="single-product.html?id=55"><span class="icon"></span>Mua ngay</a>
+            <a class="caption button-radius" href="?page=shop"><span class="icon"></span>Mua ngay</a>
           </div>
         </li>
       </ul>
@@ -163,57 +163,34 @@
         <div class="col-md-4">
           <div class="single-product-widget">
             <h2 class="product-wid-title">Đang Giảm Giá</h2>
-            <a href="shop.html" class="wid-view-more">Xem tất cả</a>
+            <a href="?page=shop" class="wid-view-more">Xem tất cả</a>
 
-            <div class="single-wid-product" draggable="true" ondragstart="itemDrag(event)" data-itemid="10">
-              <a href="single-product.html?id=10" draggable="false">
-                <img src="files/img/small/img10.jpg" alt="" class="product-thumb" />
-                <h2>Gấu bông cặp VIOLET-PINK</h2>
+            <?php
+              
+              for ($i = 30; $i <= 32; $i++){
+                // echo json_encode($this->this->productList);
+                $discount = $this->productList[$i]->price-$this->productList[$i]->price*$this->productList[$i]->sale;
+                echo "
+                <div class=\"single-wid-product\" draggable=\"true\" ondragstart=\"itemDrag(event)\" data-itemid=\"{$this->productList[$i]->id}\">
+              <a href=\"?page=product&id={$this->productList[$i]->id}\" draggable=\"false\">
+                <img src=\"{$this->productList[$i]->imageLink}\" alt=\"\" class=\"product-thumb\" />
+                <h2>{$this->productList[$i]->name}</h2>
               </a>
-              <div class="product-wid-rating">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
+              <div class=\"product-wid-rating\">
+                <i class=\"fa fa-star\"></i>
+                <i class=\"fa fa-star\"></i>
+                <i class=\"fa fa-star\"></i>
+                <i class=\"fa fa-star\"></i>
+                <i class=\"fa fa-star\"></i>
               </div>
-              <div class="product-wid-price">
-                <ins>300000<sup>đ</sup></ins> <del>600000<sup>đ</sup></del>
+              <div class=\"product-wid-price\">
+                <ins>".number_format($discount)."<sup>đ</sup></ins> <del>".number_format($this->productList[$i]->price)."<sup>đ</sup></del>
               </div>
-            </div>
+            </div>";
+              }
 
-
-            <div class="single-wid-product" draggable="true" ondragstart="itemDrag(event)" data-itemid="17">
-              <a href="single-product.html?id=17" draggable="false">
-                <img src="files/img/large/img17.jpg" alt="" class="product-thumb" />
-                <h2>Gấu bông to loại 1</h2>
-              </a>
-              <div class="product-wid-rating">
-                <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-              </div>
-              <div class="product-wid-price">
-                <ins>280000<sup>đ</sup></ins> <del>400000<sup>đ</sup></del>
-              </div>
-            </div>
-
-
-            <div class="single-wid-product" draggable="true" ondragstart="itemDrag(event)" data-itemid="22">
-              <a href="single-product.html?id=22" draggable="false">
-                <img src="files/img/large/img22.jpg" alt="" class="product-thumb" />
-                <h2>Bộ Husky Nga</h2>
-              </a>
-              <div class="product-wid-rating">
-                <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-              </div>
-              <div class="product-wid-price">
-                <ins>600000<sup>đ</sup></ins> <del>800000<sup>đ</sup></del>
-              </div>
-            </div>
-
+              ?>
+            
 
           </div>
         </div>
@@ -221,54 +198,33 @@
         <div class="col-md-4">
           <div class="single-product-widget">
             <h2 class="product-wid-title">Được xem nhiều</h2>
-            <a href="shop.html" class="wid-view-more">Xem tất cả</a>
+            <a href="?page=shop" class="wid-view-more">Xem tất cả</a>
 
-            <div class="single-wid-product" draggable="true" ondragstart="itemDrag(event)" data-itemid="6">
-              <a href="single-product.html?id=6" draggable="false">
-                <img src="files/img/small/img6.jpg" alt="" class="product-thumb">
-                <h2>Gấu bông nhỏ loại 1</h2>
+            <?php
+              
+              for ($i = 40; $i <= 42; $i++){
+                // echo json_encode($this->this->productList);
+                $discount = $this->productList[$i]->price-$this->productList[$i]->price*$this->productList[$i]->sale;
+                echo "
+                <div class=\"single-wid-product\" draggable=\"true\" ondragstart=\"itemDrag(event)\" data-itemid=\"{$this->productList[$i]->id}\">
+              <a href=\"?page=product&id={$this->productList[$i]->id}\" draggable=\"false\">
+                <img src=\"{$this->productList[$i]->imageLink}\" alt=\"\" class=\"product-thumb\" />
+                <h2>{$this->productList[$i]->name}</h2>
               </a>
-              <div class="product-wid-rating">
-                <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
+              <div class=\"product-wid-rating\">
+                <i class=\"fa fa-star\"></i>
+                <i class=\"fa fa-star\"></i>
+                <i class=\"fa fa-star\"></i>
+                <i class=\"fa fa-star\"></i>
+                <i class=\"fa fa-star\"></i>
               </div>
-              <div class="product-wid-price">
-                <ins>200000<sup>đ</sup></ins> <del>230000<sup>đ</sup></del>
+              <div class=\"product-wid-price\">
+                <ins>".number_format($discount)."<sup>đ</sup></ins> <del>".number_format($this->productList[$i]->price)."<sup>đ</sup></del>
               </div>
-            </div>
+            </div>";
+              }
 
-
-            <div class="single-wid-product" draggable="true" ondragstart="itemDrag(event)" data-itemid="20">
-              <a href="single-product.html?id=20" draggable="false">
-                <img src="files/img/large/img20.jpg" alt="" class="product-thumb" />
-                <h2>Gấu bông to VIOLET</h2>
-              </a>
-              <div class="product-wid-rating">
-                <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-              </div>
-              <div class="product-wid-price">
-                <ins>400000<sup>đ</sup></ins> <del>450000<sup>đ</sup></del>
-              </div>
-            </div>
-
-
-            <div class="single-wid-product" draggable="true" ondragstart="itemDrag(event)" data-itemid="15">
-              <a href="single-product.html?id=15" draggable="false">
-                <img src="files/img/large/img15.jpg" alt="" class="product-thumb" />
-                <h2>Bộ Totoro</h2>
-              </a>
-              <div class="product-wid-rating">
-                <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-              </div>
-              <div class="product-wid-price">
-                <ins>650000<sup>đ</sup></ins> <del>700000<sup>đ</sup></del>
-              </div>
-            </div>
+              ?>
 
 
           </div>
@@ -277,54 +233,33 @@
         <div class="col-md-4">
           <div class="single-product-widget">
             <h2 class="product-wid-title">Mới nhất</h2>
-            <a href="shop.html" class="wid-view-more">Xem tất cả</a>
+            <a href="?page=shop" class="wid-view-more">Xem tất cả</a>
 
-            <div class="single-wid-product" draggable="true" ondragstart="itemDrag(event)" data-itemid="55">
-              <a href="single-product.html?id=55" draggable="false">
-                <img src="files/img/pokemon/img62.jpg" alt="" class="product-thumb" a>
-                <h2>Bộ Eevee tiến hóa</h2>
+            <?php
+              
+              for ($i = 50; $i <= 52; $i++){
+                // echo json_encode($this->this->productList);
+                $discount = $this->productList[$i]->price-$this->productList[$i]->price*$this->productList[$i]->sale;
+                echo "
+                <div class=\"single-wid-product\" draggable=\"true\" ondragstart=\"itemDrag(event)\" data-itemid=\"{$this->productList[$i]->id}\">
+              <a href=\"?page=product&id={$this->productList[$i]->id}\" draggable=\"false\">
+                <img src=\"{$this->productList[$i]->imageLink}\" alt=\"\" class=\"product-thumb\" />
+                <h2>{$this->productList[$i]->name}</h2>
               </a>
-              <div class="product-wid-rating">
-                <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
+              <div class=\"product-wid-rating\">
+                <i class=\"fa fa-star\"></i>
+                <i class=\"fa fa-star\"></i>
+                <i class=\"fa fa-star\"></i>
+                <i class=\"fa fa-star\"></i>
+                <i class=\"fa fa-star\"></i>
               </div>
-              <div class="product-wid-price">
-                <ins>5000000<sup>đ</sup></ins> <del>5200000<sup>đ</sup></del>
+              <div class=\"product-wid-price\">
+                <ins>".number_format($discount)."<sup>đ</sup></ins> <del>".number_format($this->productList[$i]->price)."<sup>đ</sup></del>
               </div>
-            </div>
+            </div>";
+              }
 
-
-            <div class="single-wid-product" draggable="true" ondragstart="itemDrag(event)" data-itemid="54">
-              <a href="single-product.html?id=54" draggable="false">
-                <img src="files/img/pokemon/img61.jpg" alt="" class="product-thumb">
-                <h2>POKEMON tân binh</h2>
-              </a>
-              <div class="product-wid-rating">
-                <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-              </div>
-              <div class="product-wid-price">
-                <ins>1000000<sup>đ</sup></ins> <del>1100000<sup>đ</sup></del>
-              </div>
-            </div>
-
-
-            <div class="single-wid-product" draggable="true" ondragstart="itemDrag(event)" data-itemid="23">
-              <a href="single-product.html?id=23" draggable="false">
-                <img src="files/img/pokemon/img31.jpg" alt="" class="product-thumb" a>
-                <h2>Pikachu</h2>
-              </a>
-              <div class="product-wid-rating">
-                <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-              </div>
-              <div class="product-wid-price">
-                <ins>69000<sup>đ</sup></ins> <del>79000<sup>đ</sup></del>
-              </div>
-            </div>
+              ?>
 
 
           </div>
