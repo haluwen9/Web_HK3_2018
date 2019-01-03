@@ -70,6 +70,8 @@ else if (isset($_GET['page'])) {
 }
 else {
   include_once("controllers/home.php");
+  $homeController = new homeController();
+  $homeController->invoke();
 }
   
 

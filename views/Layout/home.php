@@ -93,35 +93,32 @@
             <div class="product-carousel">
 
               <?php
-              include_once("../models/product_model.php");
-
-              $model = new productModel();
-              $list = array(); 
-              $list = $model->getAllProducts();
-
-              for ($i = 0; $i < 15; $i++){
+              
+              for ($i = 30; $i < 45; $i++){
+                // echo json_encode($this->this->productList);
+                $discount = $this->productList[$i]->price-$this->productList[$i]->price*$this->productList[$i]->sale;
                 echo "
-                <div class="single-product" ondragstart="itemDrag(event)" draggable="true" data-itemid="2">
-                  <div class="product-f-image">
-                    <img src="{$list[$i]->getImageLink()}" alt="" style="width: 205px; height: 257px;" />
-                    <div class="product-hover">
-                      <a href="javascript:addToCart({$list[$i]->getId()})" class="add-to-cart-link" draggable="false">
-                        <i class="fa fa-shopping-cart"></i> Mua hàng
+                <div class=\"single-product\" ondragstart=\"itemDrag(event)\" draggable=\"true\" data-itemid=\"{$this->productList[$i]->id}\" data-itemprice=\"{$discount}\">
+                  <div class=\"product-f-image\">
+                    <img src='{$this->productList[$i]->imageLink}' alt=\"\" style=\"width: 205px; height: 257px;\" />
+                    <div class=\"product-hover\">
+                      <a href=\"javascript:addToCart({$this->productList[$i]->id})\" class=\"add-to-cart-link\" draggable=\"false\">
+                        <i class=\"fa fa-shopping-cart\"></i> Mua hàng
                       </a>
-                      <a href="single-product.html?id={$list[$i]->getId()}" class="view-details-link" draggable="false">
-                        <i class="fa fa-link"></i> Xem chi tiết
+                      <a href=\"?page=product&id={$this->productList[$i]->id}\" class=\"view-details-link\" draggable=\"false\">
+                        <i class=\"fa fa-link\"></i> Xem chi tiết
                       </a>
                     </div>
                   </div>
 
                   <h2>
-                    {$list[$i]->getName()}
+                    {$this->productList[$i]->name}
                   </h2>
 
-                  <div class="product-carousel-price">
-                    <ins>{$list[$i]->getSale()}<sup>đ</sup></ins> <del>{$list[$i]->getPrice()}<sup>đ</sup></del>
+                  <div class=\"product-carousel-price\">
+                    <ins>".number_format($discount)."<sup>đ</sup></ins> <del>".number_format($this->productList[$i]->price)."<sup>đ</sup></del>
                   </div>
-                </div> "
+                </div>";
               }
 
               ?>
@@ -335,4 +332,3 @@
       </div>
     </div>
   </div>
-  <!-- End product widget area -->
