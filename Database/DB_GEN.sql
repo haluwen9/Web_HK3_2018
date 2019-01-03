@@ -83,6 +83,11 @@ create table shipping_info (
 	primary key (order_id)
 );
 
+create table subscribes (
+	email varchar(30) not null UNIQUE,
+	PRIMARY KEY (email)
+);
+
 alter table products add constraint products_fk0 foreign key (category) references product_categories(id);
 
 alter table storage add constraint storage_fk0 foreign key (product_id) references products(id);

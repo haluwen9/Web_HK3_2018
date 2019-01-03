@@ -171,6 +171,7 @@ function validateNumber(e) {
 }
 
 function displayCheckout() {
+    // alert("LOAD");
     var txt = "";
     if (listCart.length > 0) {
         for (var i = 0; i < listCart.length; ++i) {
@@ -183,21 +184,21 @@ function displayCheckout() {
                     product = JSON.parse(res);
                 }
             });
-            console.log(product);
+            // console.log(product);
 
             txt += '<tr class="cart_item">\
                     <td class="product-name"> ' + product.name + ' <strong class="product-quantity">× ' + listCart[i].amount + '</strong> </td>\
-                    <td class="product-total"><span class="amount">' + listCart[i].price * listCart[i].amount + '<sup>đ</sup> </span> </td>\
+                    <td class="product-total"><span class="amount">' + formatNumber(listCart[i].price * listCart[i].amount) + '<sup>đ</sup> </span> </td>\
                 </tr>'
         }
     } else {
         txt = '\
         <tr class="cart_item">\
-            <td colspan="2">Đơn hàng trống<a href="shop.html">Mua hàng ngay <i class="fa fa-shopping-cart"></i></a></td>\
+            <td colspan="2">Đơn hàng trống<a href="?page=shop">Mua hàng ngay <i class="fa fa-shopping-cart"></i></a></td>\
         </tr>\
         '
     }
     $("#checkout_items tbody").html(txt);
-    $("#cart_checkout_total").html(calcPrice() + '<sup>đ</sup>');
-    $("#order_checkout_total").html(calcPrice() + '<sup>đ</sup>');
+    $("#cart_checkout_total").html(formatNumber(calcPrice()) + '<sup>đ</sup>');
+    $("#order_checkout_total").html(formatNumber(calcPrice()) + '<sup>đ</sup>');
 }

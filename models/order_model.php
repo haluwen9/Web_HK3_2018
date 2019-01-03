@@ -124,15 +124,35 @@ class orderModel extends DBConnection
 	public function insertOrder($order)
 	{
 		$this->runQuery(
-			"INSERT INTO orders(id, user_id, diffshipaddr, total_price, success_state) 
+			"INSERT INTO orders(user_id, diffshipaddr, total_price, success_state) 
 			VALUE (
-				{$order->getId()},
-				'{$order->getUserId()}',
-				'{$order->getDiffShipAddr()}',
-				'{$order->getTotalPrice()}',
-				'{$order->getSuccessState()}'
+				'{$order->userId}',
+				{$order->diffShipAddr},
+				{$order->totalPrice},
+				{$order->successState}
 			)"
 		);
+		
+		$OrderID = $this->runQuery("SELECT LAST_INSERT_ID() as id")->fetch_assoc()['id'];
+		$this->runQuery(
+			"INSERT INTO shipping_info
+			VALUE (
+				$OrderID,
+				'{$order->shippingInfo->firstname}',
+				'{$order->shippingInfo->lastname}',
+				'{$order->shippingInfo->country}',
+				'{$order->shippingInfo->county}',
+				'{$order->shippingInfo->province}',
+				'{$order->shippingInfo->streetAddress}',
+				'{$order->shippingInfo->postcode}',
+				'{$order->shippingInfo->tel}',
+				'{$order->shippingInfo->notes}')"
+		);
+		foreach($order->content as $key => $value) {
+			$this->runQuery(
+				"INSERT INTO order_content VALUE($OrderID, $key, $value)"
+			);
+		}
 	}
 
 	public function deleteOrder($OrderID)
