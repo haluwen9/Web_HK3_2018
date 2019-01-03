@@ -171,7 +171,7 @@
                 // echo json_encode($this->this->productList);
                 $discount = $this->productList[$i]->price-$this->productList[$i]->price*$this->productList[$i]->sale;
                 echo "
-                <div class=\"single-wid-product\" draggable=\"true\" ondragstart=\"itemDrag(event)\" data-itemid=\"{$this->productList[$i]->id}\">
+                <div class=\"single-wid-product\" draggable=\"true\" ondragstart=\"itemDrag(event)\" data-itemid=\"{$this->productList[$i]->id}\" data-itemprice=\"$discount\">
               <a href=\"?page=product&id={$this->productList[$i]->id}\" draggable=\"false\">
                 <img src=\"{$this->productList[$i]->imageLink}\" alt=\"\" class=\"product-thumb\" />
                 <h2>{$this->productList[$i]->name}</h2>
@@ -206,7 +206,7 @@
                 // echo json_encode($this->this->productList);
                 $discount = $this->productList[$i]->price-$this->productList[$i]->price*$this->productList[$i]->sale;
                 echo "
-                <div class=\"single-wid-product\" draggable=\"true\" ondragstart=\"itemDrag(event)\" data-itemid=\"{$this->productList[$i]->id}\">
+                <div class=\"single-wid-product\" draggable=\"true\" ondragstart=\"itemDrag(event)\" data-itemid=\"{$this->productList[$i]->id}\" data-itemprice=\"$discount\">
               <a href=\"?page=product&id={$this->productList[$i]->id}\" draggable=\"false\">
                 <img src=\"{$this->productList[$i]->imageLink}\" alt=\"\" class=\"product-thumb\" />
                 <h2>{$this->productList[$i]->name}</h2>
@@ -241,7 +241,7 @@
                 // echo json_encode($this->this->productList);
                 $discount = $this->productList[$i]->price-$this->productList[$i]->price*$this->productList[$i]->sale;
                 echo "
-                <div class=\"single-wid-product\" draggable=\"true\" ondragstart=\"itemDrag(event)\" data-itemid=\"{$this->productList[$i]->id}\">
+                <div class=\"single-wid-product\" draggable=\"true\" ondragstart=\"itemDrag(event)\" data-itemid=\"{$this->productList[$i]->id}\" data-itemprice=\"$discount\">
               <a href=\"?page=product&id={$this->productList[$i]->id}\" draggable=\"false\">
                 <img src=\"{$this->productList[$i]->imageLink}\" alt=\"\" class=\"product-thumb\" />
                 <h2>{$this->productList[$i]->name}</h2>
