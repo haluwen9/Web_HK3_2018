@@ -5,8 +5,11 @@
   URL: https://www.freshdesignweb.com/ustora/
 -->
 <html lang="en">
+
 <?php include("Layout/header.php") ?>
+
 <body>
+
   <div class="header-area">
     <?php include("Layout/topbar.php") ?>
   </div>
@@ -21,28 +24,31 @@
     <?php include("Layout/navbar.php") ?>
   </div>
   <!-- End mainmenu area -->
-
-  <!-- Main Content Area -->
+  <!--
+      ----------------------------------------------------------------------------------
+    -->
   <?php include("Layout/contact.php") ?>
-  <!-- End Main Content Area -->
+  
+    <div style="clear: left;"><br /></div>
+    <!-- End main content area -->
+    <!--
+      ----------------------------------------------------------------------------------
+    -->
+    <div class="footer-top-area">
+      <?php include("Layout/subscribe.php") ?>
+    </div>
+    <!-- End footer top area -->
 
-  <div class="footer-top-area">
-    <?php include("Layout/subscribe.php") ?>
-  </div>
-  <!-- End footer top area -->
+    <div class="footer-bottom-area">
+      <?php include("Layout/footer.php") ?>
+    </div>
+    <!-- End footer bottom area -->
 
-  <div class="footer-bottom-area">
-    <?php include("Layout/footer.php") ?>
-  </div>
-  <!-- End footer bottom area -->
+    <?php
+      if (!isset($_SESSION["userSession"])) include("Layout/login.php");
+    ?>
 
-  <!-- Login box area -->
-  <?php
-    if (!isset($_SESSION["userSession"])) include("Layout/login.php");
-  ?>
-  <!-- End Login box area -->
-
-  <?php include("Layout/script.php") ?>
+    <?php include("Layout/script.php") ?>
 </body>
 
 </html>

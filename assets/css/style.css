@@ -1342,3 +1342,15 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button {
   position: sticky;
   top: 10%;
 }
+
+.content-contact {
+  margin: 0px;
+  padding: 20px;
+  background-color: #f4f4f4;
+  color: #795548;
+}
+
+.content-contact h1,
+.content-contact h5 {
+  color: #6e6a6a;
+}

@@ -143,6 +143,16 @@ class userModel extends DBConnection
 			return TRUE;
 		return FALSE;
 	}
+
+	public function addSubscribtion($email) {
+		try {
+			$this->runQuery("INSERT INTO subscribes VALUES ('$email');");
+			return true;
+		}
+		catch (Exception $e) {
+			return false;
+		}
+	}
 }
 
 ?>

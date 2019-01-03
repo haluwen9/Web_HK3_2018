@@ -21,10 +21,6 @@ class shopController
 
         include_once("views/shoppage.php");
     }
-
-    public function getAllProducts() {
-        return $this->productModel->getAllProducts();
-    }
 }
 
 ?>
