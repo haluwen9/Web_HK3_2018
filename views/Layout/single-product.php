@@ -2,51 +2,9 @@
 <div class="zigzag-bottom"></div>
 <div class="container">
     <div class="row">
-    <div class="col-md-4">
-        <div class="single-sidebar">
-        <h2 class="sidebar-title">Tìm kiếm sản phẩm</h2>
-        <form action="shop.html" method="GET">
-            <input name="q" type="text" placeholder="Tìm kiếm...">
-            <input type="submit" value="Tìm">
-        </form>
-        </div>
 
-        <div class="single-sidebar">
-        <h2 class="sidebar-title">Các sản phẩm mới</h2>
-        <div id="SPNew">
-            <script>
-            // San pham moi
-            var txt = "";
-            var n = data.length - 1;
-            for (var i = n; i >= n - 3 && i >= 0; i--)
-                txt += `<div class="thubmnail-recent">
-                        <img src="${data[i].LinkImageSP}" class="recent-thumb" alt="">
-                        <h2><a href="single-product.html?id=${data[i].Id}">${data[i].NameSP}</a></h2>
-                        <div class="product-sidebar-price">
-                            <ins>${data[i].SaleSP}<sup>đ</sup></ins>
-                            <del>${data[i].money}<sup>đ</sup></del>
-                        </div>
-                        </div>`;
-            document.getElementById("SPNew").innerHTML = txt;
-            </script>
-        </div>
-        </div>
-
-        <div class="single-sidebar">
-        <h2 class="sidebar-title">Sản phẩm bán chạy</h2>
-        <ul id="SPBanChay">
-            <script>
-            // San pham ban chay
-            txt = "";
-            var n = data.length - 1;
-            for (var i = n; i >= n - 4 && i >= 0; i--)
-                txt += `<li><a href="single-product.html?id=${data[i].Id}">${data[i].NameSP}</a></li>`;
-
-            document.getElementById("SPBanChay").innerHTML = txt;
-            </script>
-        </ul>
-        </div>
-    </div>
+    <?php include_once("views/Layout/product-sidebar.php"); ?>
+    
     <div class="col-md-8">
         <div class="product-content-right">
         <div class="product-breadcroumb">

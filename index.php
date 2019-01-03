@@ -64,6 +64,11 @@ else if (isset($_GET['page'])) {
       $cartController = new cartController;
       $cartController->invoke();
       break;
+    case 'checkout':
+      include_once("controllers/checkout.php");
+      $checkoutController = new checkoutController;
+      $checkoutController->invoke();
+      break;
     default:
       include_once("controllers/home.php");
   }

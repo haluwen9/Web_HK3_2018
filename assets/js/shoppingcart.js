@@ -104,15 +104,16 @@ function displayCart() {
             <td class="product-subtotal"><span class="amount">' + formatNumber(listCart[i].price * listCart[i].amount) + '<sup>đ</sup> </span></td>\
             </tr>';
         }
+        txt += '<tr><td class="actions" colspan="6"><input type="submit" value="Thanh toán" name="proceed" class="checkout-button button alt wc-forward" onclick="event.preventDefault(); location.href=\'index.php?page=checkout\'"> <input type="submit" value="Xóa đơn hàng" name="proceed" class="checkout-button button alt wc-forward" onclick="event.preventDefault(); cancelOrder();"></td></tr>';
     } else {
         txt = '\
         <tr class="cart_item">\
-            <td colspan="6">Đơn hàng trống. <a href="shop.html">Mua hàng ngay <i class="fa fa-shopping-cart"></i></a></td>\
+            <td colspan="6">Đơn hàng trống. <a href="index.php?page=shop">Mua hàng ngay <i class="fa fa-shopping-cart"></i></a></td>\
         </tr>\
         '
     }
-    $("#cart_items tbody").html(txt + '<tr><td class="actions" colspan="6"><input type="submit" value="Thanh toán" name="proceed" class="checkout-button button alt wc-forward" onclick="event.preventDefault(); location.href=\'checkout.html\'"> <input type="submit" value="Xóa đơn hàng" name="proceed" class="checkout-button button alt wc-forward" onclick="event.preventDefault(); cancelOrder();"></td></tr>');
-
+    // $("#cart_items tbody").html(txt + '<tr><td class="actions" colspan="6"><input type="submit" value="Thanh toán" name="proceed" class="checkout-button button alt wc-forward" onclick="event.preventDefault(); location.href=\'index.php?page=checkout\'"> <input type="submit" value="Xóa đơn hàng" name="proceed" class="checkout-button button alt wc-forward" onclick="event.preventDefault(); cancelOrder();"></td></tr>');
+    $("#cart_items tbody").html(txt);
     $("#cart_subtotal").html(formatNumber(calcPrice()) + '<sup>đ</sup>');
     $("#order_total").html(formatNumber(calcPrice()) + '<sup>đ</sup>');
 }
@@ -173,10 +174,21 @@ function displayCheckout() {
     var txt = "";
     if (listCart.length > 0) {
         for (var i = 0; i < listCart.length; ++i) {
+            var product = [];
+            $.ajax({
+                async: false,
+                url: '?u=product&id=' + listCart[i].id,
+                success: function (res) {
+                    // console.log(JSON.parse(res));
+                    product = JSON.parse(res);
+                }
+            });
+            console.log(product);
+
             txt += '<tr class="cart_item">\
-                        <td class="product-name"> ' + listCart[i].NameSP + ' <strong class="product-quantity">× ' + listCart[i].amount + '</strong> </td>\
-                        <td class="product-total"><span class="amount">' + listCart[i].price * listCart[i].amount + '<sup>đ</sup> </span> </td>\
-                    </tr>'
+                    <td class="product-name"> ' + product.name + ' <strong class="product-quantity">× ' + listCart[i].amount + '</strong> </td>\
+                    <td class="product-total"><span class="amount">' + listCart[i].price * listCart[i].amount + '<sup>đ</sup> </span> </td>\
+                </tr>'
         }
     } else {
         txt = '\

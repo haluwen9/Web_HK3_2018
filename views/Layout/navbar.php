@@ -50,7 +50,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="checkout.html">
+          <a class="nav-link" href="index.php?page=checkout">
             <span class="nav-hidden">
               <span class="fa fa-2x far fa-credit-card"></span><br>
             </span>

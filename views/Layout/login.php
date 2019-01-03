@@ -27,7 +27,7 @@ function signin(ev) {
         resBox.css('color','green');
         $('#login-form input').css('border-color','#00ff00');
           setTimeout(() => {
-            document.location = document.location;
+            document.location = "index.php";
           }, 1000);
       }
     } 
@@ -58,7 +58,7 @@ function signup(ev) {
         resBox.css('color','green');
         $('#register-form input').css('border-color','#00ff00');
           setTimeout(() => {
-          document.location = document.location;
+          document.location = "index.php";
         }, 1000);
       }
     });
@@ -94,7 +94,7 @@ function signup(ev) {
               </li>
             </ul>
           </div>
-          <form action="" method="post" class="col-md-6 ml-auto text-center" id="login-form">
+          <form action="index.php" method="post" class="col-md-6 ml-auto text-center" id="login-form">
             <h4 class="modal-title">Đăng nhập</h4>
             <label for="loginID">Tên đăng nhập</label>
             <input type="text" name="loginID" placeholder="Tên đăng nhập..." />
@@ -109,7 +109,7 @@ function signup(ev) {
             <button type="submit" class="btn" onclick="signin(event)">Đăng nhập</button>
             <label id="login-result" style="text-align: center;"></label>
           </form>
-          <form action="" method="post" class="col-md-6 ml-auto text-center" id="register-form" style="display: none;">
+          <form action="index.php" method="post" class="col-md-6 ml-auto text-center" id="register-form" style="display: none;">
             <h5 class="modal-title">Đăng ký</h5>
             <label for="regID">Tên đăng nhập</label>
             <input type="text" name="regID" placeholder="Tên đăng nhập..." />
