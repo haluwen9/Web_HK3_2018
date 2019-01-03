@@ -1,3 +1,20 @@
+<script>
+  function subscribe(ev) {
+    ev.preventDefault();
+    $.post(
+      '?u=contact&act=subscribe',
+      {
+        email: $('#subscribe-email').val()
+      },
+      function(res) {
+        if (res == "true" || res == true) {
+          alert("Đăng ký nhận thông báo thành công");
+        }
+      }
+    )
+  }
+</script>
+
 <div class="zigzag-bottom"></div>
 <div class="container">
   <div class="row">
@@ -52,8 +69,8 @@
         </p>
         <div class="newsletter-form">
           <form action="#">
-            <input type="email" placeholder="Nhập Email" />
-            <input type="submit" value="Nhận thông báo" />
+            <input id="subscribe-email" name="email" type="email" placeholder="Nhập Email" />
+            <input type="submit" value="Nhận thông báo" onclick="subscribe(event)"/>
           </form>
         </div>
       </div>

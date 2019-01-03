@@ -42,6 +42,23 @@ if (isset($_GET['u'])) {
       include_once("controllers/checkout.php");
       echo (new checkoutController)->checkout();
       break;
+    case 'contact':
+      include_once("controllers/contact.php");
+      if (isset($_GET["act"])) {
+        switch ($_GET["act"]) {
+          case 'feedback':
+            echo feedBack($_POST['name'], $_POST['email'], $_POST['subject'], $_POST['content']);
+            break;
+          case 'subscribe':
+            echo subscribe($_POST['email']);
+            break;
+          default:
+            break;
+        }
+      }
+      // header("Location: ?page=contact");
+      break;
+    default: echo "404. Not FOUND";
   }
 }
 else if (isset($_GET['page'])) {
@@ -73,17 +90,20 @@ else if (isset($_GET['page'])) {
       $checkoutController = new checkoutController;
       $checkoutController->invoke();
       break;
+    case 'contact': 
+      include_once("controllers/contact.php");
+      loadContact();
+      break;
     case 'dashboard': 
       include_once("controllers/dashboard.php");
       break;
-    case 'contact':
-      include_once("views/contact.php");
-      break;
     default:
-      include_once("controllers/home.php");
+      // include_once("controllers/home.php");
+      goto loadHome;
   }
 }
 else {
+  loadHome:
   include_once("controllers/home.php");
   $homeController = new homeController();
   $homeController->invoke();
