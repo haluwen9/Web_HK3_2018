@@ -54,6 +54,10 @@
 		</div>
 	</nav>
 	
+	<?php
+		#echo $dashboardController->countProductByCategory(3);
+		#echo var_dump($dashboardController->categoryList[1]->id);
+	?>
 	
 	<!-- Sidebar vs Content -->
     <div class="container-fluid main-area">
@@ -63,7 +67,7 @@
 				<ul class="list-group sidebar-custom">
 					<li class="list-group-item bg-light">
 						<i class="glyphicon glyphicon-align-justify"></i>
-						<h4><a href="#">Quản lý cửa hàng</a></h4>
+						<h4><a href="?page=dashboard">Quản lý cửa hàng</a></h4>
 					</li>
 
 					<hr>
@@ -74,7 +78,7 @@
 					-->
 					
 					<li>
-						<a class="list-group-item bg-light" href="?page=dashboard&Dashboard=ManageProduct"><i class="glyphicon glyphicon-certificate"></i>Quản lý sản phẩm</a>
+						<a class="list-group-item bg-light" href="?page=dashboard"><i class="glyphicon glyphicon-certificate"></i>Quản lý sản phẩm</a>
 						<!--
 						<div class="collapse" id="ListProducts" class="list-group-item">
 							<a href="#AddProduct" class="list-group-item bg-light" data-toggle="modal" data-target="#AddProduct">Thêm sản phẩm  <span class="glyphicon glyphicon-chevron-right"></span></a>
@@ -119,7 +123,7 @@
 					
 					<h2>Quản lý</h2>
 					
-					<div class="container">
+					<div class="container table-hover">
 						<div class="row">
 							<h3 class="d-inlineblock col-sm-10">Danh sách sản phẩm</h3>
 							
@@ -129,7 +133,7 @@
 								<button type="button" class="btn btn-primary col-sm-10" data-toggle="modal" data-target="#AddProduct">Thêm sản phẩm</button>							
 							</div>
 							<!-- Modal Add Product -->
-							<form action="?page=dashboard" method="post" class="col-sm-12">
+							<form action="?page=dashboard&Dashboard=ManageProduct" method="post" class="col-sm-12">
 								<div class="modal fade" id="AddProduct" tabindex="-1" role="dialog" aria-labelledby="AddProductModalLabel" aria-hidden="true">
 								  <div class="modal-dialog" role="document">
 									<div class="modal-content container">
@@ -175,14 +179,15 @@
 										</div>
 										
 										<div class="modal-footer">
-											<input type="submit" class="btn btn-primary btn-lg btn-block" value="Thêm sản phẩm">
+											<input type="submit" name="addp" class="btn btn-primary btn-lg btn-block" value="Thêm sản phẩm">
 										</div>
 									</div>
 								  </div>
 								</div>
 							</form>
-						<br>
-						<?php include_once"Layout/dashboard-table-product.php"?>
+							
+							<br>
+							<?php include_once"Layout/dashboard-table-product.php"?>
 						</div>
 					<br>
 					</div>
@@ -194,133 +199,59 @@
 					<h2>Quản lý</h2>
 
 					<div class="container table-hover">
-						<h3>Danh sách danh mục</h3>
-						<?php include_once("Layout/dashboard-table-category.php"); ?>
+						<div class="row">
+							<h3 class="d-inlineblock col-sm-10">Danh sách danh mục</h3>
 						
-						<!-- Button trigger modal Add Category-->
-						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddCategory">Thêm danh mục mới</button>
-						<!-- Modal Add Category -->
-						<form action="" class="col-sm-12">
-							<div class="modal fade" id="AddCategory" tabindex="-1" role="dialog" aria-labelledby="AddCategoryModalLabel" aria-hidden="true">
-							  <div class="modal-dialog" role="document">
-								<div class="modal-content container">
-									<div class="modal-header">
-										<h3 class="modal-title" id="AddProductModalLabel">Thêm danh mục</h3>
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-								  
-									<div class="modal-body">
-										<div class="form-group">
-											<label for="NameProduct">Tên danh mục mới</label>
-											<input type="text" class="form-control" id="NameProduct" placeholder="Tên . . .">
-										</div>
-									</div>
-									
-									<div class="modal-footer">
-										<input type="submit" class="btn btn-primary btn-lg btn-block" value="Thêm sản phẩm">
-									</div>
-								</div>
-							  </div>
+							<!-- Button trigger modal Add Category-->
+							<div class="row">
+								<div class="col-sm-2"></div>
+								<button type="button" class="btn btn-primary col-sm-11" data-toggle="modal" data-target="#AddCategory">Thêm danh mục mới</button>
 							</div>
-						</form>
+							<!-- Modal Add Category -->
+							<form action="?page=dashboard&Dashboard=ManageCategory" method="post" class="col-sm-12">
+								<div class="modal fade" id="AddCategory" tabindex="-1" role="dialog" aria-labelledby="AddCategoryModalLabel" aria-hidden="true">
+								  <div class="modal-dialog" role="document">
+									<div class="modal-content container">
+										<form action="?page=dashboard&Dashboard=ManageCategory" method="post">
+											<div class="modal-header">
+												<h3 class="modal-title" id="AddProductModalLabel">Thêm danh mục</h3>
+												<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+											</div>
+										  
+											<div class="modal-body">
+												<div class="form-group">
+													<label for="NameProduct">Tên danh mục mới</label>
+													<input type="text" name="NameProduct" class="form-control" id="NameProduct" placeholder="Tên . . .">
+												</div>
+											</div>
+											
+											<div class="modal-footer">
+												<input type="submit" name="add" class="btn btn-primary btn-lg btn-block" value="Thêm sản phẩm">
+											</div>
+										</form>
+									</div>
+								  </div>
+								</div>
+							</form>
+							
+							<br>
+							<?php include_once("Layout/dashboard-table-category.php"); ?>
+						</div>
 					<br>
 					</div>
 				</div>
 			
 				<!-- content manage Order -->
 				<div class="panel panel-default" id="ManageOrder">
-					<h2>Quản lý</h2>
-
+					<h2>Quản lý</h2>						
+					
 					<div class="container table-hover">
 						<h3>Danh sách hóa đơn</h3>
-						<table class="table ListProducts">
-							<thead>
-								<tr>
-								<th scope="col">Id</th>
-								<th scope="col">Người mua</th>
-								<th scope="col">Loại sản phẩm</th>
-								<th scope="col">Giá</th>
-								<th scope="col">Giảm giá</th>
-								<th></th>
-								</tr>
-							</thead>
-							<tbody>
-
-								<tr>
-									<th scope="row">1</th>
-									<td>Mark</td>
-									<td>Otto</td>
-									<td>@mdo</td>
-									<td>@mdo</td>
-									<td>
-										<form action="" method="">
-										
-											<!-- Button trigger modal update order -->
-											<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#UpdateOrder">Chi tiết</button>
-											<!-- Modal Update Order -->
-											<div class="modal fade" id="UpdateOrder" tabindex="-1" role="dialog" aria-labelledby="UpdateOrderModalLabel" aria-hidden="true">
-											  <div class="modal-dialog" role="document">
-												<div class="modal-content container">
-													<div class="modal-header">
-														<h3 class="modal-title" id="UpdateProductModalLabel">Cập nhật sản phẩm</h3>
-														<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-															<span aria-hidden="true">&times;</span>
-														</button>
-													</div>
-												  
-													<div class="modal-body">
-														<div class="form-group">
-															<label for="NameProduct">Tên sản phẩm</label>
-															<input type="text" class="form-control" id="NameProduct" placeholder="Tên . . .">
-														</div>
-														
-														<div class="form-group">
-															<label for="CategoryProduct">Loại sản phẩm</label>
-															<input type="text" class="form-control" id="CategoryProduct" placeholder="Loại . . .">
-														</div>
-													</div>
-													
-													<div class="modal-footer">
-														<button type="button" class="btn btn-primary btn-lg btn-block">Cập nhật</button>
-													</div>
-												</div>
-											  </div>
-											</div>
-											
-											<!-- Button trigger modal remove product-->
-											<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#RemoveProduct">Xóa</button>
-											<!-- Modal Remove Product -->
-											<div class="modal fade" id="RemoveProduct" tabindex="-1" role="dialog" aria-labelledby="RemoveProductModalLabel" aria-hidden="true">
-											  <div class="modal-dialog" role="document">
-												<div class="modal-content">
-												  <div class="modal-header">
-													<h5 class="modal-title" id="RemoveProductModalLabel">Xóa sản phẩm</h5>
-													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-													  <span aria-hidden="true">&times;</span>
-													</button>
-												  </div>
-												  <div class="modal-body">
-													Sản phẩm sẽ bị xóa. Bạn chắc chứ?
-												  </div>
-												  <div class="modal-footer">
-													<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-													<button type="button" class="btn btn-primary">Save changes</button>
-												  </div>
-												</div>
-											  </div>
-											</div>
-										
-										</form>
-										
-									</td>
-								</tr>
-							</tbody>
-						</table>
+						<?php include_once("Layout/dashboard-table-order.php");?>
 						
-						
-<!-- Button trigger modal Add Product
+						<!-- Button trigger modal Add Product
 						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddProduct">Thêm sản phẩm</button>
 -->						
 						<!-- Modal Add Product -->
@@ -378,7 +309,10 @@
 						</form>
 -->						
 						<br>
-					</div>
+					</div>					
+					
+					
+
 				</div>
 			
 				<!-- content manage User -->
@@ -400,7 +334,7 @@
 								</tr>
 							</thead>
 							<tbody>
-							    <?php include("Layout/dashboard-table-user.php") ?>
+							    <?php include_once("Layout/dashboard-table-user.php") ?>
 							</tbody>
 						</table>
 
@@ -412,7 +346,6 @@
 		</div>
     </div>
 	
-	
     <!--footer-->
     <div class="site-footer">
 		<div class="container-fluid">
@@ -422,9 +355,6 @@
 		</div>
     </div>
 	
-	
-	
-
 	
 	<!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -437,7 +367,6 @@
 			<script>
 				document.getElementById('{$Dashboard}').style.display = 'block';
 			</script>";
-		echo $NameProduct;
 	?>
 </body>
 </html>

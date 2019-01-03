@@ -52,7 +52,7 @@ class orderModel extends DBConnection
 
 		if ($result->num_rows == 0)
 		{
-			die('No result!');
+			#die('No result!');
 		}
 
 		$orderList = array();

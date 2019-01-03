@@ -36,13 +36,13 @@ class productModel extends DBConnection
 		$this->runQuery(
 			"UPDATE product_categories
 			SET name = '{$Category->name}'
-			WHERE id = {$Category->id})"
+			WHERE id = {$Category->id}"
 		);
 	}
 
-	public function insertCategory($Category)
+	public function insertCategory($name)
 	{
-		$this->runQuery("INSERT INTO product_categories(ID, NAME) VALUE ({$Category->id}, '{$Category->name}')");
+		$this->runQuery("INSERT INTO product_categories(NAME) VALUE ('{$name}')");
 	}
 
 	public function deleteCategory($CategoryID)

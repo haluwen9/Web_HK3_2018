@@ -1,5 +1,5 @@
 <?php
-if (count($dashboardControllerProduct->productList) == 0)
+if (count($dashboardController->productList) == 0)
 	echo "<hr><br><p align=\"center\">Không có sản phẩm nào nào. Hãy thêm sản phẩm!!!</p>";
 else
 {
@@ -7,7 +7,7 @@ else
 	<table class=\"table ListProducts\">
 		<thead>
 			<tr>
-				<th scope=\"col\">Id</th>
+				<th scope=\"col\">ID</th>
 				<th scope=\"col\">Tên sản phẩm</th>
 				<th scope=\"col\">Loại sản phẩm</th>
 				<th scope=\"col\">Giá</th>
@@ -17,7 +17,7 @@ else
 		</thead>
 		<tbody>";
 		
-	foreach ($dashboardControllerProduct->productList as $product)
+	foreach ($dashboardController->productList as $product)
 		echo "
 			<tr>
 				<th scope=\"row\">{$product->id}</th>
@@ -32,6 +32,8 @@ else
 					<div class=\"modal fade\" id=\"UpdateProduct\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"RemoveProductModalLabel\" aria-hidden=\"true\">
 					  <div class=\"modal-dialog\" role=\"document\">
 						<div class=\"modal-content container\">
+						  
+						  <form action=\"?page=dashboard&Dashboard=ManageProduct\" method=\"post\">
 							<div class=\"modal-header\">
 								<h3 class=\"modal-title\" id=\"UpdateProductModalLabel\">Cập nhật sản phẩm</h3>
 								<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">
@@ -74,16 +76,20 @@ else
 							</div>
 							
 							<div class=\"modal-footer\">
-								<button type=\"button\" class=\"btn btn-primary btn-lg btn-block\">Cập nhật</button>
+								
+									<button type=\"button\" class=\"btn btn-primary btn-lg btn-block\">Cập nhật</button>
 							</div>
+						  </form>
 						</div>
 					  </div>
 					</div>
-
+					
+					
 					<!-- Button trigger modal remove product-->
-					<button type=\"button\" class=\"btn btn-danger btn-sm\" data-toggle=\"modal\" data-target=\"#RemoveProduct\">Xóa</button>
+					<button type=\"button\" class=\"btn btn-danger btn-sm\" data-toggle=\"modal\" data-target=\"#Product{$product->id}\">Xóa</button>
 					<!-- Modal Remove Product -->
-					<div class=\"modal fade\" id=\"RemoveProduct\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"RemoveProductModalLabel\" aria-hidden=\"true\">
+					
+					<div class=\"modal fade\" id=\"Product{$product->id}\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"RemoveProductModalLabel\" aria-hidden=\"true\">
 					  <div class=\"modal-dialog\" role=\"document\">
 						<div class=\"modal-content\">
 						  <div class=\"modal-header\">
@@ -93,16 +99,19 @@ else
 							</button>
 						  </div>
 						  <div class=\"modal-body\">
-							Sản phẩm sẽ bị xóa. Bạn muốn xóa sản phẩm này? 
+							Sản phẩm sẽ bị xóa. Bạn muốn xóa sản phẩm này?
 						  </div>
 						  <div class=\"modal-footer\">
-							<button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Không</button>
-							<button type=\"button\" class=\"btn btn-primary\">Có</button>
+							<form action=\"?page=dashboard&Dashboard=ManageProduct\" method=\"post\">
+								<input type=\"text\" name=\"id\" value=\"{$product->id}\" style=\"display:none;\">
+								<button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Không</button>
+								<input type=\"submit\" name=\"remove\" class=\"btn btn-primary\" value=\"Có\">
+							</form>
 						  </div>
 						</div>
 					  </div>
 					</div>
-					
+
 				</td>
 			</tr>";
 	echo "</tbody></table>";
