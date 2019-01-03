@@ -17,6 +17,17 @@ class dashboardControllerProduct
         $this->productModel = new productModel;
 		$this->productList = $this->productModel->getAllProducts();
     }
+	
+	public function getCategoryById($id)
+	{
+		return $thist->productModel->getCategoryById($id);
+	}
+	
+	public function insertProduct($product)
+	{
+		$this->productModel->insertProduct($product);
+	}
+	
 	public function deleteProduct($id)
 	{
 		$this->productModel->deleteProduct($id);
@@ -37,8 +48,8 @@ class dashboardControllerCategory
 	
 	public function countProductByCategory($CategoryID)
 	{
-		return count($this->productModel->getAllProducts());
-		#return count($this->productModel->getProductsByCategory($CategoryID));
+		#return count($this->productModel->getAllProducts());
+		return count($this->productModel->getProductsByCategory($CategoryID));
 	}
 	
 	public function insertCategory($name)
@@ -135,7 +146,25 @@ switch ($Dashboard)
 			
 	case 'ManageUser':
 		$dashboardController = new dashboardControllerUser();
-
+		
+		if (isset($_POST['id']))
+		{
+			// Remove
+			$id = $_POST['id'];
+			if (isset($_POST['remove']))
+			{
+				if ($id != 'admin')
+					$dashboardController->deleteUser($id);
+				header("Location: index.php?page=dashboard&Dashboard=ManageUser");
+			}
+			else 
+				// Update
+				if (isset($_POST['update']))
+				{
+					$dashboardController->updateCategory($id, $_POST['newNameCategory']);
+					header("Location: index.php?page=dashboard&Dashboard=ManageUser");
+				}
+		}
 		break;
 	
 	default:
@@ -152,6 +181,23 @@ switch ($Dashboard)
 			{
 				
 			}
+		}
+		if (isset($_POST['add']))
+		{
+			$Name = "No name";
+			$Category = "_";
+			$Price = "0";
+			$Sale = "0";
+			$ImageLink = "";
+			
+			if (isset($_POST['NameProduct'])) $Name =$_POST['NameProduct'];
+			if (isset($_POST['CategoryProduct'])) $Category =$_POST['CategoryProduct'];
+			if (isset($_POST['PriceProduct'])) $Price =$_POST['PriceProduct'];
+			if (isset($_POST['SaleProduct'])) $Sale =$_POST['SaleProduct'];
+			if (isset($_POST['ImageProduct'])) $ImageLink =$_POST['ImageProduct'];
+			
+			$product = new product('abc', $Name, $Category, $Price, $Sale, $ImageLink, 11);
+			#$dashboardController->insertProduct($product);
 		}
 }
 

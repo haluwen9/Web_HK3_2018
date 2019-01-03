@@ -45,8 +45,8 @@
 					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
 						<h6 class="dropdown-header">Admin</h6>
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#">Thông tin</a>
-						<a class="dropdown-item" href="#">Cài đặt</a>
+						<a class="dropdown-item" href="#" data-toggle="modal" data-target="#InfoUseradmin">Thông tin</a>
+						<a class="dropdown-item" href="#" data-toggle="modal" data-target="#UpdateUseradmin">Cập nhật</a>
 						<a class="dropdown-item" href="?ctrl=logout">Đăng xuất</a>
 					</div>
 				</li>
@@ -179,7 +179,7 @@
 										</div>
 										
 										<div class="modal-footer">
-											<input type="submit" name="addp" class="btn btn-primary btn-lg btn-block" value="Thêm sản phẩm">
+											<input type="submit" name="add" class="btn btn-primary btn-lg btn-block" value="Thêm sản phẩm">
 										</div>
 									</div>
 								  </div>

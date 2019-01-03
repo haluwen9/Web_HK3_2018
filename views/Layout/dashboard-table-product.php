@@ -3,7 +3,12 @@ if (count($dashboardController->productList) == 0)
 	echo "<hr><br><p align=\"center\">Không có sản phẩm nào nào. Hãy thêm sản phẩm!!!</p>";
 else
 {
+	$count = count($dashboardController->productList);
 	echo "
+	<div class=\"row\">
+		<div class=\"col-sm-1\"></div>
+		<h6 style=\"magrin-left:50px;\" class=\"col-sm-11\">Tổng số sản phẩm: {$count}</h6>
+	</div>
 	<table class=\"table ListProducts\">
 		<thead>
 			<tr>
@@ -18,6 +23,10 @@ else
 		<tbody>";
 		
 	foreach ($dashboardController->productList as $product)
+	{
+		$arrStringLink = explode('/', $product->imageLink);
+		$nameFileImage = $arrStringLink[count($arrStringLink)-1];
+		
 		echo "
 			<tr>
 				<th scope=\"row\">{$product->id}</th>
@@ -27,9 +36,9 @@ else
 				<td>{$product->sale}</td>
 				<td>										
 					<!-- Button trigger modal update product -->
-					<button type=\"button\" class=\"btn btn-primary btn-sm\" data-toggle=\"modal\" data-target=\"#UpdateProduct\">Cập nhật</button>
+					<button type=\"button\" class=\"btn btn-primary btn-sm\" data-toggle=\"modal\" data-target=\"#UpdateProduct{$product->id}\">Cập nhật</button>
 					<!-- Modal Update Product -->
-					<div class=\"modal fade\" id=\"UpdateProduct\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"RemoveProductModalLabel\" aria-hidden=\"true\">
+					<div class=\"modal fade\" id=\"UpdateProduct{$product->id}\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"RemoveProductModalLabel\" aria-hidden=\"true\">
 					  <div class=\"modal-dialog\" role=\"document\">
 						<div class=\"modal-content container\">
 						  
@@ -44,24 +53,24 @@ else
 							<div class=\"modal-body\">
 								<div class=\"form-group\">
 									<label for=\"NameProduct\">Tên sản phẩm</label>
-									<input type=\"text\" class=\"form-control\" id=\"NameProduct\" placeholder=\"Tên . . .\">
+									<input type=\"text\" class=\"form-control\" id=\"NameProduct\" value=\"{$product->name}\" placeholder=\"Tên . . .\">
 								</div>
 								
 								<div class=\"form-group\">
 									<label for=\"CategoryProduct\">Loại sản phẩm</label>
-									<input type=\"text\" class=\"form-control\" id=\"CategoryProduct\" placeholder=\"Loại . . .\">
+									<input type=\"text\" class=\"form-control\" id=\"CategoryProduct\" value=\"{$product->category}\" placeholder=\"Loại . . .\">
 								</div>
 
 								
 								<div class=\"form-row\">
 									<div class=\"form-group col-sm-6\">
 										<label for=\"PriceProduct\">Giá bán</label>
-										<input type=\"text\" class=\"form-control\" id=\"PriceProduct\" placeholder=\"Giá . . .\">
+										<input type=\"text\" class=\"form-control\" id=\"PriceProduct\" value=\"{$product->price}\" placeholder=\"Giá . . .\">
 									</div>
 									
 									<div class=\"form-group col-sm-6\">
 										<label for=\"SaleProduct\">Giảm giá</label>
-										<input type=\"text\" class=\"form-control\" id=\"SaleProduct\" placeholder=\"Giảm giá . . .\">
+										<input type=\"text\" class=\"form-control\" id=\"SaleProduct\" value=\"{$product->sale}\" placeholder=\"Giảm giá . . .\">
 									</div>
 								</div>
 								
@@ -69,15 +78,16 @@ else
 									<div class=\"form-group col-sm-12\">
 										<div class=\"custom-file\">
 											<input type=\"file\" class=\"form-control custom-file-input\" id=\"customFile\">
-											<label class=\"custom-file-label\" for=\"customFile\">Ảnh sản phẩm</label>
+											<label class=\"custom-file-label\" for=\"customFile\">{$nameFileImage}</label>
 										</div>
 									</div>
 								</div>	
 							</div>
 							
 							<div class=\"modal-footer\">
-								
-									<button type=\"button\" class=\"btn btn-primary btn-lg btn-block\">Cập nhật</button>
+								<input type=\"text\" name=\"id\" value=\"{$product->id}\" style=\"display:none;\">
+								<button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Hủy</button>
+								<input type=\"submit\" name=\"update\" class=\"btn btn-primary\" value=\"Cập nhật\">
 							</div>
 						  </form>
 						</div>
@@ -114,6 +124,9 @@ else
 
 				</td>
 			</tr>";
+	}
+	
 	echo "</tbody></table>";
+	
 }
 ?>

@@ -24,7 +24,7 @@ class userModel extends DBConnection
 
 		if ($result->num_rows == 0)
 		{
-			die('No result!');
+			#die('No result!');
 		}
 
 		$userList = array();
@@ -101,7 +101,7 @@ class userModel extends DBConnection
 		$user = $this->getUserInfoById($UserID);
 		if ($user->id == 'admin')
 		{
-			die('Cannot delete ADMIN');
+			#die('Cannot delete ADMIN');
 		}
 		$this->runQuery("DELETE FROM users WHERE id = '$UserID'");
 	}

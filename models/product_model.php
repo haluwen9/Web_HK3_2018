@@ -10,7 +10,7 @@ class productModel extends DBConnection
 	// product_categories
 	public function getCategoryById($CategoryID)
 	{
-		$result = $this->runQuery("SELECT name FROM product_categories WHERE id = '$CategoryID' ");
+		$result = $this->runQuery("SELECT name FROM product_categories WHERE id = '{$CategoryID}' ");
 		return $result->fetch_assoc()['name'];
 	}
 
@@ -86,7 +86,7 @@ class productModel extends DBConnection
 
 		if ($result->num_rows == 0)
 		{
-			die("Cannot retrieve product\'s info (category={$category})!");
+			#die("Cannot retrieve product\'s info (category={$category})!");
 		}
 
 		$productList = array();

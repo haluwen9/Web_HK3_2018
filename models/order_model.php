@@ -67,7 +67,7 @@ class orderModel extends DBConnection
 				$this->getOrderContent(intval($row['id'])),
 				boolval($row['success_state'])
 			);
-			array_push($this->orderList, $order);
+			array_push($orderList, $order);
 		}
 
 		return $orderList;

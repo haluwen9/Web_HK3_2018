@@ -7,23 +7,22 @@ else
 	echo "	<table class=\"table ListProducts\">
 				<thead>
 					<tr>
-					<th scope=\"col\">Id</th>
-					<th scope=\"col\">Người mua</th>
-					<th scope=\"col\"diffshipaddr</th>
-					<th scope=\"col\">Tổng tiền</th>
-					<th></th>
+						<th scope=\"col\">Id</th>
+						<th scope=\"col\">Người mua</th>
+						<th scope=\"col\">diffshipaddr</th>
+						<th scope=\"col\">Tổng tiền</th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>";
 	
-	#foreach ($dashboardController->orderList as $order)
+	foreach ($dashboardController->orderList as $order)
 	echo "
 		<tr>
 			<th scope=\"row\">{$order->id}</th>
-			<td>{$order->id}</td>
-			<td>{$order->id}</td>
-			<td>{$order->id}</td>
-			<td>{$order->id}</td>
+			<td>{$order->userId}</td>
+			<td>{$order->diffShipAddr}</td>
+			<td>{$order->totalPrice}</td>
 			<td>
 				<form action=\"\" method=\"\">
 				
