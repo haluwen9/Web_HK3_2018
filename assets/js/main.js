@@ -114,4 +114,102 @@ function formatNumber(num) {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
 }
 
+function signin(ev) {  
+    ev.preventDefault();
+    var resBox = $('#login-result');
+  
+    $('#login-form input').css('border-color','#ddd');     
+    $.post(
+      '?u=login',
+      {
+        loginID: $('#login-form input[name=loginID]').val(),
+        loginPW: $('#login-form input[name=loginPW').val()
+      },
+      function(res) {
+        console.log(res);
+        if (res == 0) {
+          resBox.html('Tài khoản không tồn tại!');
+          resBox.css('color','red');
+          $('#login-form input[name=loginID]').css('border-color','#ff0000');
+        }
+        else if (res == 1) {
+          resBox.html('Sai mật khẩu!');
+          resBox.css('color','red');
+          $('#login-form input[name=loginPW]').css('border-color','#ff0000');
+        }
+        else if (res == 2) {
+          resBox.text('Đăng nhập thành công');
+          resBox.css('color','green');
+          $('#login-form input').css('border-color','#00ff00');
+            setTimeout(() => {
+              document.location = "index.php";
+            }, 1000);
+        }
+      } 
+    );
+  }
+  
+function signup(ev) {
+    ev.preventDefault();
+    var resBox = $('#register-result');
+  
+    $('#register-form input').css('border-color','#ddd');
+    
+    $.post(
+      '?u=register',
+      {
+        regID: $('#register-form input[name=regID]').val(),
+        regPW: $('#register-form input[name=regPW').val(),
+        regMail: $('#register-form input[name=regMail]').val()
+      },
+      function(res) {
+        console.log(res);
+        if (res == 0) {
+          resBox.html('Tài khoản hoặc email đã tồn tại !');
+          resBox.css('color','red');
+          $('#register-form input[name=regID]').css('border-color','#ff0000');
+        }
+        else if (res == 1) {
+          resBox.text('Đăng ký tài khoản thành công!');
+          resBox.css('color','green');
+          $('#register-form input').css('border-color','#00ff00');
+            setTimeout(() => {
+            document.location = "index.php";
+          }, 1000);
+        }
+      });
+  }
+
+
+
+function submitCheckout(ev) {
+    ev.preventDefault();
+
+    var billfields = $('input[id^="billing_"]').filter(function() {return this.value == ''});
+    var shipfields = null;
+    // console.log($('#ship-to-different-address-checkbox').is(':checked'));
+    if ($('#ship-to-different-address-checkbox').is(':checked'))
+        shipfields = ($('input[id^="shipping_"]').filter(function() {return this.value == ''}));
+    // console.log(billfields.length + (shipfields != null ? shipfields.length : 0));
+    if (billfields.length + (shipfields != null ? shipfields.length : 0)) {
+        alert("Vui lòng điền đầy đủ thông tin để thanh toán!");
+    }
+    else if (listCart.length > 0) {
+        var formData = $("#checkout-form").serializeArray();
+        formData.push({name: "cart", value: JSON.stringify(listCart)});
+        formData.push({name: "total_price", value: calcPrice()});
+
+        $.post("?u=checkout", formData, function(res) {
+            if (res == 1)
+                alert("Đơn hàng đã được gửi đi thành công!");
+            else
+                console.log(res);
+            // setTimeout(() => {document.location = "index.php";}, 1000);
+        });
+    }
+    else {
+        alert("Giỏ hàng đang rỗng!");
+    }
+}
+
 // END

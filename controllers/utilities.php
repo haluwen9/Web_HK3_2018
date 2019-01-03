@@ -24,14 +24,15 @@ function Logout()
 function Signup($UserID, $Password, $Email)
 {
     $userModel = new userModel;
-    if ($userModel->validateAccount($UserID, $Email)) {
+    if ($UserID != "__Customer__" && $userModel->validateAccount($UserID, $Email)) {
         $userModel->insertUser(new User($UserID, md5($Password), $Email, $UserID, '', '', '', '', '', '', '', '','', ''));
-        // Logout();
-        // $_SESSION['userSession'] = $userModel->getUserInfoByID($UserID);
-        
         return 1;
     }
     return 0;
+}
+
+function Alert($Message) {
+    echo "<script type='text/javascript'>alert('$Message');</script>";
 }
 
 ?>

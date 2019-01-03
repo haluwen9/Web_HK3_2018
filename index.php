@@ -38,6 +38,10 @@ if (isset($_GET['u'])) {
       include_once("models/product_model.php");
       echo json_encode((new productModel)->getCategories());
       break;
+    case 'checkout':
+      include_once("controllers/checkout.php");
+      echo (new checkoutController)->checkout();
+      break;
   }
 }
 else if (isset($_GET['page'])) {
@@ -69,9 +73,9 @@ else if (isset($_GET['page'])) {
       $checkoutController = new checkoutController;
       $checkoutController->invoke();
       break;
-	case 'dashboard': 
-	  include_once("controllers/dashboard.php");
-	  break;
+    case 'dashboard': 
+      include_once("controllers/dashboard.php");
+      break;
     default:
       include_once("controllers/home.php");
   }

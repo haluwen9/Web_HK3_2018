@@ -12,14 +12,14 @@ class Order
 	public $content; // array of (product => amount)
 	public $successState;
 
-	public function __construct($Id, $UserId, $DiffShipAddr, $TotalPrice,  $ShippingInfo, $Content = array(), $SuccessState = FALSE)
+	public function __construct($Id, $UserId, $DiffShipAddr, $TotalPrice,  $ShippingInfo, $Content = array(), $SuccessState = 0)
 	{
 		$this->id = $Id;
 		$this->userId = $UserId;
 		$this->diffShipAddr = $DiffShipAddr;
 		$this->totalPrice = $TotalPrice;
 		$this->shippingInfo = $ShippingInfo;
-		$this->content = $content;
+		$this->content = $Content;
 		$this->successState = $SuccessState;
 	}
 
