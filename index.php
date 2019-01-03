@@ -64,6 +64,9 @@ else if (isset($_GET['page'])) {
       $cartController = new cartController;
       $cartController->invoke();
       break;
+	case 'dashboard': 
+	  include_once("controllers/dashboard.php");
+	  break;
     default:
       include_once("controllers/home.php");
   }
