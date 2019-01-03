@@ -15,7 +15,7 @@
     <div class="navbar-collapse collapse" id="main-navbar-collapse">
       <ul class="nav navbar-nav ml-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="">
+          <a class="nav-link" href="index.php">
             <span class="nav-hidden"><span class="fa fa-2x fa-home"></span><br /></span>Trang chủ
           </a>
         </li>
