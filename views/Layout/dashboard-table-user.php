@@ -1,5 +1,5 @@
  <?php
-	foreach ($dashboardControllerUser->userList as $user)
+	foreach ($dashboardController->userList as $user)
 		echo "						
 			<tr>
 				<th scope=\"row\" class=\"User\">{$user->id}</th>
@@ -90,9 +90,9 @@
 					</div>
 					
 					<!-- Button trigger modal remove user-->
-					<button type=\"button\" class=\"btn btn-danger btn-sm\" data-toggle=\"modal\" data-target=\"#RemoveUser\">Xóa</button>
+					<button type=\"button\" class=\"btn btn-danger btn-sm\" data-toggle=\"modal\" data-target=\"#RemoveUser{$user->id}\">Xóa</button>
 					<!-- Modal Remove Product -->
-					<div class=\"modal fade\" id=\"RemoveUser\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"RemoveUserModalLabel\" aria-hidden=\"true\">
+					<div class=\"modal fade\" id=\"RemoveUser{$user->id}\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"RemoveUserModalLabel\" aria-hidden=\"true\">
 					  <div class=\"modal-dialog\" role=\"document\">
 						<div class=\"modal-content\">
 						  <div class=\"modal-header\">
@@ -103,8 +103,11 @@
 						  </div>
 						  <div class=\"modal-body\"> Tài khoản sẽ bị xóa. Bạn muốn chứ?</div>
 						  <div class=\"modal-footer\">
-							<button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Không</button>
-							<button type=\"button\" class=\"btn btn-primary\">Có</button>
+							<form action=\"?page=dashboard&Dashboard=ManageUser\" method=\"post\">
+								<input type=\"text\" name=\"id\" value=\"{$user->id}\">
+								<button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Không</button>
+								<input type=\"submit\" name=\"remove\" class=\"btn btn-primary\" value=\"Có\">
+							</form>
 						  </div>
 						</div>
 					  </div>
