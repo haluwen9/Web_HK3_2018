@@ -92,234 +92,40 @@
             <h2 class="section-title">Hàng mới nhất</h2>
             <div class="product-carousel">
 
-              <div class="single-product" ondragstart="itemDrag(event)" draggable="true" data-itemid="2">
-                <div class="product-f-image">
-                  <img src="files/img/small/img2.jpg" alt="" style="width: 205px; height: 257px;" />
-                  <div class="product-hover">
-                    <a href="javascript:addToCart('2')" class="add-to-cart-link" draggable="false">
-                      <i class="fa fa-shopping-cart"></i> Mua hàng
-                    </a>
-                    <a href="single-product.html?id=2" class="view-details-link" draggable="false">
-                      <i class="fa fa-link"></i> Xem chi tiết
-                    </a>
+              <?php
+              include_once("../models/product_model.php");
+
+              $model = new productModel();
+              $list = array(); 
+              $list = $model->getAllProducts();
+
+              for ($i = 0; $i < 15; $i++){
+                echo "
+                <div class="single-product" ondragstart="itemDrag(event)" draggable="true" data-itemid="2">
+                  <div class="product-f-image">
+                    <img src="{$list[$i]->getImageLink()}" alt="" style="width: 205px; height: 257px;" />
+                    <div class="product-hover">
+                      <a href="javascript:addToCart({$list[$i]->getId()})" class="add-to-cart-link" draggable="false">
+                        <i class="fa fa-shopping-cart"></i> Mua hàng
+                      </a>
+                      <a href="single-product.html?id={$list[$i]->getId()}" class="view-details-link" draggable="false">
+                        <i class="fa fa-link"></i> Xem chi tiết
+                      </a>
+                    </div>
                   </div>
-                </div>
 
-                <h2>
-                  Khỉ nhỏ
-                </h2>
+                  <h2>
+                    {$list[$i]->getName()}
+                  </h2>
 
-                <div class="product-carousel-price">
-                  <ins>100000<sup>đ</sup></ins> <del>120000<sup>đ</sup></del>
-                </div>
-              </div>
-
-
-              <div class="single-product" ondragstart="itemDrag(event)" draggable="true" data-itemid="6">
-                <div class="product-f-image">
-                  <img src="files/img/small/img6.jpg" alt="" style="width: 205px; height: 257px;" />
-                  <div class="product-hover">
-                    <a href="javascript:addToCart('6')" class="add-to-cart-link" draggable="false">
-                      <i class="fa fa-shopping-cart"></i> Mua hàng
-                    </a>
-                    <a href="single-product.html?id=6" class="view-details-link" draggable="false">
-                      <i class="fa fa-link"></i> Xem chi tiết
-                    </a>
+                  <div class="product-carousel-price">
+                    <ins>{$list[$i]->getSale()}<sup>đ</sup></ins> <del>{$list[$i]->getPrice()}<sup>đ</sup></del>
                   </div>
-                </div>
+                </div> "
+              }
 
-                <h2>
-                  Gấu bông nhỏ loại 1
-                </h2>
-
-                <div class="product-carousel-price">
-                  <ins>200000<sup>đ</sup></ins> <del>230000<sup>đ</sup></del>
-                </div>
-              </div>
-
-
-              <div class="single-product" ondragstart="itemDrag(event)" draggable="true" data-itemid="10">
-                <div class="product-f-image">
-                  <img src="files/img/small/img10.jpg" alt="" style="width: 205px; height: 257px;" />
-                  <div class="product-hover">
-                    <a href="javascript:addToCart('10')" class="add-to-cart-link" draggable="false">
-                      <i class="fa fa-shopping-cart"></i> Mua hàng
-                    </a>
-                    <a href="single-product.html?id=10" class="view-details-link" draggable="false">
-                      <i class="fa fa-link"></i> Xem chi tiết
-                    </a>
-                  </div>
-                </div>
-
-                <h2>
-                  Gấu bông cặp VIOLET-PINK (ĐANG GIẢM GIÁ)
-                </h2>
-
-                <div class="product-carousel-price">
-                  <ins>300000<sup>đ</sup></ins> <del>600000<sup>đ</sup></del>
-                </div>
-              </div>
-
-
-              <div class="single-product" ondragstart="itemDrag(event)" draggable="true" data-itemid="9">
-                <div class="product-f-image">
-                  <img src="files/img/small/img9.jpg" alt="" style="width: 205px; height: 257px;" />
-                  <div class="product-hover">
-                    <a href="javascript:addToCart('9')" class="add-to-cart-link" draggable="false">
-                      <i class="fa fa-shopping-cart"></i> Mua hàng
-                    </a>
-                    <a href="single-product.html?id=9" class="view-details-link" draggable="false">
-                      <i class="fa fa-link"></i> Xem chi tiết
-                    </a>
-                  </div>
-                </div>
-
-                <h2>
-                  Gấu bông cặp TRẮNG-NÂU
-                </h2>
-
-                <div class="product-carousel-price">
-                  <ins>270000<sup>đ</sup></ins> <del>300000<sup>đ</sup></del>
-                </div>
-              </div>
-
-
-              <div class="single-product" ondragstart="itemDrag(event)" draggable="true" data-itemid="15">
-                <div class="product-f-image">
-                  <img src="files/img/large/img15.jpg" alt="" style="width: 205px; height: 257px;" />
-                  <div class="product-hover">
-                    <a href="javascript:addToCart('15')" class="add-to-cart-link" draggable="false">
-                      <i class="fa fa-shopping-cart"></i> Mua hàng
-                    </a>
-                    <a href="single-product.html?id=15" class="view-details-link" draggable="false">
-                      <i class="fa fa-link"></i> Xem chi tiết
-                    </a>
-                  </div>
-                </div>
-
-                <h2>
-                  Bộ Totoro
-                </h2>
-
-                <div class="product-carousel-price">
-                  <ins>650000<sup>đ</sup></ins> <del>700000<sup>đ</sup></del>
-                </div>
-              </div>
-
-
-              <div class="single-product" ondragstart="itemDrag(event)" draggable="true" data-itemid="22">
-                <div class="product-f-image">
-                  <img src="files/img/large/img22.jpg" alt="" style="width: 205px; height: 257px;" />
-                  <div class="product-hover">
-                    <a href="javascript:addToCart('22')" class="add-to-cart-link" draggable="false">
-                      <i class="fa fa-shopping-cart"></i> Mua hàng
-                    </a>
-                    <a href="single-product.html?id=22" class="view-details-link" draggable="false">
-                      <i class="fa fa-link"></i> Xem chi tiết
-                    </a>
-                  </div>
-                </div>
-
-                <h2>
-                  Bộ Husky Nga (ĐANG GIẢM GIÁ)
-                </h2>
-
-                <div class="product-carousel-price">
-                  <ins>600000<sup>đ</sup></ins> <del>800000<sup>đ</sup></del>
-                </div>
-              </div>
-
-
-              <div class="single-product" ondragstart="itemDrag(event)" draggable="true" data-itemid="17">
-                <div class="product-f-image">
-                  <img src="files/img/large/img17.jpg" alt="" style="width: 205px; height: 257px;" />
-                  <div class="product-hover">
-                    <a href="javascript:addToCart('17')" class="add-to-cart-link" draggable="false">
-                      <i class="fa fa-shopping-cart"></i> Mua hàng
-                    </a>
-                    <a href="single-product.html?id=17" class="view-details-link" draggable="false">
-                      <i class="fa fa-link"></i> Xem chi tiết
-                    </a>
-                  </div>
-                </div>
-
-                <h2>
-                  Gấu bông to loại 1 (ĐANG GIẢM GIÁ)
-                </h2>
-
-                <div class="product-carousel-price">
-                  <ins>280000<sup>đ</sup></ins> <del>400000<sup>đ</sup></del>
-                </div>
-              </div>
-
-
-              <div class="single-product" ondragstart="itemDrag(event)" draggable="true" data-itemid="23">
-                <div class="product-f-image">
-                  <img src="files/img/pokemon/img31.jpg" alt="" style="width: 205px; height: 257px;" />
-                  <div class="product-hover">
-                    <a href="javascript:addToCart('23')" class="add-to-cart-link" draggable="false">
-                      <i class="fa fa-shopping-cart"></i> Mua hàng
-                    </a>
-                    <a href="single-product.html?id=23" class="view-details-link" draggable="false">
-                      <i class="fa fa-link"></i> Xem chi tiết
-                    </a>
-                  </div>
-                </div>
-
-                <h2>
-                  Pikachu (HOT)
-                </h2>
-
-                <div class="product-carousel-price">
-                  <ins>69000<sup>đ</sup></ins> <del>79000<sup>đ</sup></del>
-                </div>
-              </div>
-
-
-              <div class="single-product" ondragstart="itemDrag(event)" draggable="true" data-itemid="54">
-                <div class="product-f-image">
-                  <img src="files/img/pokemon/img61.jpg" alt="" style="width: 205px; height: 257px;" />
-                  <div class="product-hover">
-                    <a href="javascript:addToCart('54')" class="add-to-cart-link" draggable="false">
-                      <i class="fa fa-shopping-cart"></i> Mua hàng
-                    </a>
-                    <a href="single-product.html?id=54" class="view-details-link" draggable="false">
-                      <i class="fa fa-link"></i> Xem chi tiết
-                    </a>
-                  </div>
-                </div>
-
-                <h2>
-                  Bộ POKEMON tân binh
-                </h2>
-
-                <div class="product-carousel-price">
-                  <ins>1000000<sup>đ</sup></ins> <del>1100000<sup>đ</sup></del>
-                </div>
-              </div>
-
-
-              <div class="single-product" ondragstart="itemDrag(event)" draggable="true" data-itemid="55">
-                <div class="product-f-image">
-                  <img src="files/img/pokemon/img62.jpg" alt="" style="width: 205px; height: 257px;" />
-                  <div class="product-hover">
-                    <a href="javascript:addToCart('55')" class="add-to-cart-link" draggable="false">
-                      <i class="fa fa-shopping-cart"></i> Mua hàng
-                    </a>
-                    <a href="single-product.html?id=55" class="view-details-link" draggable="false">
-                      <i class="fa fa-link"></i> Xem chi tiết
-                    </a>
-                  </div>
-                </div>
-
-                <h2>
-                  Bộ Eevee tiến hóa (HÀNG MỚI)
-                </h2>
-
-                <div class="product-carousel-price">
-                  <ins>5000000<sup>đ</sup></ins> <del>5200000<sup>đ</sup></del>
-                </div>
-              </div>
+              ?>
+              
 
             </div>
           </div>
