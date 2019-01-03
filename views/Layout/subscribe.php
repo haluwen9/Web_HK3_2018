@@ -24,27 +24,27 @@
       <div class="footer-menu">
         <h2 class="footer-wid-title">Điều Hướng</h2>
         <ul>
-          <li><a href="index.html">Trang chủ</a></li>
-          <li><a href="shop.html">Cửa hàng</a></li>
-          <li><a href="cart.html">Giỏ hàng</a></li>
-          <li><a href="checkout.html">Thanh toán</a></li>
-          <li><a href="contact.html">Liên hệ</a></li>
+          <li><a href="?">Trang chủ</a></li>
+          <li><a href="?page=shop">Cửa hàng</a></li>
+          <li><a href="?page=cart">Giỏ hàng</a></li>
+          <li><a href="?page=checkout">Thanh toán</a></li>
+          <li><a href="?page=contact">Liên hệ</a></li>
         </ul>
       </div>
     </div>
 
-    <div class="col-md-3 col-sm-6">
+    <!-- <div class="col-md-3 col-sm-6">
       <div class="footer-menu">
         <h2 class="footer-wid-title">Danh Mục</h2>
         <ul>
-          <li><a href="shop.html?category=Thú bông nhỏ" class="dropdown-item">Thú bông nhỏ</a></li>
+          <li><a href=shop.html?category=Thú bông nhỏ" class="dropdown-item">Thú bông nhỏ</a></li>
           <li><a href="shop.html?category=Thú bông lớn" class="dropdown-item">Thú bông lớn</a></li>
           <li><a href="shop.html?category=Thú bông POKEMON" class="dropdown-item">Thú bông POKEMON</a></li>
         </ul>
       </div>
-    </div>
+    </div> -->
 
-    <div class="col-md-3 col-sm-6">
+    <div class="col-md-4 col-sm-6">
       <div class="footer-newsletter">
         <h2 class="footer-wid-title">Nhận thông báo</h2>
         <p>

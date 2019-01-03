@@ -76,6 +76,9 @@ else if (isset($_GET['page'])) {
     case 'dashboard': 
       include_once("controllers/dashboard.php");
       break;
+    case 'contact':
+      include_once("views/contact.php");
+      break;
     default:
       include_once("controllers/home.php");
   }
