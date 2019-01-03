@@ -10,7 +10,7 @@
 
     <div class="col-sm-6">
       <div class="shopping-item" ondrop="dropCart(event)" ondragover="allowDrop(event)">
-        <a href="cart.html">
+        <a href="?page=cart">
           <i class="fa fa-shopping-cart"></i>
           <span class="hidden">Giỏ Hàng - </span><span class="cart-amunt"></span>
           <span class="product-count"></span></a>

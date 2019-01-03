@@ -1,10 +1,12 @@
 <?php
 
-include_once("../models/product_model.php")
+include_once("models/product_model.php");
 
 class shopController
 {
-    private $productModel
+    private $productModel;
+    private $categoryList;
+    private $productList;
 
     public function __construct()
     {
@@ -14,18 +16,14 @@ class shopController
     public function invoke()
     {
         $productList = NULL;
-        $categoryList = $productModel->getCategories();
+        $categoryList = $this->productModel->getCategories();
+        $productList = $this->productModel->getAllProducts();
 
-        if (isset($_GET['category']))
-        {
-            $productList = $productModel->getProductsByCategory($_GET['category']);
-        }
-        else
-        {
-            $productList = $productModel->getAllProducts();
-        }
+        include_once("views/shoppage.php");
+    }
 
-        include_once("../views/shop.html");
+    public function getAllProducts() {
+        return $this->productModel->getAllProducts();
     }
 }
 

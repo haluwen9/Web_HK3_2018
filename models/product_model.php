@@ -1,7 +1,5 @@
 <?php
-include_once("entities/product.php");
-include_once("entities/product_category.php");
-include_once("../config/db.php");
+include_once("config/db.php");
 
 class productModel extends DBConnection
 {
@@ -10,6 +8,12 @@ class productModel extends DBConnection
 	}
 
 	// product_categories
+	public function getCategoryById($CategoryID)
+	{
+		$result = $this->runQuery("SELECT name FROM product_categories WHERE id = '$CategoryID' ");
+		return $result->fetch_assoc()['name'];
+	}
+
 	public function getCategories()
 	{
 		$result = $this->runQuery("SELECT * FROM product_categories");
@@ -31,7 +35,7 @@ class productModel extends DBConnection
 	{
 		$this->runQuery(
 			"UPDATE product_categories
-			SET name = {$Category->name}
+			SET name = '{$Category->name}'
 			WHERE id = {$Category->id})"
 		);
 	}
@@ -49,16 +53,11 @@ class productModel extends DBConnection
 	// products
 	public function getAllProducts()
 	{
-		$result = $this->runQuery(
-			"SELECT products.* storate.amount
-			FROM products INNER JOIN storage on products.id = storage.product_id"
-		);
+		$result = $this->runQuery("SELECT products.*, storage.amount	FROM products LEFT JOIN storage on products.id = storage.product_id");
 
 		$productList = array();
 		while ($row = $result->fetch_assoc())
 		{
-			$result2 = $this->runQuery("SELECT amount FROM storage WHERE product_id = {$row[id]}");
-			$row2 = $result2->fetch_assoc();
 			$product = new Product(
 				$row['id'], 
 				$row['name'], 
@@ -66,20 +65,21 @@ class productModel extends DBConnection
 				$row['price'], 
 				$row['sale'],
 				$row['image_link'],
-				$row2['amount'],
+				$row['amount'],
 				explode(' ', $row['tags']),
 				$row['sell_state']
 			);
 			array_push($productList, $product);
 		}
-		
+		$result->free();
+		// return count($productList);
 		return $productList;
 	}
 
 	public function getProductsByCategory($CategoryID)
 	{
 		$result = $this->runQuery(
-			"SELECT products.* storate.amount
+			"SELECT products.*, storage.amount
 			FROM products INNER JOIN storage on products.id = storage.product_id
 			WHERE category = {$CategoryID}"
 		);
@@ -105,6 +105,7 @@ class productModel extends DBConnection
 			);
 			array_push($productList, $product);
 		}
+		$result->free();
 		
 		return $productList;
 		
@@ -113,17 +114,18 @@ class productModel extends DBConnection
 	public function getProductById($ProductID)
 	{
 		$result = $this->runQuery(
-			"SELECT products.* storate.amount
+			"SELECT products.*, storage.amount
 			FROM products INNER JOIN storage on products.id = storage.product_id
 			WHERE products.id = {$ProductID}"
 		);
 
 		if ($result->num_rows == 0)
 		{
-			die("Cannot retrieve product\'s info (id={$id})!");
+			echo ("Cannot retrieve product's info (id={$ProductID})!");
+			return NULL;
 		}
 
-		$row = $result1->fetch_assoc();
+		$row = $result->fetch_assoc();
 		return new Product(
 			$row['id'], 
 			$row['name'], 
@@ -143,13 +145,13 @@ class productModel extends DBConnection
 			"INSERT INTO products(id, name, category, price, sale, image_link, tags, sell_state) 
 			VALUE (
 				{$product->getId()},
-				{$product->getName()},
-				{$product->getCategory()},
-				{$product->getPrice()},
-				{$product->getSale()},
-				{$product->getImageLink()},
-				{implode(' ', $product->getTags())},
-				{$product->getSellState()}
+				'{$product->getName()}',
+				'{$product->getCategory()}',
+				'{$product->getPrice()}',
+				'{$product->getSale()}',
+				'{$product->getImageLink()}',
+				'{implode(' ', $product->getTags())}',
+				'{$product->getSellState()}'
 			)"
 		);
 
@@ -157,7 +159,7 @@ class productModel extends DBConnection
 			"INSERT INTO storage(product_id, amount)
 			VALUE (
 				{$product->getId()},
-				{$product->getAmount()}
+				'{$product->getAmount()}'
 			)"
 		);
 	}
@@ -172,13 +174,13 @@ class productModel extends DBConnection
 	{
 		$this->runQuery(
 			"UPDATE products 
-			SET name = {$product->getName()},
-				category = {$product->getCategory()},
-				price = {$product->getPrice()},
-				sale = {$product->getSale()},
-				image_link = {$product->getImageLink()},
-				tags = {implode(' ', $product->getTags())},
-				sell_state = {$product->getSellState()}
+			SET name = '{$product->getName()}',
+				category = '{$product->getCategory()}',
+				price = '{$product->getPrice()}',
+				sale = '{$product->getSale()}',
+				image_link = '{$product->getImageLink()}',
+				tags = '{implode(' ', $product->getTags())}',
+				sell_state = '{$product->getSellState()}'
 			WHERE id = {$product->id}"
 		);
 	}
@@ -215,11 +217,11 @@ class productModel extends DBConnection
 		$this->runQuery(
 			"INSERT INTO reviews(user_id, product_id, content, posted_time, rating) 
 			VALUE (
-				{$review->getUserId()},
-				{$review->getProductId()},
-				{$review->getContent()},
-				{$review->getPostedTime()},
-				{$review->getRating()}
+				{$review->getUserId()}',
+				'{$review->getProductId()}',
+				'{$review->getContent()}',
+				'{$review->getPostedTime()}',
+				'{$review->getRating()}'
 			)"
 		);	
 	}

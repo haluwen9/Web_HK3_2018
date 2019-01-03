@@ -27,66 +27,6 @@ class Product
 		$this->tags = $Tags;
 		$this->sellState = $SellState;
 	}
-	
-// id
-	public function getId()
-	{
-		return $this->id;
-	}
-	public function setId($_id)
-	{
-		$this->id = $_id;
-	}
-
-// name
-	public function getName()
-	{
-		return $this->name;
-	}
-	public function setName($Name)
-	{
-		$this->name = $Name;
-	}
-
-// category
-	public function getCategory()
-	{
-		return $this->category;
-	}
-	public function setCategory($Category)
-	{
-		$this->category = $Category;
-	}
-
-// price
-	public function getPrice()
-	{
-		return $this->price;
-	}
-	public function setPrice($Price)
-	{
-		$this->price = $Price;
-	}
-
-// sale
-	public function getSale()
-	{
-		return $this->sale;
-	}
-	public function setSale($Sale)
-	{
-		$this->sale = $Sale;
-	}
-
-// imageLink
-	public function getImageLink()
-	{
-		return $this->imageLink;
-	}
-	public function setImageLink($ImageLink)
-	{
-		$this->imageLink = $ImageLink;
-	}
 
 // tags
 	public function getTags()
@@ -115,26 +55,6 @@ class Product
 			return true;
 		}
 		return false;
-	}
-	
-// sellState
-	public function getSellState()
-	{
-		return $this->sellState;
-	}
-	public function setRating($sellState)
-	{
-		$this->sellState = $sellState;
-	}
-
-// amount
-	public function getAmount()
-	{
-		return $this->amount;
-	}
-	public function setAmount($amount)
-	{
-		$this->amount = $amount;
 	}
 }
 

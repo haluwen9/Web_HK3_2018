@@ -30,13 +30,14 @@
       $password = $setting["password"];
       $dbname = $setting["dbname"];
 
+      $this->db->set_charset("utf8");
       $this->db = new mysqli($host, $username, $password, $dbname, $port);
-      if ($this->db->connect_error) {
         die("Cannot connect to Database!". $this->db->connect_error);
+      if ($this->db->connect_error) {
       }
     }
 
-    public function runQuery(string $sql) {
+    protected function runQuery(string $sql) {
       $result = $this->db->query($sql);
       if ($result === FALSE) {
         die($this->db->error);

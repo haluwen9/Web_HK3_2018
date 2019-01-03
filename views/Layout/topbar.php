@@ -4,25 +4,30 @@
       <div class="user-menu">
         <ul>
           <li style="display: none;">
-            <a href="#"><i class="fa fa-user"></i> My Account</a>
-          </li>
-          <li style="display: none;">
             <a href="#"><i class="fa fa-heart"></i> Wishlist</a>
           </li>
           <li>
-            <a href="cart.html"><i class="fa fa-user"></i> Giỏ hàng của tôi</a>
+            <a href="cart.html"><i class="fa fa-shopping-cart"></i> Giỏ hàng của tôi</a>
           </li>
           <?php
             if (isset($_SESSION['userSession'])) {
-              $str = $_SESSION['userSession']->getFirstname();
+              $str = $_SESSION['userSession']->firstname;
               echo "
               <li>
-                Xin chào, <a href=\"#\"><i class=\"fa fa-user\"></i>$str</a>
+                <a href=\"#\"><i class=\"fa fa-user\"></i>Xin chào, $str</a>
               </li>
               <li>
-                <a href=\"?ctrl=logout\">
+                <a href=\"?u=logout\">
                   <i class=\"fa fa-user\"></i> Đăng xuất</a>
               </li>";
+              if ($_SESSION['userSession']->id == 'admin') {
+                echo "
+                <li>
+                  <a href=\"admin\">
+                    <i class=\"fa fa-tasks\"></i> Quản lý</a>
+                </li>
+                ";
+              }
             }
             else {
               echo "

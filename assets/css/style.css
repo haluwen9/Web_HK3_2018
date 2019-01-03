@@ -1,4 +1,6 @@
-@import "css/shoppingcart.css";
+@import "shoppingcart.css";
+@import "header.css";
+@import "navbar.css";
 
 @font-face {
   font-family: Raleway;

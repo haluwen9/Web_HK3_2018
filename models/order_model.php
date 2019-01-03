@@ -1,6 +1,5 @@
 <?php
-include_once("entities/order.php");
-include_once("../config/db.php");
+include_once("config/db.php");
 
 class orderModel extends DBConnection
 {
@@ -60,7 +59,7 @@ class orderModel extends DBConnection
 		while ($row = $result->fetch_assoc())
 		{
 			$order = new Order(
-				intval($row['id']), 
+				$row['id'], 
 				$row['user_id'], 
 				$row['diffshipaddr'], 
 				$row['total_price'], 
@@ -76,7 +75,7 @@ class orderModel extends DBConnection
 
 	public function getOrdersByUser($UserID)
 	{
-		$result = $this->runQuery("SELECT * FROM orders WHERE id = {$UserID}");
+		$result = $this->runQuery("SELECT * FROM orders WHERE id = '{$UserID}'");
 
 		if ($result->num_rows == 0)
 		{
@@ -87,7 +86,7 @@ class orderModel extends DBConnection
 		while ($row = $result->fetch_assoc())
 		{
 			$order = new Order(
-				intval($row['id']), 
+				$row['id'], 
 				$row['user_id'], 
 				$row['diffshipaddr'], 
 				$row['total_price'], 
@@ -112,7 +111,7 @@ class orderModel extends DBConnection
 
 		$row = $result->fetch_assoc();
 		return new Order(
-			intval($row['id']), 
+			$row['id'], 
 			$row['user_id'], 
 			$row['diffshipaddr'], 
 			$row['total_price'], 
@@ -128,10 +127,10 @@ class orderModel extends DBConnection
 			"INSERT INTO orders(id, user_id, diffshipaddr, total_price, success_state) 
 			VALUE (
 				{$order->getId()},
-				{$order->getUserId()},
-				{$order->getDiffShipAddr()},
-				{$order->getTotalPrice()},
-				{$order->getSuccessState()}
+				'{$order->getUserId()}',
+				'{$order->getDiffShipAddr()}',
+				'{$order->getTotalPrice()}',
+				'{$order->getSuccessState()}'
 			)"
 		);
 	}
