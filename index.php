@@ -28,6 +28,16 @@ if (isset($_GET['u'])) {
       echo Signup($_POST['regID'], $_POST['regPW'], $_POST['regMail']);
       // header("Location: index.php");
       break;
+    case 'product':
+      if (isset($_GET['id'])) {
+        include_once("models/product_model.php");
+        echo json_encode((new productModel)->getProductById($_GET['id']));
+      }
+      break;
+    case 'category':
+      include_once("models/product_model.php");
+      echo json_encode((new productModel)->getCategories());
+      break;
   }
 }
 else if (isset($_GET['page'])) {
