@@ -92,7 +92,7 @@ function displayCart() {
             // console.log(product);
             txt += '<tr class="cart_item"><td class="product-remove"><a title="Remove this item" class="remove" href="javascript:removeItem(' + i + ')">×</a></td>\
             <td class="product-thumbnail"><a href="single-product.html?id=' + listCart[i].id + '"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="' + product.imageLink + '"></a></td>\
-            <td class="product-name"><a href="single-product.html?id=' + listCart[i].id + '" onclick="return false;">' + product.name + '</a></td>\
+            <td class="product-name"><a href="?page=product&id=' + listCart[i].id + '">' + product.name + '</a></td>\
             <td class="product-price"><span class="amount">' + formatNumber(listCart[i].price) + '<sup>đ</sup></span></td>\
             <td class="product-quantity">\
                 <div class="quantity buttons_added">\

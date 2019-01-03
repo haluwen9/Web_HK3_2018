@@ -7,14 +7,14 @@
             <a href="#"><i class="fa fa-heart"></i> Wishlist</a>
           </li>
           <li>
-            <a href="cart.html"><i class="fa fa-shopping-cart"></i> Giỏ hàng của tôi</a>
+            <a href="?page=cart"><i class="fa fa-shopping-cart"></i> Giỏ hàng của tôi</a>
           </li>
           <?php
             if (isset($_SESSION['userSession'])) {
               $str = $_SESSION['userSession']->firstname;
               echo "
               <li>
-                <a href=\"#\"><i class=\"fa fa-user\"></i>Xin chào, $str</a>
+                <a href=\"?page=user\"><i class=\"fa fa-user\"></i>Xin chào, $str</a>
               </li>
               <li>
                 <a href=\"?u=logout\">
@@ -23,7 +23,7 @@
               if ($_SESSION['userSession']->id == 'admin') {
                 echo "
                 <li>
-                  <a href=\"admin\">
+                  <a href=\"?page=dashboard\">
                     <i class=\"fa fa-tasks\"></i> Quản lý</a>
                 </li>
                 ";
