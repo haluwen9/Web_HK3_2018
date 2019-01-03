@@ -69,6 +69,9 @@ else if (isset($_GET['page'])) {
       $checkoutController = new checkoutController;
       $checkoutController->invoke();
       break;
+	case 'dashboard': 
+	  include_once("controllers/dashboard.php");
+	  break;
     default:
       include_once("controllers/home.php");
   }

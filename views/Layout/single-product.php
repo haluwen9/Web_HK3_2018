@@ -8,8 +8,8 @@
     <div class="col-md-8">
         <div class="product-content-right">
         <div class="product-breadcroumb">
-            <a href="index.html">Trang chủ</a>
-            <a href="javascript:document.location.href = `index.php?page=shop&category=<?php echo $product->category?>`">
+            <a href="?">Trang chủ</a>
+            <a href="?page=shop&category=<?php echo $product->category?>">
             <?php echo $category; ?>
             </a>
             <a href="#">
@@ -34,12 +34,12 @@
                 <div class="product-inner-price">
                 <b>Giá bán:</b>
                 <ins>
-                    <?php echo $product->price-$product->price*$product->sale; ?>
+                    <?php echo number_format($product->price-$product->price*$product->sale) ?>
                     <sup>đ</sup>
                 </ins>
                 <b>Giá cũ:</b>
                 <del>
-                <?php echo $product->price; ?>
+                <?php echo number_format($product->price) ?>
                     <sup>đ</sup>
                 </del>
                 </div>
