@@ -51,6 +51,41 @@ class productModel extends DBConnection
 	}
 
 	// products
+	public function getPromotedProducts()
+	{
+		$productList = $this->getAllProducts();
+		$cnt = count($productList);
+		$checked = array_fill(0, $cnt, 0);
+		$result = array();
+		for ($i = 0; $i < $cnt && $i < 5; ++$i) {
+			$randid = 0;
+			do {
+				$randid = rand(($cnt-1)*(0.8), $cnt-1);
+			} while ($checked[$randid]);
+			$checked[$randid] = 1;
+			array_push($result, $productList[$randid]);
+		}
+		return $result;
+	}
+
+	public function getRelatedProducts($CategoryID)
+	{
+		$productList = $this->getProductsByCategory($CategoryID);
+		$cnt = count($productList);
+		$checked = array_fill(0, $cnt, 0);
+		$result = array();
+		for ($i = 0; $i < $cnt && $i < 10; ++$i) {
+			$randid = 0;
+			do {
+				$randid = rand(0, $cnt-1);
+				// var_dump($randid);
+			} while ($checked[$randid]);
+			$checked[$randid] = 1;
+			array_push($result, $productList[$randid]);
+		}
+		return $result;
+	}
+
 	public function getAllProducts()
 	{
 		$result = $this->runQuery("SELECT products.*, storage.amount	FROM products LEFT JOIN storage on products.id = storage.product_id");

@@ -31,8 +31,18 @@ if (isset($_GET['u'])) {
     case 'product':
       if (isset($_GET['id'])) {
         include_once("models/product_model.php");
-        echo json_encode((new productModel)->getProductById($_GET['id']));
-      }
+        switch($_GET['id']) {
+          case 'promoted':
+            echo json_encode((new productModel)->getPromotedProducts());
+            break;
+          case 'related':
+            if (isset($_GET['cate']))
+              echo json_encode((new productModel)->getRelatedProducts($_GET['cate']));
+            break;
+          default:
+            echo json_encode((new productModel)->getProductById($_GET['id']));
+          }
+        }
       break;
     case 'category':
       include_once("models/product_model.php");

@@ -168,29 +168,39 @@
     <div class="col-md-12">
         <div class="related-products-wrapper">
         <h2 class="related-products-title">Sản phẩm liên quan</h2>
-        <div class="related-products-carousel" id="mathang">
+        <div class="related-products-carousel" id="related-products">
             <script>
             // San pham lien quan
-            txt = "";
-            var n = data.length - 1;
-            for (var i = n; i >= n - 9 && i >= 0; i--)
+            var data = [];
+            $.ajax({
+                async: false, 
+                url: '?u=product&id=related&cate=<?php echo $product->category?>',
+                success: function (res) {
+                    // console.log(JSON.parse(res));
+                    data = JSON.parse(res);
+                }
+            });
+            console.log(data);
+            var txt = "";
+            for (var i = 0; i < data.length; ++i) {
                 txt += `<div class="single-product">
                         <div class="product-f-image">
-                            <img style=" height: 297px;" src="${data[i].LinkImageSP}"alt="">
+                            <img style=" height: 297px;" src="${data[i].imageLink}"alt="">
                             <div class="product-hover">
-                            <a href="javascript:addToCart(${data[i].Id})" class="add-to-cart-link">
+                            <a href="javascript:addToCart(${data[i].id})" class="add-to-cart-link">
                                 <i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
-                            <a class="view-details-link" href="single-product.html?id=${data[i].Id}">
+                            <a class="view-details-link" href="single-product.html?id=${data[i].id}">
                             <i class="fa fa-link"></i>Thông tin</a>
                             </div>
                         </div>
-                        <h2><a href="single-product.html?id=${data[i].Id}">${data[i].NameSP}</a></h2>
+                        <h2><a href="single-product.html?id=${data[i].id}">${data[i].name}</a></h2>
                         <div class="product-carousel-price">
-                            <ins>$${data[i].SaleSP}</ins>
-                            <del>$${data[i].money}</del>
+                            <ins>$${data[i].price*(1-data[i].sale)}</ins>
+                            <del>$${data[i].price}</del>
                         </div>
                         </div>`;
-            document.getElementById("mathang").innerHTML = txt;
+            }
+            $("#related-products").html(txt);
 
             </script>
         </div>

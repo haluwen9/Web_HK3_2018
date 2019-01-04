@@ -184,28 +184,29 @@ function signup(ev) {
 
 function submitCheckout(ev) {
     ev.preventDefault();
+    if (listCart.length > 0) {
+        var billfields = $('input[id^="billing_"]').filter(function() {return this.value == ''});
+        var shipfields = null;
+        // console.log($('#ship-to-different-address-checkbox').is(':checked'));
+        if ($('#ship-to-different-address-checkbox').is(':checked'))
+            shipfields = ($('input[id^="shipping_"]').filter(function() {return this.value == ''}));
+        // console.log(billfields.length + (shipfields != null ? shipfields.length : 0));
+        var unfilledRequiredFields = billfields.length + (shipfields != null ? shipfields.length : 0);
+        if (unfilledRequiredFields) {
+            alert("Còn "+unfilledRequiredFields+" trường không được bỏ trống! Vui lòng điền đầy đủ thông tin để thanh toán!");
+        } else {
+            var formData = $("#checkout-form").serializeArray();
+            formData.push({name: "cart", value: JSON.stringify(listCart)});
+            formData.push({name: "total_price", value: calcPrice()});
 
-    var billfields = $('input[id^="billing_"]').filter(function() {return this.value == ''});
-    var shipfields = null;
-    // console.log($('#ship-to-different-address-checkbox').is(':checked'));
-    if ($('#ship-to-different-address-checkbox').is(':checked'))
-        shipfields = ($('input[id^="shipping_"]').filter(function() {return this.value == ''}));
-    // console.log(billfields.length + (shipfields != null ? shipfields.length : 0));
-    if (billfields.length + (shipfields != null ? shipfields.length : 0)) {
-        alert("Vui lòng điền đầy đủ thông tin để thanh toán!");
-    }
-    else if (listCart.length > 0) {
-        var formData = $("#checkout-form").serializeArray();
-        formData.push({name: "cart", value: JSON.stringify(listCart)});
-        formData.push({name: "total_price", value: calcPrice()});
-
-        $.post("?u=checkout", formData, function(res) {
-            if (res == 1)
-                alert("Đơn hàng đã được gửi đi thành công!");
-            else
-                console.log(res);
-            // setTimeout(() => {document.location = "index.php";}, 1000);
-        });
+            $.post("?u=checkout", formData, function(res) {
+                if (res == 1)
+                    alert("Đơn hàng đã được gửi đi thành công!");
+                else
+                    console.log(res);
+                // setTimeout(() => {document.location = "index.php";}, 1000);
+            });
+        }
     }
     else {
         alert("Giỏ hàng đang rỗng!");
