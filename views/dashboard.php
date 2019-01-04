@@ -54,9 +54,6 @@
 		</div>
 	</nav>
 	
-	<?php
-		echo var_dump($a);
-	?>
 	
 	<!-- Sidebar vs Content -->
     <div class="container-fluid main-area">
@@ -128,8 +125,8 @@
 							
 							<!-- Button trigger modal Add Product-->
 							<div class="row">
-								<div class="col-sm-1"></div>
-								<button type="button" class="btn btn-primary col-sm-10" data-toggle="modal" data-target="#AddProduct">Thêm sản phẩm</button>							
+								<div class="col-sm-2"></div>
+								<button type="button" class="btn btn-primary col-sm-11" data-toggle="modal" data-target="#AddProduct">Thêm sản phẩm</button>							
 							</div>
 							<!-- Modal Add Product -->
 							
