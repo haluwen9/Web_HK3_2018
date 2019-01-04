@@ -81,6 +81,7 @@
 					<div class=\"modal fade\" id=\"UpdateUser{$user->id}\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"UpdateUserModalLabel\" aria-hidden=\"true\">
 					  <div class=\"modal-dialog\" role=\"document\">
 						<div class=\"modal-content container\">
+						  <form action=\"?page=dashboard&Dashboard=ManageUser\" method=\"post\">
 							<div class=\"modal-header\">
 								<h3 class=\"modal-title\" id=\"UpdateProductModalLabel\">Cập nhật tài khoản</h3>
 								<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">
@@ -142,8 +143,10 @@
 							</div>
 							
 							<div class=\"modal-footer\">
-								<button type=\"button\" class=\"btn btn-primary btn-lg btn-block\">Cập nhật</button>
+								<input type=\"text\" name=\"id\" value=\"{$user->id}\" >
+								<input type=\"submit\" name=\"update\" class=\"btn btn-primary\" value=\"Cập nhật\">
 							</div>
+						  </form>
 						</div>
 					  </div>
 					</div>

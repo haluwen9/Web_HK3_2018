@@ -24,16 +24,16 @@ else
 			<td>{$order->diffShipAddr}</td>
 			<td>{$order->totalPrice}</td>
 			<td>
-				<form action=\"\" method=\"\">
 				
 					<!-- Button trigger modal update order -->
-					<button type=\"button\" class=\"btn btn-primary btn-sm\" data-toggle=\"modal\" data-target=\"#UpdateOrder\">Chi tiết</button>
+					<button type=\"button\" class=\"btn btn-success btn-sm\" data-toggle=\"modal\" data-target=\"#UpdateOrder\">Chi tiết</button>
 					<!-- Modal Update Order -->
 					<div class=\"modal fade\" id=\"UpdateOrder\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"UpdateOrderModalLabel\" aria-hidden=\"true\">
 					  <div class=\"modal-dialog\" role=\"document\">
 						<div class=\"modal-content container\">
+						  <form action=\"?page=dashboard&Dashboard=ManageOrder\" method=\"post\">
 							<div class=\"modal-header\">
-								<h3 class=\"modal-title\" id=\"UpdateProductModalLabel\">Cập nhật sản phẩm</h3>
+								<h3 class=\"modal-title\" id=\"UpdateProductModalLabel\">Chi tiết hóa đơn</h3>
 								<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">
 									<span aria-hidden=\"true\">&times;</span>
 								</button>
@@ -54,34 +54,38 @@ else
 							<div class=\"modal-footer\">
 								<button type=\"button\" class=\"btn btn-primary btn-lg btn-block\">Cập nhật</button>
 							</div>
+						  </form>
 						</div>
 					  </div>
 					</div>
 					
-					<!-- Button trigger modal remove product-->
-					<button type=\"button\" class=\"btn btn-danger btn-sm\" data-toggle=\"modal\" data-target=\"#RemoveProduct\">Xóa</button>
-					<!-- Modal Remove Product -->
-					<div class=\"modal fade\" id=\"RemoveProduct\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"RemoveProductModalLabel\" aria-hidden=\"true\">
+					<!-- Button trigger modal remove order-->
+					<button type=\"button\" class=\"btn btn-danger btn-sm\" data-toggle=\"modal\" data-target=\"#RemoveOrder{$order->id}\">Xóa</button>
+					<!-- Modal remove Order -->
+					<div class=\"modal fade\" id=\"RemoveOrder{$order->id}\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"RemoveOrderModalLabel\" aria-hidden=\"true\">
 					  <div class=\"modal-dialog\" role=\"document\">
 						<div class=\"modal-content\">
 						  <div class=\"modal-header\">
-							<h5 class=\"modal-title\" id=\"RemoveProductModalLabel\">Xóa sản phẩm</h5>
+							<h5 class=\"modal-title\" id=\"RemoveOrderModalLabel\">Xóa danh mục</h5>
 							<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">
 							  <span aria-hidden=\"true\">&times;</span>
 							</button>
 						  </div>
 						  <div class=\"modal-body\">
-							Sản phẩm sẽ bị xóa. Bạn chắc chứ?
+							Bạn có muốn xóa hóa đơn này?
 						  </div>
 						  <div class=\"modal-footer\">
-							<button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>
-							<button type=\"button\" class=\"btn btn-primary\">Save changes</button>
+							<form action=\"?page=dashboard&Dashboard=ManageOrder\" method=\"post\">
+								<input type=\"text\" name=\"id\" value=\"{$order->id}\" style=\"display:none;\">
+								<button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Không</button>
+								<input type=\"submit\" name=\"remove\" class=\"btn btn-primary\" value=\"Có\">
+							</form>
 						  </div>
 						</div>
 					  </div>
 					</div>
 				
-				</form>
+				
 				
 			</td>
 		</tr>";

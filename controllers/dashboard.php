@@ -18,9 +18,14 @@ class dashboardControllerProduct
 		$this->productList = $this->productModel->getAllProducts();
     }
 	
+	public function getAllCategory()
+	{
+		return $this->productModel->getCategories();
+	}
+	
 	public function getCategoryById($id)
 	{
-		return $thist->productModel->getCategoryById($id);
+		return $this->productModel->getCategoryById($id);
 	}
 	
 	public function insertProduct($product)
@@ -80,6 +85,11 @@ class dashboardControllerOrder
         $this->orderModel = new orderModel();
         $this->orderList = $this->orderModel->getAllOrders();
     }
+	
+	public function deleteOrder($id)
+	{
+		$this->productModel->deleteOrder($id);
+	}
 }
 
 // User
@@ -93,6 +103,11 @@ class dashboardControllerUser
         $this->userModel = new userModel();
         $this->userList = $this->userModel->getAllUsers();
     }
+	
+	public function updateUser($user)
+	{
+		$this->productModel->updateUser($user);
+	}
 	
 	public function deleteUser($id)
 	{
@@ -111,6 +126,7 @@ else
 $dashboardController;
 switch ($Dashboard)
 {
+	// ManageCategory
 	case 'ManageCategory':
 		$dashboardController = new dashboardControllerCategory();
 		if (isset($_POST['id']))
@@ -139,11 +155,24 @@ switch ($Dashboard)
 			header("Location: index.php?page=dashboard&Dashboard=ManageCategory");
 		}
 		break;
-		
+	
+	// ManageOrder
 	case 'ManageOrder':
 		$dashboardController = new dashboardControllerOrder();
-		break;	
-			
+		if (isset($_POST['id']))
+		{
+			// Remove
+			$id = $_POST['id'];
+			$a = $id;
+			if (isset($_POST['remove']))
+			{
+				$dashboardController->deleteOrder($id);
+				header("Location: index.php?page=dashboard&Dashboard=ManageOrder");
+			}
+		}
+		break;
+	
+	// ManageUser
 	case 'ManageUser':
 		$dashboardController = new dashboardControllerUser();
 		
@@ -161,12 +190,16 @@ switch ($Dashboard)
 				// Update
 				if (isset($_POST['update']))
 				{
-					$dashboardController->updateCategory($id, $_POST['newNameCategory']);
+					$user = new ProductCategory($id, $name);
+						
+						
+					$dashboardController->updateUser($user);
 					header("Location: index.php?page=dashboard&Dashboard=ManageUser");
 				}
 		}
 		break;
 	
+	// ManageProduct
 	default:
 		$dashboardController = new dashboardControllerProduct();
 		if (isset($_POST['id']))
@@ -197,7 +230,7 @@ switch ($Dashboard)
 			if (isset($_POST['ImageProduct'])) $ImageLink =$_POST['ImageProduct'];
 			
 			$product = new product('abc', $Name, $Category, $Price, $Sale, $ImageLink, 11);
-			#$dashboardController->insertProduct($product);
+			$dashboardController->insertProduct($product);
 		}
 }
 

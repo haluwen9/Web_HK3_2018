@@ -55,8 +55,7 @@
 	</nav>
 	
 	<?php
-		#echo $dashboardController->countProductByCategory(3);
-		#echo var_dump($dashboardController->categoryList[1]->id);
+		echo var_dump($a);
 	?>
 	
 	<!-- Sidebar vs Content -->
@@ -133,9 +132,11 @@
 								<button type="button" class="btn btn-primary col-sm-10" data-toggle="modal" data-target="#AddProduct">Thêm sản phẩm</button>							
 							</div>
 							<!-- Modal Add Product -->
-							<form action="?page=dashboard&Dashboard=ManageProduct" method="post" class="col-sm-12">
-								<div class="modal fade" id="AddProduct" tabindex="-1" role="dialog" aria-labelledby="AddProductModalLabel" aria-hidden="true">
-								  <div class="modal-dialog" role="document">
+							
+							<div class="modal fade" id="AddProduct" tabindex="-1" role="dialog" aria-labelledby="AddProductModalLabel" aria-hidden="true">
+							  <div class="modal-dialog" role="document">
+								
+								<form action="?page=dashboard&Dashboard=ManageProduct" method="post" class="col-sm-12">
 									<div class="modal-content container">
 										<div class="modal-header">
 											<h3 class="modal-title" id="AddProductModalLabel">Thêm sản phẩm</h3>
@@ -182,9 +183,10 @@
 											<input type="submit" name="add" class="btn btn-primary btn-lg btn-block" value="Thêm sản phẩm">
 										</div>
 									</div>
-								  </div>
-								</div>
-							</form>
+								</form>
+							  </div>
+							</div>
+							
 							
 							<br>
 							<?php include_once"Layout/dashboard-table-product.php"?>

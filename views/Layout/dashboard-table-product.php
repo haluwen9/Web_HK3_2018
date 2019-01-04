@@ -27,11 +27,13 @@ else
 		$arrStringLink = explode('/', $product->imageLink);
 		$nameFileImage = $arrStringLink[count($arrStringLink)-1];
 		
+		$temp = $dashboardController->getCategoryById($product->category);
+				 #$dashboardController->countProductByCategory($category->id)
 		echo "
 			<tr>
 				<th scope=\"row\">{$product->id}</th>
 				<td>{$product->name}</td>
-				<td>{$product->category}</td>
+				<td>{$temp}</td>
 				<td>{$product->price}</td>
 				<td>{$product->sale}</td>
 				<td>										
@@ -58,7 +60,7 @@ else
 								
 								<div class=\"form-group\">
 									<label for=\"CategoryProduct\">Loại sản phẩm</label>
-									<input type=\"text\" class=\"form-control\" id=\"CategoryProduct\" value=\"{$product->category}\" placeholder=\"Loại . . .\">
+									<input type=\"text\" class=\"form-control\" id=\"CategoryProduct\" value=\"{$temp}\" placeholder=\"Loại . . .\">
 								</div>
 
 								

@@ -141,17 +141,19 @@ class productModel extends DBConnection
 
 	public function insertProduct($product)
 	{
+		$temp = implode(' ', $product->getTags());
+		
 		$this->runQuery(
-			"INSERT INTO products(id, name, category, price, sale, image_link, tags, sell_state) 
+			"INSERT INTO products(name, category, price, sale, image_link, tags, sell_state) 
 			VALUE (
-				{$product->getId()},
-				'{$product->getName()}',
-				'{$product->getCategory()}',
-				'{$product->getPrice()}',
-				'{$product->getSale()}',
-				'{$product->getImageLink()}',
-				'{implode(' ', $product->getTags())}',
-				'{$product->getSellState()}'
+				
+				'{$product->name}',
+				'{$product->category}',
+				'{$product->price}',
+				'{$product->sale}',
+				'{$product->imageLink}',
+				'{$temp}',
+				'{$product->sellState}'
 			)"
 		);
 

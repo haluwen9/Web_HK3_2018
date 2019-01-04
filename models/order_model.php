@@ -158,13 +158,16 @@ class orderModel extends DBConnection
 	public function deleteOrder($OrderID)
 	{
 		$order = $this->getOrderById($OrderID);
-		if ($order->successState)
+		if (!$order->successState)
 		{
-			die("Cannot delete this order (id={$OrderID}) since its success state is TRUE!");
+			$this->runQuery("DELETE FROM shipping_info WHERE order_id = {$OrderID}");
+			$this->runQuery("DELETE FROM order_content WHERE order_id = {$OrderID}");
+			$this->runQuery("DELETE FROM orders WHERE id = {$OrderID}");
 		}
-		$this->runQuery("DELETE FROM shipping_info WHERE order_id = {$OrderID}");
-		$this->runQuery("DELETE FROM order_content WHERE order_id = {$OrderID}");
-		$this->runQuery("DELETE FROM orders WHERE id = {$OrderID}");
+		else
+		{
+			#die("Cannot delete this order (id={$OrderID}) since its success state is TRUE!");
+		}
 	}
 
 	public function updateOrderState($OrderID, $NewState)
