@@ -6,10 +6,17 @@ include_once("models/user_model.php");
 
 $a = 0;
 
+// Check admin
+if (!isset($_SESSION['userSession']) || $_SESSION['userSession'] != 'admin')
+{
+	header("Location: index.php");
+}
+
+
 // Product
 class dashboardControllerProduct
 {
-    private $productModel;
+    public $productModel;
 	public $productList;
 	
     public function __construct()
@@ -42,7 +49,7 @@ class dashboardControllerProduct
 //Category
 class dashboardControllerCategory
 {
-    private $productModel;
+    public $productModel;
 	public $categoryList;
 	
     public function __construct()
@@ -77,7 +84,7 @@ class dashboardControllerCategory
 // Order
 class dashboardControllerOrder
 {
-	private $orderModel;
+	public $orderModel;
 	public $orderList;
 	
 	public function __construct()
@@ -88,14 +95,14 @@ class dashboardControllerOrder
 	
 	public function deleteOrder($id)
 	{
-		$this->productModel->deleteOrder($id);
+		$this->orderModel->deleteOrder($id);
 	}
 }
 
 // User
 class dashboardControllerUser
 {
-    private $userModel;
+    public $userModel;
 	public $userList;
 	
     public function __construct()
@@ -106,7 +113,7 @@ class dashboardControllerUser
 	
 	public function updateUser($user)
 	{
-		$this->productModel->updateUser($user);
+		$this->userModel->updateUser($user);
 	}
 	
 	public function deleteUser($id)
@@ -190,10 +197,10 @@ switch ($Dashboard)
 				// Update
 				if (isset($_POST['update']))
 				{
-					$user = new ProductCategory($id, $name);
+					//$user = new ($id, $Pw, $Email, $FirstName, $LastName, $Country, $County, $Province, $StreetAddress, $Postcode, $Tel, $Facebook = null, $Twitter = null, $Google = null);
 						
 						
-					$dashboardController->updateUser($user);
+					//$dashboardController->updateUser($user);
 					header("Location: index.php?page=dashboard&Dashboard=ManageUser");
 				}
 		}
@@ -204,6 +211,7 @@ switch ($Dashboard)
 		$dashboardController = new dashboardControllerProduct();
 		if (isset($_POST['id']))
 		{
+			// Remove
 			$id = $_POST['id'];
 			if (isset($_POST['remove']))
 			{
@@ -211,10 +219,13 @@ switch ($Dashboard)
 				header("Location: index.php?page=dashboard");
 			}
 			else
-			{
-				
-			}
+				// Update
+				//if ()
+				{
+					
+				}
 		}
+		// Add
 		if (isset($_POST['add']))
 		{
 			$Name = "No name";

@@ -25,36 +25,52 @@ else
 			<td>{$order->totalPrice}</td>
 			<td>
 				
-					<!-- Button trigger modal update order -->
-					<button type=\"button\" class=\"btn btn-success btn-sm\" data-toggle=\"modal\" data-target=\"#UpdateOrder\">Chi tiết</button>
-					<!-- Modal Update Order -->
-					<div class=\"modal fade\" id=\"UpdateOrder\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"UpdateOrderModalLabel\" aria-hidden=\"true\">
-					  <div class=\"modal-dialog\" role=\"document\">
+
+					<!-- Button trigger modal Info order -->
+					<button type=\"button\" class=\"btn btn-success btn-sm\" data-toggle=\"modal\" data-target=\"#InfoUser{$order->id}\">Chi tiết</button>
+					<!-- Modal Info Product -->
+					<div class=\"modal fade bd-example-modal-lg\" id=\"InfoUser{$order->id}\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"InfoUserModalLabel\" aria-hidden=\"true\">
+					
+					  <div class=\"modal-dialog modal-lg\" role=\"document\">
 						<div class=\"modal-content container\">
-						  <form action=\"?page=dashboard&Dashboard=ManageOrder\" method=\"post\">
 							<div class=\"modal-header\">
-								<h3 class=\"modal-title\" id=\"UpdateProductModalLabel\">Chi tiết hóa đơn</h3>
+								<h3 class=\"modal-title\" id=\"InfoProductModalLabel\">Thông tin</h3>
 								<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">
 									<span aria-hidden=\"true\">&times;</span>
 								</button>
 							</div>
-						  
+							
 							<div class=\"modal-body\">
-								<div class=\"form-group\">
-									<label for=\"NameProduct\">Tên sản phẩm</label>
-									<input type=\"text\" class=\"form-control\" id=\"NameProduct\" placeholder=\"Tên . . .\">
-								</div>
-								
-								<div class=\"form-group\">
-									<label for=\"CategoryProduct\">Loại sản phẩm</label>
-									<input type=\"text\" class=\"form-control\" id=\"CategoryProduct\" placeholder=\"Loại . . .\">
-								</div>
+							  <div class\"row\">
+							  
+							  </div>
+							  <div class\"row\">
+								<table class=\"table table-hover\">
+								  <thead>
+									<tr>
+									  <th scope=\"col\">STT</th>
+									  <th scope=\"col\">Tên sản phẩm</th>
+									  <th scope=\"col\">Số lượng</th>
+									  <th scope=\"col\">Giá mỗi sản phẩm</th>
+									  <th scope=\"col\">Tổng</th>
+									</tr>
+								  </thead>
+								  <tbody>
+									<tr>
+									  <th scope=\"row\">1</th>
+									  <td>Mark</td>
+									  <td>Otto</td>
+									  <td>Mark</td>
+									  <td>Otto</td>
+									</tr>
+								  </tbody>
+								</table>
+							  </div>
 							</div>
 							
 							<div class=\"modal-footer\">
-								<button type=\"button\" class=\"btn btn-primary btn-lg btn-block\">Cập nhật</button>
+								<button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Đóng</button>
 							</div>
-						  </form>
 						</div>
 					  </div>
 					</div>
